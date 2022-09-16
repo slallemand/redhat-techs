@@ -10,7 +10,7 @@ metadata:
     app: full-vm
     flavor.template.kubevirt.io/small: 'true'
     os.template.kubevirt.io/rhel9.0: 'true'
-    vm.kubevirt.io/template: rhel9-server-small
+    vm.kubevirt.io/template: win2k19-small-dm
     vm.kubevirt.io/template.namespace: openshift
     vm.kubevirt.io/template.revision: '1'
     vm.kubevirt.io/template.version: v0.19.6
@@ -25,7 +25,7 @@ spec:
       spec:
         source:
           pvc:
-            name: rhel9
+            name: win2k19-template-disk-cheap-planarian
             namespace: openshift-virtualization-os-images
         storage:
           accessModes:
@@ -40,7 +40,7 @@ spec:
     metadata:
       annotations:
         vm.kubevirt.io/flavor: small
-        vm.kubevirt.io/os: rhel9
+        vm.kubevirt.io/os: win2k19
         vm.kubevirt.io/workload: server
       creationTimestamp: null
       labels:
@@ -62,9 +62,6 @@ spec:
               disk:
                 bus: virtio
               name: win-bdd-sqlserver01
-            - disk:
-                bus: virtio
-              name: cloudinitdisk
           interfaces:
             - masquerade: {}
               name: default
@@ -81,7 +78,7 @@ spec:
           type: pc-q35-rhel8.4.0
         resources:
           requests:
-            memory: 4Gi
+            memory: 8Gi
       evictionStrategy: LiveMigrate
       hostname: win-bdd-sqlserver01
       networks:
@@ -92,20 +89,3 @@ spec:
         - dataVolume:
             name: win-bdd-sqlserver01
           name: win-bdd-sqlserver01
-        - cloudInitNoCloud:
-            userData: |
-              #cloud-config
-              user: cloud-user
-              password: ''
-              chpasswd:
-                expire: false
-              ssh_authorized_keys:
-                - >-
-                  ssh-rsa
-                  AAAAB3NzaC1yc2EAAAADAQABAAABgQC3OL8vJoTsbn/LBUZWgV8YYmxUZSMAWZ6UKMHC2iF9VCYmuI0opJKNBpEDFlomrENOm7HkEIafdPpFfEiDMszDhskvNWAVPiJJChjMBxFgvNWLAEHJQKvGaylVDF4yOex9ehMKOnhBVnO7FFrn33AmgiikEQRcqkz9Q1NQ7ccDZzF5eml0brxmO+2IziUrPdeVwkR7Wzw19zyxLf3f7dfGkfnfoeku1D8BWQaclN0T8AAC4IAVQ1YXp5kf4rpPdf3eCMUKItJCwW4nAKLmJDoJTMXx6LsOGsBZHwPxV0LbR9titUhGpRCBor2nYs1EnN4qCd7f+3yU0lZ+dV5HdMWXesD2czEY8CTncEhD+6c4x3RnyLNC+zqHuM4U1szsQPkOxI5zqItxVgy0HmLThpaA0knohTVYAnq+Qhw+iA6yokRv/pBRTr9fPeUv03LBB5tYEhBDCkGICY4ZRuT+NlsBHMxAjeQIIYeOh0DwldEl2QXVJc3eNt5nkQw49BoCGIU=
-                  dmartini@Davids-MacBook-Pro
-                - >-
-                  ssh-rsa
-                  AAAAB3NzaC1yc2EAAAADAQABAAABgQCeKuohg3lPzDeeQBqXrllzylbJEDrVg9bbpGaYeLfTQ1ibAXpU6PDwOvweHvzBRleW/39Y4t2pF0T6DiQgymapIuRFIXqJR6qKRB6GUdJgLzV4q5IJFmDJFE3XO9TS24N4stjzvNiOH/LNjN5mVHKLorO7qIPS9O3eRi66Bkqsj6Wg8NLI8ufGCBeBXu/rcnDW2phyoKvSrXl0vYNc+nSCGYNU/Fmh6hpomtm/6h+9A3ep6SOyC8RepId1kF3IXLyQpbFXEGDmcbxUgH2FQnsBe+M62rYU0lP/c7wEdWRvYX0c17ZFeg65D9DW8u8Ya33PeicgH4N4ooKGTb5Uekj54OGYnxrlwP+gXTJNk8IYd3UgdYNZTzvHKb9YMHY1Z11kYaQWi6YZwxazCoH/KIADCMzbKnayZAiwgOTVi2jP2JQvEGe+TAoYLKM1Gr9pEQC9yZImArBmw3w50yI1ZiKy+DgygolZYeGhYixGU1jePujMUgGw5EaoZzrJ9gbz47c=
-                  dmartini@Davids-MacBook-Pro
-          name: cloudinitdisk
