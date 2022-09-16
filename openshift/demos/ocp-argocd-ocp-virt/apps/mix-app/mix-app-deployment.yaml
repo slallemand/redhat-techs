@@ -18,7 +18,7 @@ spec:
         app: mix-app
     spec:
       containers:
-      - image: registry.redhat.io/rhel8/nginx-120
+      - image: registry.redhat.io/rhel8/perl-526
         name: mix-app
         resources: {}
 ---
