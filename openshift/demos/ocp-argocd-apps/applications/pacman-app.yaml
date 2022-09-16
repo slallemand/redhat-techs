@@ -10,7 +10,7 @@ spec:
   project: apps-demo
   source:
     path: openshift/demos/ocp-argocd-apps/apps/pacman
-    repoURL: https://github.com/davmartini/lab-platform.git
+    repoURL: https://github.com/davmartini/redhat-techs.git
     targetRevision: main
   syncPolicy:
     automated:
