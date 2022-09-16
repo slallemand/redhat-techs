@@ -1,8 +1,8 @@
-# DM Lab
-Repository to host all configuration files for DM Lab
-
+# Description
+Repository to host all configuration files, notes and labs
 
 # Demos
 
-- **Lab1** : [Satellite demo](satellite_demo.md)
-- **Lab2** : [Ansible demo](ansible_demo.md)
+- **Satellite Demos** : [Link](satellite_demos.md)
+- **Ansible Demos** : [Link](ansible_demos.md)
+- **OpenShift Demos** : [Link](openshift_demos.md)
