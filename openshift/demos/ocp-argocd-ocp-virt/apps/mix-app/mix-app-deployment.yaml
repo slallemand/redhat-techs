@@ -18,7 +18,7 @@ spec:
         app: mix-app
     spec:
       containers:
-      - image: wordpress
-        name: haproxy
+      - image: quay.io/redhattraining/wordpress
+        name: wordpress
         resources: {}
 ---
