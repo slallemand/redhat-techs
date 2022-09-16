@@ -60,7 +60,7 @@ spec:
           disks:
             - bootOrder: 1
               disk:
-                bus: virtio
+                bus: sata
               name: win-bdd-sqlserver01
           interfaces:
             - masquerade: {}
