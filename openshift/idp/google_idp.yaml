@@ -8,7 +8,7 @@ spec:
     mappingMethod: claim 
     type: Google
     google:
-      clientID: 106565764394-4iu6ms4pjds728d5qcicf8v8nphnepfc.apps.googleusercontent.com
+      clientID: "$CLIENTID"
       clientSecret:
         name: google-secret
       hostedDomain: "redhat.com" 
