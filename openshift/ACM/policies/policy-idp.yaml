@@ -49,5 +49,5 @@ spec:
                      clientID: "$CLIENTID"
                      clientSecret:
                        name: google-secret
-                   hostedDomain: "redhat.com" 
+                     hostedDomain: "redhat.com" 
          remediationAction: enforce
