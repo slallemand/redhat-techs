@@ -23,9 +23,9 @@ spec:
                metadata:
                  name: google-secret
                  namespace: openshift-config
-              type: Opaque
-              data:
-                clientSecret: $SECRET
+               type: Opaque
+               data:
+                 clientSecret: $SECRET
          remediationAction: enforce
    - objectDefinition:
        apiVersion: policy.open-cluster-management.io/v1
