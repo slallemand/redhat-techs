@@ -13,7 +13,7 @@ spec:
        apiVersion: policy.open-cluster-management.io/v1
        kind: ConfigurationPolicy
        metadata:
-         name: policy-admin-group
+         name: policy-idp-secret
        spec:
          object-templates:
            - complianceType: musthave
@@ -31,7 +31,7 @@ spec:
        apiVersion: policy.open-cluster-management.io/v1
        kind: ConfigurationPolicy
        metadata:
-         name: policy-admin-group
+         name: policy-idp-config
        spec:
          object-templates:
            - complianceType: musthave
