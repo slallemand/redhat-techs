@@ -30,7 +30,7 @@ spec:
                   name: openshift-storage
                   labels:
                     openshift.io/cluster-monitoring: "true"
-          remediationAction: inform
+          remediationAction: enforce
           severity: high
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
@@ -49,7 +49,7 @@ spec:
                 spec:
                   targetNamespaces:
                     - openshift-storage
-          remediationAction: inform
+          remediationAction: enforce
           severity: high
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
