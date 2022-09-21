@@ -1,9 +1,31 @@
-# This policy verifies the installation of the official version of the OpenShift Data Foundation
-# Logical Volume Manager Operator on the managed clusters.
-# If set to "enforce" it installs the operator.
-# Used APIs: OLM, ODF-LVMO #https://github.com/operator-framework/operator-lifecycle-manager
-# https://github.com/red-hat-storage/lvm-operator
-
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-install-odf-lvm-operator
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+    - key: vendor
+      operator: In
+      values:
+      - OpenShift
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-install-odf-lvm-operator
+placementRef:
+  apiGroup: apps.open-cluster-management.io
+  kind: PlacementRule
+  name: placement-install-odf-lvm-operator
+subjects:
+- apiGroup: policy.open-cluster-management.io
+  kind: Policy
+  name: install-odf-lvm-operator
+---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
@@ -11,112 +33,74 @@ metadata:
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
     policy.open-cluster-management.io/standards: NIST SP 800-53
-  name: policy-lvm-operator
+  name: install-odf-lvm-operator
 spec:
   disabled: false
+  remediationAction: enforce
   policy-templates:
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: policy-lvm-namespace
-        spec:
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: v1
-                kind: Namespace
-                metadata:
-                  name: openshift-storage
-                  labels:
-                    openshift.io/cluster-monitoring: "true"
-          remediationAction: enforce
-          severity: high
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: policy-lvm-operator-operatorgroup
-        spec:
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: operators.coreos.com/v1alpha2
-                kind: OperatorGroup
-                metadata:
-                  name: openshift-storage-operatorgroup
-                  namespace: openshift-storage
-                spec:
-                  targetNamespaces:
-                    - openshift-storage
-          remediationAction: enforce
-          severity: high
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: policy-lvm-operator-subscription
-        spec:
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: operators.coreos.com/v1alpha1
-                kind: Subscription
-                metadata:
-                  name: odf-lvm-operator
-                  namespace: openshift-storage
-                spec:
-                  channel: stable-4.11
-                  installPlanApproval: Automatic
-                  name: odf-lvm-operator
-                  source: redhat-operators
-                  sourceNamespace: openshift-marketplace
-          remediationAction: enforce
-          severity: high
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: policy-lvmcluster
-        spec:
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: lvm.topolvm.io/v1alpha1
-                kind: LVMCluster
-                metadata:
-                  name: odf-lvmcluster
-                  namespace: openshift-storage
-                spec:
-                  storage:
-                    deviceClasses:
-                    - name: vg1
-                      thinPoolConfig:
-                        name: thin-pool-1
-                        overprovisionRatio: 10
-                        sizePercent: 90
-          remediationAction: enforce
-    - objectDefinition:
-        apiVersion: policy.open-cluster-management.io/v1
-        kind: ConfigurationPolicy
-        metadata:
-          name: policy-storageclass
-        spec:
-          object-templates:
-            - complianceType: musthave
-              objectDefinition:
-                apiVersion: storage.k8s.io/v1
-                kind: StorageClass
-                metadata:
-                  name: odf-lvm-vg1
-                  annotations:
-                    description: Provides RWO and RWOP Filesystem & Block volumes
-                    storageclass.kubernetes.io/is-default-class: 'true'
-                provisioner: topolvm.cybozu.com
-                parameters:
-                  csi.storage.k8s.io/fstype: xfs
-                  topolvm.cybozu.com/device-class: vg1
-                reclaimPolicy: Delete
-                allowVolumeExpansion: true
-                volumeBindingMode: WaitForFirstConsumer
-          remediationAction: enforce
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: install-odf-lvm-operator
+      spec:
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            kind: Namespace
+            metadata:
+              labels:
+                openshift.io/cluster-monitoring: "true"
+                pod-security.kubernetes.io/enforce: privileged
+                pod-security.kubernetes.io/audit: privileged
+                pod-security.kubernetes.io/warn: privileged
+              name: openshift-storage
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: operators.coreos.com/v1
+            kind: OperatorGroup
+            metadata:
+              name: openshift-storage-operatorgroup
+              namespace: openshift-storage
+            spec:
+              targetNamespaces:
+              - openshift-storage
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: operators.coreos.com/v1alpha1
+            kind: Subscription
+            metadata:
+              name: odf-lvm-operator
+              namespace: openshift-storage
+            spec:
+              installPlanApproval: Automatic
+              name: odf-lvm-operator
+              source: redhat-operators
+              sourceNamespace: openshift-marketplace
+        remediationAction: enforce
+        severity: low
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: odf-lvmcluster
+      spec:
+        object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: lvm.topolvm.io/v1alpha1
+               kind: LVMCluster
+               metadata:
+                 name: odf-lvmcluster
+                 namespace: openshift-storage
+               spec:
+                 storage:
+                   deviceClasses:
+                   - name: vg1
+                     thinPoolConfig:
+                       name: thin-pool-1
+                       sizePercent: 90
+                       overprovisionRatio: 10
+        remediationAction: enforce
+        severity: low
