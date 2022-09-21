@@ -10,3 +10,35 @@ spec:
  disabled: false
  policy-templates:
    - objectDefinition:
+       apiVersion: policy.open-cluster-management.io/v1
+       kind: ConfigurationPolicy
+       metadata:
+         name: policy-monitoring-pvc
+       spec:
+         object-templates:
+           - complianceType: musthave
+             objectDefinition:
+               apiVersion: v1
+               kind: ConfigMap
+               metadata:
+                 name: cluster-monitoring-config
+                 namespace: openshift-monitoring
+               data:
+                 config.yaml: |
+                   prometheusK8s:
+                     retention: 15d
+                     volumeClaimTemplate:
+                       spec:
+                         storageClassName: odf-lvm-vg1
+                           resources:
+                             requests:
+                               storage: 20Gi
+                   alertmanagerMain:
+                     retention: 15d
+                       volumeClaimTemplate:
+                         spec:
+                           storageClassName: odf-lvm-vg1
+                             resources:
+                               requests:
+                                 storage: 20Gi
+         remediationAction: enforce
