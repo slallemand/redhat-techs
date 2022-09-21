@@ -85,12 +85,16 @@ spec:
                 apiVersion: lvm.topolvm.io/v1alpha1
                 kind: LVMCluster
                 metadata:
-                  name: lvmcluster-sample
+                  name: odf-lvmcluster
                   namespace: openshift-storage
                 spec:
                   storage:
                     deviceClasses:
                     - name: vg1
+                      thinPoolConfig:
+                        name: thin-pool-1
+                        overprovisionRatio: 10
+                        sizePercent: 90
           remediationAction: enforce
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
