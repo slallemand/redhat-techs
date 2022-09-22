@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1alpha3
-    name.os.template.kubevirt.io/rhel9.0: Red Hat Enterprise Linux 9.0 or higher
+    name.os.template.kubevirt.io/rhel9.0: Win2K19 or higher
   name: win-bdd-sqlserver01
   labels:
     app: full-vm
