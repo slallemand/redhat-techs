@@ -76,7 +76,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="https://github.com/davmartini/openshift/tree/main/sample_apps/">About</a></li>
+                <li><a href="https://github.com/davmartini/redhat-techs/tree/main/openshift/demos/ocp-s2i-demo/">About</a></li>
                 <li><a href="https://linkedin.com/in/davmartini">Contact</a></li>
               </ul>
             </div><!--/.nav-collapse -->
@@ -87,12 +87,12 @@
     
           <!-- Main jumbotron for a primary marketing message or call to action -->
           <div class="jumbotron" style="text-align:center">
-            <h2>Bienvenue à cet événement Tech Data</h2>
+            <h2>Bienvenue EDF Team</h2>
             <p>OpenShift est plus qu'une plateforme de containers, c'est une plateforme cloud-native complète permettant le développement applicatif jusqu'à la mise en production d'environnements critiques</p>
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/techdata.png" width="300" height="125"/>
+            <img src="images/edf.png" width="300" height="125"/>
           </div>
           <div style="background-color:blue;color:white;text-align:center">
             <p>Paris la Défense</p>
