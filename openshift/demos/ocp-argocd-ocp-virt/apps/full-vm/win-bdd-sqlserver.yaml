@@ -78,7 +78,7 @@ spec:
           type: pc-q35-rhel8.4.0
         resources:
           requests:
-            memory: 8Gi
+            memory: 4Gi
       evictionStrategy: LiveMigrate
       hostname: win-bdd-sqlserver01
       networks:
