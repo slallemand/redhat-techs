@@ -6,7 +6,7 @@ metadata:
     app: mix-app
   name: mix-app
 spec:
-  replicas: 4
+  replicas: 10
   selector:
     matchLabels:
       app: mix-app
@@ -18,7 +18,7 @@ spec:
         app: mix-app
     spec:
       containers:
-      - image: quay.io/redhattraining/hello-world-nginx
+      - image: quay.io/redhattraining/hello-openshift
         name: wordpress
         resources: {}
 ---
