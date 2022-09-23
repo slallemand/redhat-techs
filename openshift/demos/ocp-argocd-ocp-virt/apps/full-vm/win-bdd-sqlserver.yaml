@@ -25,14 +25,14 @@ spec:
       spec:
         source:
           pvc:
-            name: win2k19-template-disk-cheap-planarian
+            name: win2k19
             namespace: openshift-virtualization-os-images
         storage:
           accessModes:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 22Gi
+              storage: 40Gi
           storageClassName: odf-lvm-vg1
           volumeMode: Filesystem
   running: true
