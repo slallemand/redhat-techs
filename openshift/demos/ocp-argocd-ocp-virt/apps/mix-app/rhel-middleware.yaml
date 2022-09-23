@@ -7,7 +7,7 @@ metadata:
     name.os.template.kubevirt.io/rhel9.0: Red Hat Enterprise Linux 9.0 or higher
   name: rhel-middleware01
   labels:
-    app: full-vm
+    app: mix-app
     flavor.template.kubevirt.io/small: 'true'
     os.template.kubevirt.io/rhel9.0: 'true'
     vm.kubevirt.io/template: rhel9-server-small
