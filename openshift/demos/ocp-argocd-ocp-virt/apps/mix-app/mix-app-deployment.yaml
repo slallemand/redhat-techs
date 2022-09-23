@@ -18,7 +18,7 @@ spec:
         app: mix-app
     spec:
       containers:
-      - image: quay.io/redhattraining/hello-openshift
-        name: wordpress
+      - image: quay.io/redhattraining/ossm-adopt-a-pup-webapp
+        name: web
         resources: {}
 ---
