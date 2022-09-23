@@ -18,7 +18,7 @@ spec:
         app: mix-app
     spec:
       containers:
-      - image: quay.io/redhattraining/do100-versioned-hello
+      - image: quay.io/redhattraining/hello-world-nginx
         name: web
         resources: {}
 ---
