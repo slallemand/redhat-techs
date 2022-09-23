@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubevirt.io/latest-observed-api-version: v1
     kubevirt.io/storage-observed-api-version: v1alpha3
-    name.os.template.kubevirt.io/rhel9.0: Red Hat Enterprise Linux 9.0 or higher
+    name.os.template.kubevirt.io/rhel9.0: Win2K19 or higher
   name: win-bdd-sqlserver01
   labels:
     app: full-vm
@@ -25,14 +25,14 @@ spec:
       spec:
         source:
           pvc:
-            name: win2k19-template-disk-cheap-planarian
+            name: win2k19
             namespace: openshift-virtualization-os-images
         storage:
           accessModes:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 22Gi
+              storage: 40Gi
           storageClassName: odf-lvm-vg1
           volumeMode: Filesystem
   running: true
@@ -78,7 +78,7 @@ spec:
           type: pc-q35-rhel8.4.0
         resources:
           requests:
-            memory: 8Gi
+            memory: 4Gi
       evictionStrategy: LiveMigrate
       hostname: win-bdd-sqlserver01
       networks:
