@@ -10,7 +10,7 @@ metadata:
     app: full-vm
     flavor.template.kubevirt.io/small: 'true'
     os.template.kubevirt.io/rhel9.0: 'true'
-    vm.kubevirt.io/template: win2k19-small-dm
+    vm.kubevirt.io/template: windows2k19-server-medium
     vm.kubevirt.io/template.namespace: openshift
     vm.kubevirt.io/template.revision: '1'
     vm.kubevirt.io/template.version: v0.19.6
