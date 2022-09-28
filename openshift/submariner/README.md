@@ -103,6 +103,14 @@ Status:
 Events:                    <none>
 ```
 
+* Remove exposed service
+```
+bash-4.4 ~ $ subctl unexport service --namespace pacman-app pacman
+ ✓ Service successfully unexported
+bash-4.4 ~ $ oc get serviceexports --all-namespaces
+No resources found
+```
+
 * Start submariner diagnostic
 ```
 bash-4.4 ~ $ subctl diagnose all
