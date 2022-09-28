@@ -18,7 +18,7 @@ You can have access to **subctl** CLI from Web terminal integrated in Openshift 
 
 Services exposed to all clusters are with the domain **<service-name>.<namespace>.svc.clusterset.local**
 
-* List all information about submariner configuration
+- List all information about submariner configuration
 ```
 bash-4.4 ~ $ subctl show all
 Cluster "https://172.50.0.1:443"
