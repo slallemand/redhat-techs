@@ -18,7 +18,7 @@ You can have access to **subctl** CLI from Web terminal integrated in Openshift 
 
 Services exposed to all clusters are with the domain **<service-name>.<namespace>.svc.clusterset.local**
 
-- List all information about submariner configuration
+* List all information about submariner configuration
 ```
 bash-4.4 ~ $ subctl show all
 Cluster "https://172.50.0.1:443"
@@ -74,3 +74,53 @@ bash-4.4 ~ $ curl -k pacman.pacman-app.svc.clusterset.local
     <!-- SEO Stuff -->
 ...
 ```  
+
+* List exposed service with submariner
+```
+bash-4.4 ~ $ oc get serviceexports --all-namespaces   
+NAMESPACE    NAME     AGE
+pacman-app   pacman   24m
+
+bash-4.4 ~ $ oc describe serviceexports pacman -n pacman-app
+Name:         pacman
+Namespace:    pacman-app
+Labels:       <none>
+Annotations:  <none>
+API Version:  multicluster.x-k8s.io/v1alpha1
+Kind:         ServiceExport
+Metadata:
+  Creation Timestamp:  2022-09-28T15:14:01Z
+  Generation:          1
+  Resource Version:    7059222
+  UID:                 090019d0-a189-4e93-8a00-5465f5d6c6b7
+Status:
+  Conditions:
+    Last Transition Time:  2022-09-28T15:14:01Z
+    Message:               Service was successfully synced to the broker
+    Reason:                
+    Status:                True
+    Type:                  Valid
+Events:                    <none>
+```
+
+* Start submariner diagnostic
+```
+bash-4.4 ~ $ subctl diagnose all
+Cluster "https://172.50.0.1:443"
+ ✓ Checking Submariner support for the Kubernetes version
+ ✓ Kubernetes version "v1.24.0+b62823b" is supported
+
+ ✓ Checking Submariner support for the CNI network plugin
+ ✓ The detected CNI network plugin ("OVNKubernetes") is supported
+ ✓ Checking OVN version 
+ ✓ The ovn-nb database version 6.3.0 is supported
+
+ ✓ Checking gateway connections
+ ✓ All connections are established
+
+ ✓ Non-Globalnet deployment detected - checking if cluster CIDRs overlap
+ ✓ Clusters do not have overlapping CIDRs
+ ✓ Checking Submariner pods
+ ✓ All Submariner pods are up and running
+...
+```
