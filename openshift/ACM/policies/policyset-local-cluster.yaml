@@ -2,7 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1beta1
 kind: PolicySet
 metadata:
   name: local-cluster-placement
-  namespace: acm-policies-ns
+  namespace: acm-policies
 spec:
   description: ""
   policies:
@@ -16,7 +16,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: local-cluster-placement-placement
-  namespace: acm-policies-ns
+  namespace: acm-policies
 spec:
   clusterConditions:
     - status: "True"
@@ -32,7 +32,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: local-cluster-placement-placement
-  namespace: acm-policies-ns
+  namespace: acm-policies
 placementRef:
   name: local-cluster-placement-placement
   apiGroup: apps.open-cluster-management.io
