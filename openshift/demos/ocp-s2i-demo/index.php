@@ -87,15 +87,15 @@
     
           <!-- Main jumbotron for a primary marketing message or call to action -->
           <div class="jumbotron" style="text-align:center">
-            <h2>Bienvenue EDF Team</h2>
+            <h2>Bienvenue Airbus Team</h2>
             <p>OpenShift est plus qu'une plateforme de containers, c'est une plateforme cloud-native complète permettant le développement applicatif jusqu'à la mise en production d'environnements critiques</p>
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/edf.png" width="300" height="200"/>
+            <img src="images/airbus.png" width="300" height="200"/>
           </div>
           <div style="background-color:red;color:white;text-align:center">
-            <p>Paris la Défense</p>
+            <p>Elancourt</p>
           </div>
           <hr/>
           <div class="footer">
