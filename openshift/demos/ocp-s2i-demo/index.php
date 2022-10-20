@@ -92,7 +92,7 @@
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/airbus.png" width="300" height="200"/>
+            <img src="images/airbus.png" width="200" height="300"/>
           </div>
           <div style="background-color:red;color:white;text-align:center">
             <p>Elancourt</p>
