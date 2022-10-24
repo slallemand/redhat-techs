@@ -87,12 +87,12 @@
     
           <!-- Main jumbotron for a primary marketing message or call to action -->
           <div class="jumbotron" style="text-align:center">
-            <h2>Bienvenue Airbus Team</h2>
+            <h2>Bienvenue IDNomic Team</h2>
             <p>OpenShift est plus qu'une plateforme de containers, c'est une plateforme cloud-native complète permettant le développement applicatif jusqu'à la mise en production d'environnements critiques</p>
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/airbus.png" width="400" height="100"/>
+            <img src="images/atos.png" width="400" height="100"/>
           </div>
           <div style="background-color:red;color:white;text-align:center">
             <p>Elancourt</p>
