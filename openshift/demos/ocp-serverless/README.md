@@ -36,9 +36,13 @@ spec:
 6. Change min & max pod for a revision  
 
 ```
-bash-4.4 ~ $ kn service update my-service --scale-min 5 --scale-max 10
+bash-4.4 ~ $ kn service update my-service --scale-min 5 --scale-max 100
 ```
 
+7. Benchmark your serverless website (https://loader.io/)
+
+![bench](images/bench.png)
+![topobench](images/topobench.png)
 
 ## Deploy an application to Knative using kn
 
