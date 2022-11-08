@@ -1,5 +1,35 @@
 # Demo for OpenShift Serverless
 
+## Sample demo
+
+1. Create a new project (ex : serverless-demo)  
+
+2. Create new service in Serverless Serving
+```
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: dm-pipeline
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/david_martini/serverless:rev01
+```
+![service](images/service.png)  
+
+3. Create new revisions with rev02 & rev03 image tags
+![revision](images/rev.png)  
+
+4. Set traffic distribution  
+![traffic](images/traffic01.png)
+![traffic](images/traffic02.png)  
+
+5. Display Serverless Topology
+![topo](images/topo.png)
+
+
 ## Deploy an application to Knative using kn
 
 1. Create a new space
@@ -54,7 +84,7 @@ curl -k $MY_APP_URL/500
 
 ## Update KN application with new release and manage traffic
 
-![schema](docs/fibknativev2.png)
+![schema](images/fibknativev2.png)
 
 1. Update First Revision Name
 ```
