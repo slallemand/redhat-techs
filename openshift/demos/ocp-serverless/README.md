@@ -33,6 +33,12 @@ spec:
 
 ![topo](images/topo.png)
 
+6. Change min & max pod for a revision  
+
+```
+bash-4.4 ~ $ kn service update my-service --scale-min 5 --scale-max 10
+```
+
 
 ## Deploy an application to Knative using kn
 
