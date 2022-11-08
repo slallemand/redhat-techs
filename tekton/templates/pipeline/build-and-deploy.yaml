@@ -1,74 +1,73 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: build-and-deploy
-  namespace: pipeline-tutorial
+  name: s2i-php-pipeline
+  namespace: pipelines
+  resourceVersion: '474229118'
+  uid: 0fb44ccf-9fc4-4dad-977c-5f9775ac2fda
 spec:
-  params:
-    - description: name of the deployment to be patched
-      name: deployment-name
-      type: string
-    - description: url of the git repo for the code of deployment
-      name: git-url
-      type: string
-    - default: master
-      description: revision to be used from repo of the code for deployment
-      name: git-revision
-      type: string
-    - description: image to be build from the code
-      name: IMAGE
-      type: string
   tasks:
-    - name: fetch-repository
+    - name: git-clone
       params:
         - name: url
-          value: $(params.git-url)
-        - name: subdirectory
-          value: ''
+          value: 'https://github.com/davmartini/redhat-techs.git'
+        - name: revision
+          value: main
+        - name: submodules
+          value: 'true'
+        - name: depth
+          value: '1'
+        - name: sslVerify
+          value: 'true'
+        - name: crtFileName
+          value: ca-bundle.crt
         - name: deleteExisting
           value: 'true'
-        - name: revision
-          value: $(params.git-revision)
+        - name: verbose
+          value: 'true'
+        - name: gitInitImage
+          value: >-
+            registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf614a6044ee37397de3abe7674827ecab225e7fac9fb123eff5473e2c4003
+        - name: userHome
+          value: /tekton/home
       taskRef:
         kind: ClusterTask
         name: git-clone
       workspaces:
         - name: output
           workspace: shared-workspace
-    - name: build-image
+    - name: inspect-git-directory
       params:
+        - name: directory
+          value: /workspace/output/tekton/container-images/serverless/rev01/
+      runAfter:
+        - git-clone
+      taskRef:
+        kind: Task
+        name: inspect-git-directory
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+    - name: s2i-php
+      params:
+        - name: VERSION
+          value: latest
+        - name: PATH_CONTEXT
+          value: /workspace/source/tekton/container-images/serverless/rev01/
         - name: TLSVERIFY
+          value: 'true'
+        - name: BUILDER_IMAGE
+          value: >-
+            registry.redhat.io/rhel8/buildah@sha256:0a86ecbdfbe86e9d225b7fe4b090a0dd6d323f8afdfdf2bd933ff223ddb53320
+        - name: SKIP_PUSH
           value: 'false'
         - name: IMAGE
-          value: $(params.IMAGE)
+          value: 'quay.io/david_martini/serverless:rev02'
       runAfter:
-        - fetch-repository
+        - inspect-git-directory
       taskRef:
         kind: ClusterTask
-        name: buildah
-      workspaces:
-        - name: source
-          workspace: shared-workspace
-    - name: apply-manifests
-      runAfter:
-        - build-image
-      taskRef:
-        kind: Task
-        name: apply-manifests
-      workspaces:
-        - name: source
-          workspace: shared-workspace
-    - name: update-deployment
-      params:
-        - name: deployment
-          value: $(params.deployment-name)
-        - name: IMAGE
-          value: $(params.IMAGE)
-      runAfter:
-        - apply-manifests
-      taskRef:
-        kind: Task
-        name: update-deployment
+        name: s2i-php
       workspaces:
         - name: source
           workspace: shared-workspace
