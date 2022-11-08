@@ -6,7 +6,7 @@
 		<meta name="description" content="OpenShift Serverless">
 		<style>
 			body {
-				background-color: #616bff;
+				background-color: #cc0066;
 			}
 			h1 {
 				font-family: Arial, sans-serif;
