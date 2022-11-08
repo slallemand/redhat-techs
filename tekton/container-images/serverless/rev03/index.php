@@ -20,13 +20,21 @@
 				text-align: Center;
 				color: #ffffff;
 			}
+			p {
+				font-family: Arial, sans-serif;
+				font-size: 36px;
+				text-align: Center;
+				color: #ffffff;
+			}
 		</style>
 	</head>
 	<body>
 		<h1>Hello OpenShift Users</h1>
-        <h2>Powered by OpenShift Serverless</h2>
-        <h2>Revision 03</h2>
-        <h2><?php echo "Container ID : ".gethostname(); ?></h2>
-        <p><img class="center" style="height: 268px; width: 719px;" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/OpenShift-LogoType.svg" /></p>
+		<div>
+        	<h2>Powered by OpenShift Serverless</h2>
+        	<h2>Revision 03</h2>
+        	<h2><?php echo "Container ID : ".gethostname(); ?></h2>
+        </div>
+			<p><img class="center" style="height: 268px; width: 719px;" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/OpenShift-LogoType.svg" /></p>
 	</body>
 </html>
