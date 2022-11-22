@@ -1,6 +1,6 @@
 # Demo for OpenShift Serverless
 
-## Sample demo
+## 1. Sample demo with multiple revisions
 
 1. Create a new project (ex : serverless-demo)  
 
@@ -44,7 +44,29 @@ bash-4.4 ~ $ kn service update my-service --scale-min 5 --scale-max 100
 ![bench](images/bench.png)
 ![topobench](images/topobench.png)
 
-## Deploy an application to Knative using kn
+## 2. Create Quarkus + BDD PostgreSQL
+
+1. Create new service in Serverless Serving
+```
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: serverless-demo
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/david_martini/openshift:crud
+``` 
+
+2. Stress web application
+```
+ali --rate=5000 -w 20 -d 5m --insecure https://crud-demo.apps.ocp02.demo.ntnx.fr
+```
+
+
+## 3. Deploy an application to Knative using kn
 
 1. Create a new space
 ```
