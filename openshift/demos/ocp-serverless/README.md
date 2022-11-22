@@ -65,7 +65,6 @@ spec:
 ali --rate=5000 -w 20 -d 5m --insecure https://crud-demo.apps.ocp02.demo.ntnx.fr
 ```
 
-
 ## 3. Deploy an application to Knative using kn
 
 1. Create a new space
