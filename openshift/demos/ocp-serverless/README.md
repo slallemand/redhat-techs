@@ -62,7 +62,7 @@ spec:
 
 2. Stress web application
 ```
-ali --rate=5000 -w 20 -d 5m --insecure https://crud-demo.apps.ocp02.demo.ntnx.fr
+ali --rate=0 -w 30 -c 20000 -d 5m --insecure https://sample-demo.apps.ocp01.demo.ntnx.fr/
 ```
 
 ## 3. Deploy an application to Knative using kn
