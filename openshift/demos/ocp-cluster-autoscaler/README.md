@@ -56,7 +56,7 @@ status:
 3. Create new project with NGINX UBI image
 ```
 oc new-project nginx
-oc new-app nginx -p NGINX_VERSION=1.20-ubi8
+oc new-app nginx-example -p NGINX_VERSION=1.20-ubi8
 ```
 
 4. Change limites
