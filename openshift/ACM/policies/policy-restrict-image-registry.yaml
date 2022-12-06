@@ -37,3 +37,4 @@ spec:
                       - registry.redhat.io
                       - registry.access.redhat.com
                       - quay.io
+                      - registry.connect.redhat.com

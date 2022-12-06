@@ -44,5 +44,5 @@ spec:
                  installPlanApproval: Automatic
                  name: openshift-gitops-operator
                  sourceNamespace: openshift-marketplace
-                 channel: "stable"
+                 channel: "latest"
          remediationAction: enforce
