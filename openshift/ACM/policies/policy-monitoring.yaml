@@ -29,16 +29,16 @@ spec:
                       retention: 15d
                       volumeClaimTemplate:
                         spec:
-                          storageClassName: odf-lvm-vg1
+                          storageClassName: nutanix-volume
                           resources:
                             requests:
-                              storage: 20Gi
+                              storage: 30Gi
                     alertmanagerMain:
                       retention: 15d
                       volumeClaimTemplate:
                         spec:
-                          storageClassName: odf-lvm-vg1
+                          storageClassName: nutanix-volume
                           resources:
                             requests:
-                              storage: 20Gi
+                              storage: 30Gi
           remediationAction: enforce

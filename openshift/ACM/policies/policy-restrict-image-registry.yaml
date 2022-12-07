@@ -33,8 +33,9 @@ spec:
                 spec:
                   registrySources:
                     allowedRegistries:
-                      - image-registry.openshift-image-registry.svc:5000
-                      - registry.redhat.io
-                      - registry.access.redhat.com
                       - quay.io
+                      - registry.redhat.io
+                      - image-registry.openshift-image-registry.svc:5000
+                      - registry.access.redhat.com
                       - registry.connect.redhat.com
+                      - k8s.gcr.io

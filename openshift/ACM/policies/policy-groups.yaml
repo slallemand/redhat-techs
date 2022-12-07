@@ -23,7 +23,8 @@ spec:
                metadata:
                  name: admin
                users:
-                 - dmartini@redhat.com
+                 - admin01
+                 - admin02
          remediationAction: enforce
    - objectDefinition:
        apiVersion: policy.open-cluster-management.io/v1
