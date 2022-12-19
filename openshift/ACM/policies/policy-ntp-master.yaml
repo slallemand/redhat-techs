@@ -5,7 +5,7 @@ metadata:
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
     policy.open-cluster-management.io/standards: NIST SP 800-53
-  name: policy-ntp
+  name: policy-ntp-master
 spec:
   disabled: false
   policy-templates:
@@ -13,7 +13,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: policy-ntp-machineconfig
+          name: policy-ntp-machineconfig-master
         spec:
           object-templates:
             - complianceType: musthave
@@ -22,8 +22,8 @@ spec:
                 kind: MachineConfig
                 metadata:
                   labels:
-                    machineconfiguration.openshift.io/role: worker
-                  name: 99-worker-chrony
+                    machineconfiguration.openshift.io/role: master
+                  name: 99-chrony-master
                 spec:
                   config:
                     ignition:
