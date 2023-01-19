@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/connects-to: postgresql-db
+    app.quarkus/id: "42"
+    foo: bar
+    app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
+    app.quarkus.io/commit-id: f017f2b212a063027cc129eda947c02f3775ef37
+    app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
+  labels:
+    app.kubernetes.io/name: atomic-fruit-service
+    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+    department: fruity-dept
+    app.openshift.io/runtime: quarkus
+  name: atomic-fruit-service
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: atomic-fruit-service
+    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+  type: ClusterIP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgresql-db
+  annotations:
+    template.openshift.io/expose-uri: 'postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}'
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: postgresql
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    name: postgresql-db
