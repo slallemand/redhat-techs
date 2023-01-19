@@ -2,26 +2,20 @@ kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
   annotations:
+    template.alpha.openshift.io/wait-for-ready: 'true'
   name: postgresql-db
   labels:
-    app: postgresql-db
-    app.kubernetes.io/component: postgresql-db
-    app.kubernetes.io/instance: postgresql-db
+    template: postgresql-persistent-template
     app.kubernetes.io/part-of: fruit-service-app
     app.openshift.io/runtime: postgresql
 spec:
   strategy:
-    type: Rolling
-    rollingParams:
-      updatePeriodSeconds: 1
-      intervalSeconds: 1
+    type: Recreate
+    recreateParams:
       timeoutSeconds: 600
-      maxUnavailable: 25%
-      maxSurge: 25%
     resources: {}
     activeDeadlineSeconds: 21600
   triggers:
-    - type: ConfigChange
     - type: ImageChange
       imageChangeParams:
         automatic: true
@@ -31,35 +25,74 @@ spec:
           kind: ImageStreamTag
           namespace: openshift
           name: 'postgresql:10-el8'
+    - type: ConfigChange
   replicas: 1
   revisionHistoryLimit: 10
   test: false
   selector:
-    deploymentconfig: postgresql-db
+    name: postgresql-db
   template:
     metadata:
       creationTimestamp: null
       labels:
-        deploymentconfig: postgresql-db
-      annotations:
-        openshift.io/generated-by: OpenShiftNewApp
+        name: postgresql-db
     spec:
+      volumes:
+        - name: postgresql-db-data
+          persistentVolumeClaim:
+            claimName: postgresql-db
       containers:
-        - name: postgresql
+        - resources:
+            limits:
+              memory: 512Mi
+          readinessProbe:
+            exec:
+              command:
+                - /usr/libexec/check-container
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          name: postgresql
+          livenessProbe:
+            exec:
+              command:
+                - /usr/libexec/check-container
+                - '--live'
+            initialDelaySeconds: 120
+            timeoutSeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          env:
+            - name: POSTGRESQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-db
+                  key: database-user
+            - name: POSTGRESQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-db
+                  key: database-password
+            - name: POSTGRESQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql-db
+                  key: database-name
+          securityContext:
+            capabilities: {}
+            privileged: false
           ports:
             - containerPort: 5432
               protocol: TCP
-          env:
-            - name: POSTGRESQL_DATABASE
-              value: FRUITSDB
-            - name: POSTGRESQL_PASSWORD
-              value: secret
-            - name: POSTGRESQL_USER
-              value: luke
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: postgresql-db-data
+              mountPath: /var/lib/pgsql/data
+          terminationMessagePolicy: File
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
