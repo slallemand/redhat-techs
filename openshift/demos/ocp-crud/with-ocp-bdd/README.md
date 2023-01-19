@@ -27,7 +27,7 @@ oc new-project ${PROJECT_NAME}
 
 2. Create your PostgreSQL BDD from OpenShift template
 ```
-oc new-app -e POSTGRESQL_USER=todo -e POSTGRESQL_PASSWORD=todopwd -e POSTGRESQL_DATABASE=FRUITSDB postgresql:10-el8 --as-deployment-config=true --name=postgresql-db -n ${PROJECT_NAME}
+oc new-app -e POSTGRESQL_USER=crud -e POSTGRESQL_PASSWORD=crudpwd -e POSTGRESQL_DATABASE=FRUITSDB postgresql:10-el8 --as-deployment-config=true --name=postgresql-db -n ${PROJECT_NAME}
 oc label dc/postgresql-db app.kubernetes.io/part-of=fruit-service-app -n ${PROJECT_NAME}
 oc label dc/postgresql-db app.openshift.io/runtime=postgresql --overwrite=true -n ${PROJECT_NAME}
 ```
