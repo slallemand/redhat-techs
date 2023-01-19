@@ -1,11 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: s2i-php-pipeline
-  namespace: pipelines
-  resourceVersion: '474229118'
-  uid: 0fb44ccf-9fc4-4dad-977c-5f9775ac2fda
+  name: s2i-serverless-pipeline
+  namespace: dm-pipeline
 spec:
+  params:
+    - default: rev01
+      description: Git revision
+      name: revision
+      type: string
   tasks:
     - name: git-clone
       params:
@@ -39,7 +42,8 @@ spec:
     - name: inspect-git-directory
       params:
         - name: directory
-          value: /workspace/output/tekton/container-images/serverless/rev01/
+          value: >-
+            /workspace/output/tekton/container-images/serverless/$(params.revision)/
       runAfter:
         - git-clone
       taskRef:
@@ -53,7 +57,8 @@ spec:
         - name: VERSION
           value: latest
         - name: PATH_CONTEXT
-          value: /workspace/source/tekton/container-images/serverless/rev01/
+          value: >-
+            /workspace/source/tekton/container-images/serverless/$(params.revision)/
         - name: TLSVERIFY
           value: 'true'
         - name: BUILDER_IMAGE
@@ -62,7 +67,7 @@ spec:
         - name: SKIP_PUSH
           value: 'false'
         - name: IMAGE
-          value: 'quay.io/david_martini/serverless:rev02'
+          value: 'quay.io/david_martini/serverless:$(params.revision)'
       runAfter:
         - inspect-git-directory
       taskRef:
