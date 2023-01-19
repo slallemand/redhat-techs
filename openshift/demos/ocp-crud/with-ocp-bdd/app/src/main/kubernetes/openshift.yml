@@ -4,5 +4,5 @@ kind: Secret
 metadata:
   name: fruits-db
 stringData:
-  DB_USER: luke
-  DB_PASSWORD: secret
+  DB_USER: crud
+  DB_PASSWORD: crudpwd
