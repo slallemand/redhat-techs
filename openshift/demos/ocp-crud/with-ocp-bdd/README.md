@@ -15,7 +15,7 @@ Deploy CRUD application with PostgreSQL BDD hosted on OpenShift
 1. Clone the repository
 ```
 git clone https://github.com/davmartini/redhat-techs.git
-cd redhat-techs/openshift/demos/ocp-crud/with-ocp-bdd
+cd redhat-techs/openshift/demos/ocp-crud/with-ocp-bdd/app/
 ```
 
 1. Log to your OpenShift Cluster and create new project
