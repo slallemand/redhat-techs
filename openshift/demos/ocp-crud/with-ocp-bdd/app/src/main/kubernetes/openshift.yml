@@ -5,6 +5,6 @@ metadata:
   name: fruits-db-ocp
 stringData:
   DB_USER: postgres
-  DB_PASSWORD: testndb
+  DB_PASSWORD: testocp
   DB_NAME: fruitsdb
   DB_IP: postgresql-db
