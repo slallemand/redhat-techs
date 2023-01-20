@@ -4,15 +4,13 @@ metadata:
   annotations:
     app.openshift.io/connects-to: postgresql-db
     app.openshift.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
-    app.quarkus.io/build-timestamp: '2023-01-19 - 21:40:50 +0000'
-    app.quarkus.io/commit-id: f017f2b212a063027cc129eda947c02f3775ef37
     app.quarkus.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
     app.quarkus/id: '42'
     foo: bar
-  name: atomic-fruit-service
+  name: quarkus-front
   labels:
-    app.kubernetes.io/name: atomic-fruit-service
-    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.kubernetes.io/version: 1.0-SNAPSHOT
     app.openshift.io/runtime: quarkus
     department: fruity-dept
@@ -31,16 +29,16 @@ spec:
   revisionHistoryLimit: 10
   test: false
   selector:
-    app.kubernetes.io/name: atomic-fruit-service
-    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.kubernetes.io/version: 1.0-SNAPSHOT
   template:
     metadata:
       namespace: demo
       creationTimestamp: null
       labels:
-        app.kubernetes.io/name: atomic-fruit-service
-        app.kubernetes.io/part-of: fruit-service-app
+        app.kubernetes.io/name: quarkus-front
+        app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
         app.kubernetes.io/version: 1.0-SNAPSHOT
         app.openshift.io/runtime: quarkus
         department: fruity-dept
@@ -63,7 +61,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
           terminationMessagePath: /dev/termination-log
-          name: atomic-fruit-service
+          name: quarkus-front
           command:
             - java
           livenessProbe:

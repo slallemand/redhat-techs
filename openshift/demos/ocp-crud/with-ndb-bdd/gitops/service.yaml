@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/connects-to: postgresql-db
+    app.quarkus/id: "42"
+    foo: bar
+    app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
+    app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
+  labels:
+    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ndb
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+    department: fruity-dept
+    app.openshift.io/runtime: quarkus
+  name: quarkus-front
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ndb
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+  type: ClusterIP

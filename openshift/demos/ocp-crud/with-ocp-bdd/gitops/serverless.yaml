@@ -7,10 +7,10 @@ metadata:
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
     app.openshift.io/runtime: quarkus
-    app.kubernetes.io/name: atomic-fruit-service-kn
-    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/name: quarkus-front-kn
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.kubernetes.io/version: "1.0"
-  name: atomic-fruit-service-kn
+  name: quarkus-front-kn
 spec:
   template:
     metadata:
@@ -20,8 +20,8 @@ spec:
         autoscaling.knative.dev/min-scale: '0'
       labels:
         app.openshift.io/runtime: quarkus
-        app.kubernetes.io/name: atomic-fruit-service-kn
-        app.kubernetes.io/part-of: fruit-service-app
+        app.kubernetes.io/name: quarkus-front-kn
+        app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
         app.kubernetes.io/version: "1.0"
     spec:
       containers:
@@ -60,7 +60,7 @@ spec:
           periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 10
-        name: atomic-fruit-service-kn
+        name: quarkus-front-kn
         ports:
         - containerPort: 8080
           name: http1

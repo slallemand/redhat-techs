@@ -6,7 +6,7 @@ metadata:
   name: postgresql-db
   labels:
     template: postgresql-persistent-template
-    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.openshift.io/runtime: postgresql
 spec:
   strategy:
@@ -70,18 +70,18 @@ spec:
             - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgresql-db
-                  key: database-user
+                  name: fruits-db
+                  key: db-user
             - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgresql-db
-                  key: database-password
+                  name: fruits-db
+                  key: db-password
             - name: POSTGRESQL_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: postgresql-db
-                  key: database-name
+                  name: fruits-db
+                  key: db-name
           securityContext:
             capabilities: {}
             privileged: false

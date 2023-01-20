@@ -9,12 +9,12 @@ metadata:
     app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
-    app.kubernetes.io/name: atomic-fruit-service
-    app.kubernetes.io/part-of: fruit-service-app
+    app.kubernetes.io/name: quarkus-front-service
+    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.kubernetes.io/version: 1.0-SNAPSHOT
     department: fruity-dept
     app.openshift.io/runtime: quarkus
-  name: atomic-fruit-service
+  name: quarkus-front-service
 spec:
   host: ""
   path: /
@@ -22,4 +22,4 @@ spec:
     targetPort: 8080
   to:
     kind: Service
-    name: atomic-fruit-service
+    name: quarkus-front
