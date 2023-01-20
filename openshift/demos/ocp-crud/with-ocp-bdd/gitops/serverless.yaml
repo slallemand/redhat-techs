@@ -3,6 +3,8 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   annotations:
+    app.openshift.io/connects-to: >-
+      [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"postgresql-db"}]
     app.openshift.io/connects-to: postgresql-db
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
