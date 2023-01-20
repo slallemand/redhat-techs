@@ -71,17 +71,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: fruits-db
-                  key: db-user
+                  key: DB_USER
             - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: fruits-db
-                  key: db-password
+                  key: DB_PASSWORD
             - name: POSTGRESQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: fruits-db
-                  key: db-name
+                  key: DB_NAME
           securityContext:
             capabilities: {}
             privileged: false
