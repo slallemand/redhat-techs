@@ -38,17 +38,27 @@ spec:
           valueFrom:
             secretKeyRef:
               key: DB_PASSWORD
-              name: fruits-db-ocp
+              name: fruits-db-ndb
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               key: DB_USER
-              name: fruits-db-ocp
+              name: fruits-db-ndb
+        - name: DB_IP
+          valueFrom:
+            secretKeyRef:
+              key: DB_IP
+              name: fruits-db-ndb
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              key: DB_NAME
+              name: fruits-db-ndb
         - name: JAVA_APP_JAR
           value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
         - name: JAVA_LIB_DIR
           value: /deployments/target/lib
-        image: quay.io/david_martini/openshift:crud
+        image: quay.io/david_martini/openshift:crud-with-ndb
         livenessProbe:
           failureThreshold: 3
           httpGet:
