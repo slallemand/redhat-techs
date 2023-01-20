@@ -9,19 +9,19 @@ spec:
   ndb:
     # Cluster id of the cluster where the Database has to be provisioned
     # Can be fetched from the GET /clusters endpoint
-    clusterId: "2be090fc-e358-4447-ab9e-95b2af977176" 
+    clusterId: "2be090fc-e358-4447-ab9e-95b2af977176"
     # Credentials secret name for NDB installation
     # data: username, password, 
     # stringData: ca_certificate
     credentialSecret: ndb-secret
     # The NDB Server
-    server: https://10.6.114.56:8443/era/v0.9
+    server: https://ndb.rhntnx.hpecic.net:8443/era/v0.9
     # Set to true to skip SSL verification, default: false.
     skipCertificateVerification: true
   # Database instance specific details (that is to be provisioned)
   databaseInstance:
     # The database instance name on NDB
-    databaseInstanceName: "ndb-postgresql-demo01"
+    databaseInstanceName: "ndb-postgresql-bdd01"
     # Names of the databases on that instance
     databaseNames:
       - FRUITSDB
