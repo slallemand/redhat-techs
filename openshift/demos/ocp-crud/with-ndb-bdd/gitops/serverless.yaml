@@ -6,10 +6,10 @@ metadata:
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
     app.openshift.io/runtime: quarkus
-    app.kubernetes.io/name: quarkus-front-kn
+    app.kubernetes.io/name: quarkus-front-kn-ndb
     app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ndb
     app.kubernetes.io/version: "1.0"
-  name: quarkus-front-kn
+  name: quarkus-front-kn-ndb
 spec:
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
         autoscaling.knative.dev/min-scale: '0'
       labels:
         app.openshift.io/runtime: quarkus
-        app.kubernetes.io/name: quarkus-front-kn
+        app.kubernetes.io/name: quarkus-front-kn-ndb
         app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ndb
         app.kubernetes.io/version: "1.0"
     spec:
