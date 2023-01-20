@@ -78,10 +78,7 @@ spec:
                   name: fruits-db-ocp
                   key: DB_PASSWORD
             - name: POSTGRESQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: fruits-db-ocp
-                  key: DB_NAME
+              value: fruitsdb
           securityContext:
             capabilities: {}
             privileged: false
