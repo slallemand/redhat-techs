@@ -3,7 +3,6 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/connects-to: postgresql-db
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
     app.openshift.io/runtime: quarkus
@@ -39,17 +38,17 @@ spec:
           valueFrom:
             secretKeyRef:
               key: DB_PASSWORD
-              name: fruits-db
+              name: fruits-db-ocp
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               key: DB_USER
-              name: fruits-db
+              name: fruits-db-ocp
         - name: JAVA_APP_JAR
           value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
         - name: JAVA_LIB_DIR
           value: /deployments/target/lib
-        image: quay.io/david_martini/openshift:crud-ocp
+        image: quay.io/david_martini/openshift:crud
         livenessProbe:
           failureThreshold: 3
           httpGet:

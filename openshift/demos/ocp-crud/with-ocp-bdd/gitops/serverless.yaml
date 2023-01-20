@@ -50,7 +50,7 @@ spec:
           value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
         - name: JAVA_LIB_DIR
           value: /deployments/target/lib
-        image: quay.io/david_martini/openshift:crud-ocp
+        image: quay.io/david_martini/openshift:crud
         livenessProbe:
           failureThreshold: 3
           httpGet:
