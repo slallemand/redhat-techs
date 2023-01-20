@@ -2,7 +2,7 @@ apiVersion: ndb.nutanix.com/v1alpha1
 kind: Database
 metadata:
   # This name that will be used within the kubernetes cluster
-  name: demodavid
+  name: ndb-postgresql-demo01
   #namespace: demo
 spec:
   # NDB server specific details
@@ -21,7 +21,7 @@ spec:
   # Database instance specific details (that is to be provisioned)
   databaseInstance:
     # The database instance name on NDB
-    databaseInstanceName: "demodavid"
+    databaseInstanceName: "ndb-postgresql-demo01"
     # Names of the databases on that instance
     databaseNames:
       - FRUITSDB
