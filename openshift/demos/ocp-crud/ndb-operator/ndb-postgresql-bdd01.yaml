@@ -2,7 +2,7 @@ apiVersion: ndb.nutanix.com/v1alpha1
 kind: Database
 metadata:
   # This name that will be used within the kubernetes cluster
-  name: ndb-postgresql-demo01
+  name: ndb-postgresql-bdd01
   #namespace: demo
 spec:
   # NDB server specific details
@@ -27,7 +27,7 @@ spec:
       - FRUITSDB
     # Credentials secret name for NDB installation
     # data: password, ssh_public_key
-    credentialSecret: ndb-postgresql-demo01-secret
+    credentialSecret: ndb-postgresql-bdd01-secret
     size: 10
     timezone: "CET"
     type: postgres
