@@ -41,7 +41,7 @@ spec:
             secretKeyRef:
               key: DB_PASSWORD
               name: fruits-db-ocp
-        - name: DB_USERNAME
+        - name: DB_USER
           valueFrom:
             secretKeyRef:
               key: DB_USER
