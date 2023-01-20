@@ -21,7 +21,7 @@ spec:
   # Database instance specific details (that is to be provisioned)
   databaseInstance:
     # The database instance name on NDB
-    databaseInstanceName: "psql01"
+    databaseInstanceName: "demodavid"
     # Names of the databases on that instance
     databaseNames:
       - FRUITSDB
