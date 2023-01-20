@@ -8,10 +8,10 @@ metadata:
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
     app.openshift.io/runtime: quarkus
-    app.kubernetes.io/name: quarkus-front-kn
+    app.kubernetes.io/name: quarkus-front-kn-ocp
     app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
     app.kubernetes.io/version: "1.0"
-  name: quarkus-front-kn
+  name: quarkus-front-kn-ocp
 spec:
   template:
     metadata:
@@ -21,7 +21,7 @@ spec:
         autoscaling.knative.dev/min-scale: '0'
       labels:
         app.openshift.io/runtime: quarkus
-        app.kubernetes.io/name: quarkus-front-kn
+        app.kubernetes.io/name: quarkus-front-kn-ocp
         app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
         app.kubernetes.io/version: "1.0"
     spec:
@@ -45,6 +45,16 @@ spec:
           valueFrom:
             secretKeyRef:
               key: DB_USER
+              name: fruits-db-ocp
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              key: DB_NAME
+              name: fruits-db-ocp
+        - name: DB_IP
+          valueFrom:
+            secretKeyRef:
+              key: DB_IP
               name: fruits-db-ocp
         - name: JAVA_APP_JAR
           value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
