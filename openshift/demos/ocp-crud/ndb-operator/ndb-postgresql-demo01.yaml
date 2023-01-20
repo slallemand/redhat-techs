@@ -27,7 +27,7 @@ spec:
       - FRUITSDB
     # Credentials secret name for NDB installation
     # data: password, ssh_public_key
-    credentialSecret: db-secret
+    credentialSecret: ndb-postgresql-demo01-secret
     size: 10
     timezone: "CET"
     type: postgres

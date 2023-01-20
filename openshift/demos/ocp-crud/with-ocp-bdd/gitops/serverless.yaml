@@ -40,12 +40,12 @@ spec:
           valueFrom:
             secretKeyRef:
               key: DB_PASSWORD
-              name: fruits-db
+              name: fruits-db-ocp
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
               key: DB_USER
-              name: fruits-db
+              name: fruits-db-ocp
         - name: JAVA_APP_JAR
           value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
         - name: JAVA_LIB_DIR
