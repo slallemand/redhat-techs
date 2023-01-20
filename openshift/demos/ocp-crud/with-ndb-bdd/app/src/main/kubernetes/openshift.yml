@@ -4,5 +4,6 @@ kind: Secret
 metadata:
   name: fruits-db
 stringData:
-  DB_USER: crud
-  DB_PASSWORD: crudpwd
+  DB_USER: postgres
+  DB_PASSWORD: testndb
+  DB_NAME: fruitsdb
