@@ -6,5 +6,5 @@ metadata:
 stringData:
   DB_USER: postgres
   DB_PASSWORD: testocp
-  DB_NAME: fruitsdb
+  DB_NAME: FRUITSDB
   DB_IP: postgresql-db
