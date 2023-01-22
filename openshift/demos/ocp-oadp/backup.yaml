@@ -9,3 +9,8 @@ spec:
   hooks: {}
   includedNamespaces:
   - demo
+  excludedResources:
+  - build.build.openshift.io
+  - replicationcontroller
+  - pods
+  - serving.knative.dev
