@@ -1,0 +1,8 @@
+project: default
+source:
+  repoURL: 'https://github.com/davmartini/redhat-techs.git'
+  path: openshift/demos/ocp-crud/with-ndb-bdd/gitops/
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: demo
