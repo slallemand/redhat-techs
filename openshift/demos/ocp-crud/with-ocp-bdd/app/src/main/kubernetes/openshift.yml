@@ -4,7 +4,7 @@ kind: Secret
 metadata:
   name: fruits-db-ocp
 stringData:
-  DB_USER: testuser
+  DB_USER: userocp
   DB_PASSWORD: testocp
-  DB_NAME: FRUITSDB
+  DB_NAME: fruitsdb
   DB_IP: postgresql-db
