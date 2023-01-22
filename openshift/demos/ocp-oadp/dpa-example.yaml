@@ -1,8 +1,8 @@
 apiVersion: oadp.openshift.io/v1alpha1
 kind: DataProtectionApplication
 metadata:
-  name: dpa-demo
-  namespace: demo
+  name: dpa-nutanix
+  namespace: openshift-adp
 spec:
   backupLocations:
     - velero:
@@ -21,7 +21,7 @@ spec:
         provider: aws
   configuration:
     restic:
-      enable: true
+      enable: false
     velero:
       defaultPlugins:
         - openshift
