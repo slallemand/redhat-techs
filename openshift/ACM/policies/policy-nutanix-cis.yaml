@@ -44,5 +44,4 @@ spec:
                  installPlanApproval: Automatic
                  name: nutanixcsioperator
                  sourceNamespace: openshift-marketplace
-                 channel: "latest"
          remediationAction: enforce
