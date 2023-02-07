@@ -27,7 +27,7 @@ spec:
           size: 4Gi
         type: PersistentVolume
     managementType: Managed
-  infrastructureAvailabilityPolicy: "SingleReplica"
+  infrastructureAvailabilityPolicy: <b>SingleReplica</b>
   platform:
     agent:
       agentNamespace: hpe-cic-nutanix
@@ -35,7 +35,7 @@ spec:
     ...
 </pre>
 
-```
+<pre>
 apiVersion: hypershift.openshift.io/v1alpha1
 kind: HostedCluster
 metadata:
@@ -47,7 +47,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: "HighlyAvailable"
+  controllerAvailabilityPolicy: <b>HighlyAvailable</b>
   infraID: ocp04
   etcd:
     managed:
@@ -56,13 +56,13 @@ spec:
           size: 4Gi
         type: PersistentVolume
     managementType: Managed
-  infrastructureAvailabilityPolicy: "HighlyAvailable"
+  infrastructureAvailabilityPolicy: <b>HighlyAvailable</b>
   platform:
     agent:
       agentNamespace: hpe-cic-nutanix
     type: Agent
     ...
-```
+</pre>
 
 We have now 3 replicats of critical parts to provide High Availability on hosted control plane
 
