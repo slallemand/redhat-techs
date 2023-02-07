@@ -223,3 +223,15 @@ backend insecure
     server worker1 10.6.115.161:80 check
     server worker2 10.6.115.57:80 check
 ```
+
+## Extend cluster with new node
+
+You can extend the hosted cluset's capacities by adding new discovered node (VM) with agent discovvery image.
+
+![extend_cluster_1](images/hypershift-25.png)
+
+![extend_cluster_2](images/hypershift-26.png)
+
+![extend_cluster_3](images/hypershift-27.png)
+
+![extend_cluster_4](images/hypershift-28.png)
