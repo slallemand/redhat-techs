@@ -93,6 +93,7 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 
 ![create_cluster_14](images/hypershift-20.png)
 
+![create_cluster_15](images/hypershift-23.png)
 
 ## Enable HA for deployed hosted cluster
 
@@ -114,7 +115,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: <b>SingleReplica</b>
+  controllerAvailabilityPolicy: **SingleReplica**
   infraID: ocp04
   etcd:
     managed:
@@ -159,3 +160,8 @@ spec:
     type: Agent
     ...
 ```
+
+We have now 3 replicats of critical parts to provide High Availability on hosted control plane
+
+![ha_cluster_2](images/hypershift-22.png)
+
