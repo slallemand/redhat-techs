@@ -38,7 +38,7 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 
 ## Create Hosted cluster with Hypershift in ACM
 
-1. Create VM manually with agent discovery image and boot on it
+### 1. Create VM manually with agent discovery image and boot on it
 
 ![create_vm_1](images/hypershift-1.png)  
 
@@ -47,17 +47,17 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 ![create_vm_3](images/hypershift-3.png) 
 
 
-2. Created VM are automatically integrated in ACM's hosts inventory via agent discovery image
+### 2. Created VM are automatically integrated in ACM's hosts inventory via agent discovery image
 
 ![discovery_1](images/hypershift-4.png)
 
-3. Aprove discovered host
+### 3. Aprove discovered host
 
 ![discovery_2](images/hypershift-5.png)
 
 ![discovery_3](images/hypershift-6.png)
 
-4. Create Hosted cluster via ACM WebUI
+### 4. Create Hosted cluster via ACM WebUI
 
 ![create_cluster_1](images/hypershift-7.png)
 
