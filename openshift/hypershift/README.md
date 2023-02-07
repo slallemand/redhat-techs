@@ -95,6 +95,8 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 
 ![create_cluster_15](images/hypershift-23.png)
 
+
+
 ## Enable HA for deployed hosted cluster
 
 When you deploy Hosted OpenShift cluster with ACM, control plane is deployed with no HA (1 pod for ETC and OVN for example)
@@ -165,3 +167,10 @@ We have now 3 replicats of critical parts to provide High Availability on hosted
 
 ![ha_cluster_2](images/hypershift-22.png)
 
+
+## Network part
+
+**ocp04** Hosted cluster deployed via ACM have this network configuration
+
+| What | Where hosted | accessible via |
+| **ocp04** control plane | **ocp04-ocp04** namespace in ACM cluster where control plane pods are created | node port & route on ACM cluster | 
