@@ -45,3 +45,32 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 ![create_vm_2](images/hypershift-2.png) 
 
 ![create_vm_3](images/hypershift-3.png) 
+
+
+2. Created VM are automatically integrated in ACM's hosts inventory via agent discovery image
+
+![discovery_1](images/hypershift-4.png)
+
+3. Aprove discovered host
+
+![discovery_2](images/hypershift-5.png)
+
+![discovery_3](images/hypershift-6.png)
+
+4. Create Hosted cluster via ACM WebUI
+
+![create_cluster_1](images/hypershift-7.png)
+
+![create_cluster_2](images/hypershift-8.png)
+
+![create_cluster_3](images/hypershift-9.png)
+
+![create_cluster_4](images/hypershift-10.png)
+
+![create_cluster_5](images/hypershift-11.png)
+
+![create_cluster_6](images/hypershift-12.png)
+
+![create_cluster_7](images/hypershift-13.png)
+
+![create_cluster_8](images/hypershift-14.png)
