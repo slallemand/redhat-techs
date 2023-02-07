@@ -10,7 +10,7 @@
 * HUB Cluster with ACM
 * install agent with discovery image
 
-## Deploy cluster with Hypershift
+## Deploy Hypershift add-on with ACM
 
 1. Enable hypershift add-on
 
@@ -35,3 +35,13 @@ spec:
 ```
 oc get managedclusteraddons -n local-cluster hypershift-addon
 ```
+
+## Create Hosted cluster with Hypershift in ACM
+
+1. Create VM manually with agent discovery image and boot on it
+
+![create_vm_1](images/hypershift-1.png)  
+
+![create_vm_2](images/hypershift-2.png) 
+
+![create_vm_3](images/hypershift-3.png) 
