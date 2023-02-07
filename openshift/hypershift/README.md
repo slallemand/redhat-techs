@@ -90,3 +90,72 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 ![create_cluster_12](images/hypershift-18.png)
 
 ![create_cluster_13](images/hypershift-19.png)
+
+![create_cluster_14](images/hypershift-20.png)
+
+
+## Enable HA for deployed hosted cluster
+
+When you deploy Hosted OpenShift cluster with ACM, control plane is deployed with no HA (1 pod for ETC and OVN for example)
+
+![ha_cluster_1](images/hypershift-20.png)
+
+To have High Availability on the control plane, we have to modify **HostedCluster** object to replace **SingleReplica** by **HighlyAvailable**
+
+```
+apiVersion: hypershift.openshift.io/v1alpha1
+kind: HostedCluster
+metadata:
+  name: ocp04
+  namespace: ocp04
+spec:
+  fips: false
+  release:
+    image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
+  dns:
+    baseDomain: rhntnx.hpecic.net
+  controllerAvailabilityPolicy: **SingleReplica**
+  infraID: ocp04
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 4Gi
+        type: PersistentVolume
+    managementType: Managed
+  infrastructureAvailabilityPolicy: **SingleReplica**
+  platform:
+    agent:
+      agentNamespace: hpe-cic-nutanix
+    type: Agent
+    ...
+```
+
+```
+apiVersion: hypershift.openshift.io/v1alpha1
+kind: HostedCluster
+metadata:
+  name: ocp04
+  namespace: ocp04
+spec:
+  fips: false
+  release:
+    image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
+  dns:
+    baseDomain: rhntnx.hpecic.net
+  controllerAvailabilityPolicy: **HighlyAvailable**
+  infraID: ocp04
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 4Gi
+        type: PersistentVolume
+    managementType: Managed
+  infrastructureAvailabilityPolicy: **HighlyAvailable**
+  platform:
+    agent:
+      agentNamespace: hpe-cic-nutanix
+    type: Agent
+    ...
+```
