@@ -173,4 +173,5 @@ We have now 3 replicats of critical parts to provide High Availability on hosted
 **ocp04** Hosted cluster deployed via ACM have this network configuration
 
 | What | Where hosted | accessible via |
+| ---- | ------------ | --------------- |
 | **ocp04** control plane | **ocp04-ocp04** namespace in ACM cluster where control plane pods are created | node port & route on ACM cluster | 
