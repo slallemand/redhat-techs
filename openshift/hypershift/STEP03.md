@@ -18,7 +18,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: **SingleReplica**
+  controllerAvailabilityPolicy: "SingleReplica"
   infraID: ocp04
   etcd:
     managed:
@@ -27,7 +27,7 @@ spec:
           size: 4Gi
         type: PersistentVolume
     managementType: Managed
-  infrastructureAvailabilityPolicy: **SingleReplica**
+  infrastructureAvailabilityPolicy: "SingleReplica"
   platform:
     agent:
       agentNamespace: hpe-cic-nutanix
@@ -47,7 +47,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: **HighlyAvailable**
+  controllerAvailabilityPolicy: "HighlyAvailable"
   infraID: ocp04
   etcd:
     managed:
@@ -56,7 +56,7 @@ spec:
           size: 4Gi
         type: PersistentVolume
     managementType: Managed
-  infrastructureAvailabilityPolicy: **HighlyAvailable**
+  infrastructureAvailabilityPolicy: "HighlyAvailable"
   platform:
     agent:
       agentNamespace: hpe-cic-nutanix
