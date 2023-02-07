@@ -1,4 +1,4 @@
-# Deploy Hypershift add-on with ACM
+# Step 01 - Deploy Hypershift add-on with ACM
 
 ## 1. Enable hypershift add-on
 

@@ -1,4 +1,4 @@
-# Create Hosted cluster with Hypershift in ACM
+# Step 02 - Create Hosted cluster with Hypershift in ACM
 
 ## 1. Create VM manually with agent discovery image and boot on it
 
@@ -13,17 +13,17 @@
 
 ![discovery_1](images/hypershift-4.png)
 
-### 3. Aprove discovered host
+## 3. Aprove discovered host
 
 ![discovery_2](images/hypershift-5.png)
 
 ![discovery_3](images/hypershift-6.png)
 
-### 4. Update VMs to eject CDROM to boot on disk next reboot
+## 4. Update VMs to eject CDROM to boot on disk next reboot
 
 ![update_vm_1](images/hypershift-17.png)
 
-### 5. Create Hosted cluster via ACM WebUI
+## 5. Create Hosted cluster via ACM WebUI
 
 ![create_cluster_1](images/hypershift-7.png)
 
@@ -41,7 +41,7 @@
 
 ![create_cluster_8](images/hypershift-14.png)
 
-### 6. Check Hosted cluster deployment 
+## 6. Check Hosted cluster deployment 
 
 ![create_cluster_9](images/hypershift-15.png)
 
