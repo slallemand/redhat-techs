@@ -9,7 +9,8 @@
 ## Prerequisits
 
 * HUB Cluster with ACM
-* install agent with discovery image
+* Install agent with discovery image
+* External Load Balancer (HA Proxy for example)
 
 ## Documented steps
 
