@@ -6,7 +6,7 @@ When you deploy Hosted OpenShift cluster with ACM, control plane is deployed wit
 
 To have High Availability on the control plane, we have to modify **HostedCluster** object to replace **SingleReplica** by **HighlyAvailable**
 
-```
+<pre>
 apiVersion: hypershift.openshift.io/v1alpha1
 kind: HostedCluster
 metadata:
@@ -18,7 +18,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: "SingleReplica"
+  controllerAvailabilityPolicy: <b>SingleReplica</b>
   infraID: ocp04
   etcd:
     managed:
@@ -33,7 +33,7 @@ spec:
       agentNamespace: hpe-cic-nutanix
     type: Agent
     ...
-```
+</pre>
 
 ```
 apiVersion: hypershift.openshift.io/v1alpha1
