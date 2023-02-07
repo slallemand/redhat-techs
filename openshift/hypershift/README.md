@@ -84,3 +84,9 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 ![create_cluster_9](images/hypershift-15.png)
 
 ![create_cluster_10](images/hypershift-16.png)
+
+![create_cluster_11](images/hypershift-17.png)
+
+![create_cluster_12](images/hypershift-18.png)
+
+![create_cluster_13](images/hypershift-19.png)
