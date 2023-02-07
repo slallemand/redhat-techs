@@ -98,7 +98,7 @@ oc get managedclusteraddons -n local-cluster hypershift-addon
 
 When you deploy Hosted OpenShift cluster with ACM, control plane is deployed with no HA (1 pod for ETC and OVN for example)
 
-![ha_cluster_1](images/hypershift-20.png)
+![ha_cluster_1](images/hypershift-21.png)
 
 To have High Availability on the control plane, we have to modify **HostedCluster** object to replace **SingleReplica** by **HighlyAvailable**
 
@@ -114,7 +114,7 @@ spec:
     image: 'quay.io/openshift-release-dev/ocp-release:4.11.25-x86_64'
   dns:
     baseDomain: rhntnx.hpecic.net
-  controllerAvailabilityPolicy: **SingleReplica**
+  controllerAvailabilityPolicy: <b>SingleReplica</b>
   infraID: ocp04
   etcd:
     managed:
