@@ -13,7 +13,7 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         state: present
-        name: dev_vm_"{{ uuid }}"
+        name: "dev_vm_{{ uuid }}"
         timezone: "UTC"
         validate_certs: False
         cluster:
