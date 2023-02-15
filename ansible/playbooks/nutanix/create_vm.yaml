@@ -7,14 +7,6 @@
 
   tasks:
 
-    - name: echo env 
-      shell: printenv
-      register: env
-
-    - name: print env
-      debug:
-        msg: "{{ env.stdout }}"
-
     - name: VM with rhel-8-cloud-init image
       nutanix.ncp.ntnx_vms:
         nutanix_host: "{{ nutanix_host }}"
@@ -25,10 +17,10 @@
         timezone: "UTC"
         validate_certs: False
         cluster:
-          name: "PHX-POC169"
+          name: "ntnx-cluster-hpe-cic"
         disks:
           - type: "DISK"
             size_gb: 10
             clone_image:
-              name:  "rhel-8.5-update-2-x86_64-kvm.qcow2"
+              name:  "rhel-8.7-x86_64-kvm.qcow2"
             bus: "SCSI"
