@@ -7,7 +7,7 @@
 
   tasks:
 
-    - name: VM with rhel-8-cloud-init image
+    - name: Create Nutanix VM
       nutanix.ncp.ntnx_vms:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
@@ -27,6 +27,10 @@
         vcpus: "{{ nb_cpu }}"
         cores_per_vcpu: 1
         memory_gb: "{{ nb_mem }}"
+        guest_customization:
+          type: "cloud_init"
+          script_path: "./cloud_init_dev.yml"
+          is_overridable: True
       vars:
         uuid: "{{ 9999 | random }}"
       loop: "{{ range(0, vm_number|int)|list}}"
