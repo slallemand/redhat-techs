@@ -33,7 +33,7 @@
         memory_gb: "{{ nb_mem }}"
         guest_customization:
           type: "cloud_init"
-          script_path: "./cloud_init_dev.yml"
+          script_path: "cloud_init_dev.yml"
           is_overridable: True
       vars:
         uuid: "{{ 9999 | random }}"
