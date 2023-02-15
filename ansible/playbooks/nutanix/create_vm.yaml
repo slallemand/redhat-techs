@@ -24,6 +24,9 @@
             clone_image:
               name:  "rhel-8.7-x86_64-kvm.qcow2"
             bus: "SCSI"
+        vcpus: "{{ nb_cpu }}"
+        cores_per_vcpu: 1
+        memory_gb: "{{ nb_mem }}"
       vars:
         uuid: "{{ 9999 | random }}"
       loop: "{{ range(0, vm_number|int)|list}}"
