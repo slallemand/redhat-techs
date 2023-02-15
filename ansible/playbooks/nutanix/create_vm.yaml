@@ -8,7 +8,7 @@
   tasks:
 
     - name: echo env 
-      shell: echo env
+      shell: printenv
       register: env
 
     - name: print env
