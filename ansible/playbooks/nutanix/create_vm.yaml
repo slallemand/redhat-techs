@@ -13,7 +13,7 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         state: present
-        name: testvm
+        name: dev_vm_"{{ uuid }}"
         timezone: "UTC"
         validate_certs: False
         cluster:
@@ -24,3 +24,6 @@
             clone_image:
               name:  "rhel-8.7-x86_64-kvm.qcow2"
             bus: "SCSI"
+      vars:
+        uuid: "{{ 9999 | random }}"
+      loop: "{{ range(0, vm_number|int)|list}}"
