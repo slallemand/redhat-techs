@@ -17,6 +17,9 @@
 
     - name: VM with rhel-8-cloud-init image
       nutanix.ncp.ntnx_vms:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
         state: present
         name: testvm
         timezone: "UTC"
