@@ -34,7 +34,7 @@
         guest_customization:
           type: "cloud_init"
           script_path: "cloud_init_dev.yml"
-          is_overridable: True
+          is_overridable: False
       vars:
         uuid: "{{ 9999 | random }}"
       loop: "{{ range(0, vm_number|int)|list}}"
