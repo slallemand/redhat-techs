@@ -18,6 +18,10 @@
         validate_certs: False
         cluster:
           name: "ntnx-cluster-hpe-cic"
+        networks:
+          - is_connected: True
+            subnet:
+              name: "workload"
         disks:
           - type: "DISK"
             size_gb: 10
