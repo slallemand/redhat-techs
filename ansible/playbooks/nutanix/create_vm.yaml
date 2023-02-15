@@ -9,6 +9,11 @@
 
     - name: echo env 
       shell: echo env
+      register: env
+
+    - name: print env
+      debug:
+        msg: {{ env.stdout }}
 
     - name: VM with rhel-8-cloud-init image
       nutanix.ncp.ntnx_vms:
