@@ -12,7 +12,8 @@
       register: cat
 
     - name: print
-      msg: {{ cat.output }}
+      debug:
+        msg: "{{ cat.stdout }}"
 
     - name: Create Nutanix VM
       nutanix.ncp.ntnx_vms:
