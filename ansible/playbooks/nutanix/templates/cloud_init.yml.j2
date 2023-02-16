@@ -1,5 +1,7 @@
 #cloud-config
-hostname: {{ env }}_vm_{{ uuid }}{{ item }}
+hostname: centos01
+fqdn: centos01.lab.local
+manage_etc_hosts: true
 
 users:
   - name: cloud-user
