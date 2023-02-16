@@ -1,6 +1,6 @@
 #cloud-config
-hostname: {{ env }}_vm_{{ uuid }}{{ item }}
-fqdn: {{ env }}_vm_{{ uuid }}{{ item }}.rhntnx.hpecic.net
+hostname: {{ env }}-vm-{{ uuid }}{{ item }}
+fqdn: {{ env }}-vm-{{ uuid }}{{ item }}.rhntnx.hpecic.net
 manage_etc_hosts: true
 
 users:
