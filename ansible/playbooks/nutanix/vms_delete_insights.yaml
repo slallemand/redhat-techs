@@ -1,0 +1,50 @@
+---
+- hosts: all
+  gather_facts: no
+  collections:
+    - redhat.satellite
+
+  tasks:
+
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "dev"
+        - inventory_hostname in groups['foreman_dev_host_group']  
+      ignore_errors: yes
+
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "qualif"
+        - inventory_hostname in groups['foreman_qualif_host_group']
+      ignore_errors: yes
+
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "prod"
+        - inventory_hostname in groups['foreman_prod_host_group']
+        - env_delete == "prod"
+      ignore_errors: yes
+
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "all"
+        - inventory_hostname in groups['foreman_dev_host_group']
+      ignore_errors: yes
+    
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "all"
+        - inventory_hostname in groups['foreman_qualif_host_group']
+      ignore_errors: yes
+
+    - name: Unregister the insights client
+      shell: insights-client --unregister
+      when: 
+        - env_delete == "all"
+        - inventory_hostname in groups['foreman_prod_host_group']
+      ignore_errors: yes
