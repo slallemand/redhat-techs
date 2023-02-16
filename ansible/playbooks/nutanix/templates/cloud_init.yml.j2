@@ -1,6 +1,6 @@
 #cloud-config
-hostname: centos01
-fqdn: centos01.lab.local
+hostname: {{ env }}_centos01
+fqdn: {{ env }}_centos01.rhntnx.hpecic.net
 manage_etc_hosts: true
 
 users:
