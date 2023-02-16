@@ -13,7 +13,7 @@
     - name: Generate cloud-init files
       template:
         src: templates/cloud_init.yml.j2
-        dest: "cloud_init_{{ range(0, vm_number|int)|list}}.yml"
+        dest: "cloud_init_{{ item }}.yml"
         owner: root
         group: root
         mode: '0644'
@@ -33,7 +33,7 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         state: present
-        name: "{{ env }}_vm_{{ uuid }}{{ range(0, vm_number|int)|list}}"
+        name: "{{ env }}_vm_{{ uuid }}{{ item }}"
         timezone: "UTC"
         validate_certs: False
         cluster:
