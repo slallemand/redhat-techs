@@ -8,7 +8,7 @@
   tasks:
 
     - set_fact:
-        uuid: "{{ 100 | random }}"
+        uuid: "{{ 1000 | random }}"
       run_once: yes
 
     - name: Generate cloud-init files
