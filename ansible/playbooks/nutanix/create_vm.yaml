@@ -4,11 +4,23 @@
   gather_facts: no
   collections:
     - nutanix.ncp
-
+  vars: 
+    uuid: "{{ 9999 | random }}" 
+  
+  
   tasks:
 
+    - name: Generate cloud-init files
+      template:
+        src: templates/cloud_init.yml.j2
+        dest: cloud_init_{{ range(0, vm_number|int)|list}}.yml
+        owner: root
+        group: root
+        mode: '0644'
+      loop: "{{ range(0, vm_number|int)|list}}"
+
     - name: cat file
-      shell: cat ./cloud_init_dev.yml
+      shell: cat ./cloud_init_0.yml
       register: cat
 
     - name: print
