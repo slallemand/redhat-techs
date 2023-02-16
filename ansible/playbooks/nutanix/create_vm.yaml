@@ -20,7 +20,7 @@
       loop: "{{ range(0, vm_number|int)|list}}"
 
     - name: cat file
-      shell: cat ./cloud_init_0.yml
+      shell: ls -l
       register: cat
 
     - name: print
