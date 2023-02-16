@@ -4,11 +4,12 @@
   gather_facts: no
   collections:
     - nutanix.ncp
-  vars: 
-    uuid: "{{ 9999 | random }}" 
-
 
   tasks:
+
+    - set_fact:
+        uuid: "{{ 100 | random }}"
+      run_once: yes
 
     - name: Generate cloud-init files
       template:
