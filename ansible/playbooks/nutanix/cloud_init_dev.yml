@@ -1,9 +1,4 @@
 #cloud-config
-hostname: centos01
-fqdn: centos01.lab.local
-manage_etc_hosts: true
-package_upgrade: true
- 
 users:
   - name: nutanix
     groups: wheel
