@@ -13,14 +13,14 @@
     - name: Generate cloud-init files
       template:
         src: templates/cloud_init.yml.j2
-        dest: cloud_init_{{ range(0, vm_number|int)|list}}.yml
+        dest: cloud_init.yml
         owner: root
         group: root
         mode: '0644'
       loop: "{{ range(0, vm_number|int)|list}}"
 
     - name: cat file
-      shell: cat ./cloud_init_0.yml
+      shell: cat ./cloud_init.yml
       register: cat
 
     - name: print
