@@ -53,6 +53,6 @@
         memory_gb: "{{ nb_mem }}"
         guest_customization:
           type: "cloud_init"
-          script_path: "./cloud_init_{{ range(0, vm_number|int)|list}}.yml"
+          script_path: "./cloud_init_{{ item }}.yml"
           is_overridable: True
       loop: "{{ range(0, vm_number|int)|list}}"
