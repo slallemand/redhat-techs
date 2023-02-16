@@ -6,8 +6,8 @@
     - nutanix.ncp
   vars: 
     uuid: "{{ 9999 | random }}" 
-  
-  
+
+
   tasks:
 
     - name: Generate cloud-init files
@@ -33,7 +33,7 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         state: present
-        name: "dev_vm_{{ uuid }}"
+        name: "{{ env }}_vm_{{ uuid }}{{ range(0, vm_number|int)|list}}"
         timezone: "UTC"
         validate_certs: False
         cluster:
@@ -55,6 +55,4 @@
           type: "cloud_init"
           script_path: "./cloud_init_dev.yml"
           is_overridable: True
-      vars:
-        uuid: "{{ 9999 | random }}"
       loop: "{{ range(0, vm_number|int)|list}}"

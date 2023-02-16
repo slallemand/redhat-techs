@@ -1,5 +1,5 @@
 #cloud-config
-hostname: vm_{{ uuid }}
+hostname: {{ env }}_vm_{{ uuid }}{{ range(0, vm_number|int)|list}}
 
 users:
   - name: cloud-user
