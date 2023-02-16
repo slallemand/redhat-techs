@@ -7,7 +7,12 @@
 
   tasks:
 
-    - set_fact:
+    - name: Get env satellite token
+      set_fact:
+        token_sat: "{{ SAT_TOKEN_DEV if env == 'dev' else SAT_TOKEN_QUALIF if env == 'qualif' else SAT_TOKEN_PROD if env == 'prod' }}"
+
+    - name: Set uniq uuid
+      set_fact:
         uuid: "{{ 1000 | random }}"
       run_once: yes
 
@@ -20,13 +25,9 @@
         mode: '0644'
       loop: "{{ range(0, vm_number|int)|list}}"
 
-    - name: cat file
-      shell: ls -l
-      register: cat
-
     - name: print
       debug:
-        msg: "{{ cat.stdout }}"
+        msg: "{{ token_sat }}"
 
     - name: Create Nutanix VM
       nutanix.ncp.ntnx_vms:
