@@ -1,6 +1,6 @@
 #cloud-config
-hostname: {{ env }}_centos01_{{ uuid }}{{ item }}
-fqdn: {{ env }}_centos01_{{ uuid }}.rhntnx.hpecic.net
+hostname: {{ env }}_vm_{{ uuid }}{{ item }}
+fqdn: {{ env }}_vm_{{ uuid }}{{ item }}.rhntnx.hpecic.net
 manage_etc_hosts: true
 
 users:
