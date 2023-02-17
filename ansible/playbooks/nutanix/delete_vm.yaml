@@ -20,7 +20,7 @@
 
     - name: print
       debug:
-        msg: "{{ vm_creation.metadata }}"
+        msg: "{{ vm_creation }}"
 
     - name: Delete VM
       ntnx_vms:
