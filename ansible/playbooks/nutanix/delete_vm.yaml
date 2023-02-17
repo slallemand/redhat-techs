@@ -16,12 +16,18 @@
         filter:
             vm_name: "dev-demo-4121"
         kind: vm
-        
-      register: result
+      register: vm_creation
+
+
+    - name: Register the created vm uuid's for future use
+      set_fact:
+        uuids: "{{ item.json.metadata.uuid }}"
+      with_items: "{{ vm_creation.results }}"
+      register: vm_uuid
 
     - name: print
       debug:
-        msg: "{{ result }}"
+        msg: "{{ vm_uuid }}"
 
     - name: Delete VM
       ntnx_vms:
