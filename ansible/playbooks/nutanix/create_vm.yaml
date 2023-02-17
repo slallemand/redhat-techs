@@ -53,14 +53,4 @@
           type: "cloud_init"
           script_path: "./cloud_init_{{ item }}.yml"
           is_overridable: True
-      register: output
       loop: "{{ range(0, vm_number|int)|list}}"
-
-    - name: output of vm created
-      debug:
-        msg: '{{ output }}'
-
-    - name: delete VM
-      ntnx_vms:
-        state: absent
-        vm_uuid: "{{output.vm_uuid}}"
