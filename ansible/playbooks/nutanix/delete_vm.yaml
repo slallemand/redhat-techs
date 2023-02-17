@@ -22,7 +22,7 @@
     - name: Register the created vm uuid's for future use
       set_fact:
         uuids: "{{ item.json.metadata.uuid }}"
-      with_items: "{{ vm_creation.results }}"
+      with_items: "{{ vm_creation }}"
       register: vm_uuid
 
     - name: print
