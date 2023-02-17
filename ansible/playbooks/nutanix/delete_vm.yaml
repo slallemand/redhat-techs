@@ -20,7 +20,7 @@
 
     - name: print
       debug:
-        msg: "{{ vm_creation.response.entities.metadata.uuid }}"
+        msg: "{{ vm_creation.response.entities }}"
 
     - name: Delete VM
       ntnx_vms:
