@@ -13,10 +13,9 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
-        length: 1
-        offset: 1
-        sort_order: "ASCENDING"
-        sort_attribute: "dev-demo"
+        filter:
+            vm_name: "dev-demo"
+        kind: vm
       register: result
 
     - name: print
