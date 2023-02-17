@@ -1,7 +1,6 @@
 ---
 - hosts: all
   gather_facts: no
-  ansible_host: {{ foreman_ipv4 }}
   collections:
     - redhat.satellite
 
@@ -13,6 +12,7 @@
           Subscription Status: {{ foreman_ipv4 }}
     
     - name: Unregister the insights client
+      ansible_host: {{ foreman_ipv4 }}
       shell: insights-client --unregister
       when: 
         - env_delete == "dev"
