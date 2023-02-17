@@ -7,6 +7,14 @@
 
   tasks:
 
+    - name: env
+      shell: env
+      register: env
+
+    - name: print
+      msg:
+        debug: "{{ env.stdout }}"
+        
     - name: "Show all hosts with hostgroup demo_dev"
       redhat.satellite.host_info:
         search: "hostgroup_name = demo_dev"
