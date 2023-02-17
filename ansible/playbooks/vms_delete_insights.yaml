@@ -1,18 +1,12 @@
 ---
 - hosts: all
-  gather_facts: no
+  gather_facts: yes
   collections:
     - redhat.satellite
 
   tasks:
-
-    - name: Show subscription_status
-      debug:
-        msg: >
-          Subscription Status: {{ foreman_ipv4 }}
-    
+  
     - name: Unregister the insights client
-      ansible_host: {{ foreman_ipv4 }}
       shell: insights-client --unregister
       when: 
         - env_delete == "dev"
