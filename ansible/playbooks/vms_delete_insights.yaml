@@ -6,6 +6,11 @@
 
   tasks:
 
+    - name: Show subscription_status
+      debug:
+        msg: >
+          Subscription Status: {{ foreman.subscription_status_label }}
+    
     - name: Unregister the insights client
       shell: insights-client --unregister
       when: 
