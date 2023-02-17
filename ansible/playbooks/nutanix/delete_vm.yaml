@@ -16,6 +16,7 @@
         filter:
             vm_name: "dev-demo-4121"
         kind: vm
+        
       register: result
 
     - name: print
