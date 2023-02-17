@@ -20,7 +20,7 @@
 
     - name: print
       debug:
-        msg: "{{ vm_creation.response.entities }}"
+        msg: "{{ vm_creation.response.entities.metadata.uuid }}"
 
     - name: Delete VM
       ntnx_vms:
@@ -29,4 +29,4 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
-        vm_uuid: "{{result.uuid}}"
+        vm_uuid: "{{ vm_creation.response.entities.metadata.uuid }}"
