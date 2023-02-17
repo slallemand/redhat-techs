@@ -22,11 +22,11 @@
       debug:
         msg: "{{ result }}"
 
-#    - name: Delete VM
-#      ntnx_vms:
-#        state: absent
-#        nutanix_host: "{{ nutanix_host }}"
-#        nutanix_username: "{{ nutanix_username }}"
-#        nutanix_password: "{{ nutanix_password }}"
-#        validate_certs: False
-#        vm_uuid: '{{ vm_uuid }}'
+    - name: Delete VM
+      ntnx_vms:
+        state: absent
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        validate_certs: False
+        name: "dev-demo-4121"
