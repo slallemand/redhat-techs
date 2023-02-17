@@ -21,7 +21,7 @@
 
     - name: print
       debug:
-        msg: "{{ result.stdout }}"
+        msg: "{{ result }}"
 
 #    - name: Delete VM
 #      ntnx_vms:
