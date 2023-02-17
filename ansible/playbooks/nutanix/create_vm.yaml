@@ -35,7 +35,7 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         state: present
-        name: "{{ env }}-vm-{{ uuid }}{{ item }}"
+        name: "{{ env }}-demo-{{ uuid }}{{ item }}"
         timezone: "UTC"
         validate_certs: False
         cluster:
