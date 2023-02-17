@@ -30,7 +30,6 @@
       when: 
         - env_delete == "prod"
         - inventory_hostname in groups['foreman_demo_prod']
-        - env_delete == "prod"
       ignore_errors: yes
 
     - name: Unregister the insights client
