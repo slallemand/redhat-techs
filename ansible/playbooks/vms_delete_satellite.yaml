@@ -4,16 +4,12 @@
   gather_facts: no
   collections:
     - redhat.satellite
+  vars:
+    server_url: "{{ satellite_url }}"
+    username: "{{ satellite_user }}"
+    password: "{{ satellite_password }}"
 
   tasks:
-
-    - name: env
-      shell: env
-      register: env
-
-    - name: print
-      debug:
-        msg: "{{ env.stdout }}"
 
     - name: "Show all hosts with hostgroup demo_dev"
       redhat.satellite.host_info:
