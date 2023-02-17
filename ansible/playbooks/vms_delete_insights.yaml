@@ -9,7 +9,7 @@
     - name: Show subscription_status
       debug:
         msg: >
-          Subscription Status: {{ foreman.subscription_status_label }}
+          Subscription Status: {{ foreman_demo_dev.subscription_status_label }}
     
     - name: Unregister the insights client
       shell: insights-client --unregister
