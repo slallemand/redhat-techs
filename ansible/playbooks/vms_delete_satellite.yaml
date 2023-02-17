@@ -12,7 +12,7 @@
         server_url: "{{ satellite_url }}"
         username: "{{ satellite_user }}"
         password: "{{ satellite_password }}"
-        validate_certs": false
+        validate_certs: false
         search: "hostgroup_name = demo_dev"
       register: server_list_dev
       when: env_delete == "dev"
