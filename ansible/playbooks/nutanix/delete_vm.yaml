@@ -29,4 +29,4 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
-        name: "dev-demo-4121"
+        vm_uuid: "{{result.vm_uuid}}"
