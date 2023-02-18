@@ -9,8 +9,8 @@
 
     - when: time_on == 'yes'
       name: Configure Time
-      include_role:
-        name: redhat.rhel_system_roles.timesync
+      roles:
+        - redhat.rhel_system_roles.timesync
       vars:
         timesync_ntp_servers:
           - hostname: 0.rhel.pool.ntp.org
