@@ -18,7 +18,7 @@
 
     - name: Set net
       set_fact:
-        network: "{{ 10.6.115.22 if env == 'dev' else 10.6.115.23 if env == 'qualif' else 10.6.115.24 if env == 'prod' }}"
+        network: "{{ '10.6.115.22' if env == 'dev' else '10.6.115.23' if env == 'qualif' else '10.6.115.24' if env == 'prod' }}"
       run_once: yes
 
     - name: Generate cloud-init files
