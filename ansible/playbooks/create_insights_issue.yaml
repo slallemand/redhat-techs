@@ -7,7 +7,7 @@
 
     - name: Set list
       set_fact:
-        group_sat: "{{ 'foreman_demo_dev' if env_delete == 'dev' else 'foreman_demo_qualif' if env_delete == 'qualif' else 'foreman_demo_prod' if env_delete == 'prod' }}"
+        group_sat: "{{ 'foreman_demo_dev' if vm_env_type == 'dev' else 'foreman_demo_qualif' if vm_env_type == 'qualif' else 'foreman_demo_prod' if vm_env_type == 'prod' }}"
 
 - hosts: all
   gather_facts: no
