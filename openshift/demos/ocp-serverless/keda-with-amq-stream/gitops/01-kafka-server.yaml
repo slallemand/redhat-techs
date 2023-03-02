@@ -2,6 +2,8 @@ kind: Kafka
 apiVersion: kafka.strimzi.io/v1beta2
 metadata:
   name: my-cluster
+  labels:
+    app.kubernetes.io/part-of: keda-with-amq-stream-kafka
 spec:
   kafka:
     version: 3.3.1
