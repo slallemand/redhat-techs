@@ -8,6 +8,8 @@ spec:
   scaleTargetRef:
     name: quarkus-eda-demo
   pollingInterval: 30
+  minReplicaCount: 0
+  maxReplicaCount: 20
   triggers:
     - type: kafka
       metadata:
