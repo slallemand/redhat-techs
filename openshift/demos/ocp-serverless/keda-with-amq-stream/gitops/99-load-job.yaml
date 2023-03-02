@@ -1,12 +1,14 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  annotations:
+    app.openshift.io/connects-to: my-cluster
   labels:
     app: kafka-perf-producer-job
     app.kubernetes.io/part-of: strimzi-my-cluster
   name: kafka-perf-producer-job
 spec:
-  parallelism: 20
+  parallelism: 30
   completions: 5
   backoffLimit: 1
   template:
@@ -20,7 +22,7 @@ spec:
       - name: kafka-perf-producer
         image: quay.io/strimzi/kafka:latest-kafka-3.0.1
         command: [ "bin/kafka-producer-perf-test.sh" ]
-        args: [ "--topic", "my-topic", "--throughput", "20000000", "--num-records", "2000000", "--producer-props", "bootstrap.servers=my-cluster-kafka-bootstrap:9092", "--record-size", "1000" ]
+        args: [ "--topic", "my-topic", "--throughput", "10000000", "--num-records", "1000000", "--producer-props", "bootstrap.servers=my-cluster-kafka-bootstrap:9092", "--record-size", "2000" ]
         volumeMounts:
         - name: strimzi-ca
           readOnly: true
