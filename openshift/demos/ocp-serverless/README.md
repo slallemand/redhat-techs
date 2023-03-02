@@ -9,8 +9,9 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: my-service
-  namespace: serverless-demo
+  name: serverless-demo
+  labels:
+    app.kubernetes.io/part-of: my-serverless-application
 spec:
   template:
     spec:
