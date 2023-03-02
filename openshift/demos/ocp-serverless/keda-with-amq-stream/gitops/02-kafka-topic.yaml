@@ -4,7 +4,6 @@ metadata:
   name: my-topic
   labels:
     strimzi.io/cluster: my-cluster
-    app.kubernetes.io/part-of: keda-with-amq-stream-kafka
 spec:
   partitions: 10
   replicas: 3

@@ -5,7 +5,7 @@ metadata:
     app.openshift.io/connects-to: my-cluster
   name: quarkus-eda-demo
   labels:
-    app.kubernetes.io/part-of: keda-with-amq-stream-kafka
+    app.kubernetes.io/part-of: strimzi-my-cluster
     app.openshift.io/runtime: quarkus
 spec:
   replicas: 1
