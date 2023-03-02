@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    app.openshift.io/connects-to: my-cluster
   name: quarkus-eda-demo
   labels:
     app.kubernetes.io/part-of: strimzi-my-cluster
