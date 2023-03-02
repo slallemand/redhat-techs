@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: quarkus-eda-demo
+  labels:
+    app.kubernetes.io/part-of: strimzi-my-cluster
+    app.openshift.io/runtime: quarkus
 spec:
   replicas: 1
   selector:
