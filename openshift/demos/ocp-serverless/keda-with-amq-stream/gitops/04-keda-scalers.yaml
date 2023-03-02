@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: kafka-scaledobject
+  labels:
+    deploymentName: quarkus-eda-demo
+spec:
+  scaleTargetRef:
+    name: quarkus-eda-demo
+  pollingInterval: 30
+  triggers:
+    - type: kafka
+      metadata:
+        bootstrapServers: my-cluster-kafka-bootstrap:9092
+        consumerGroup: my-group
+        topic: my-topic
+        lagThreshold: "50"
+        offsetResetPolicy: latest
