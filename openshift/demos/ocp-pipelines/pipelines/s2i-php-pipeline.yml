@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 spec:
   params:
-    - default: 'https://github.com/davmartini/openshift.git'
+    - default: 'https://github.com/davmartini/redhat-tech.git'
       description: Git repo url
       name: url
       type: string

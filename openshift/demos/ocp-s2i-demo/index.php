@@ -95,7 +95,7 @@
             <img src="images/redhat.png" width="600" height="160"/>
           </div>
           <div style="background-color:red;color:white;text-align:center">
-            <p>Lille</p>
+            <p>Creteil</p>
           </div>
           <hr/>
           <div class="footer">
