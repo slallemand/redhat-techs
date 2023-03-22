@@ -43,6 +43,7 @@ spec:
         app.kubernetes.io/version: 1.0-SNAPSHOT
         app.openshift.io/runtime: quarkus
         department: fruity-dept
+        name: quarkus-front
       annotations:
         app.openshift.io/connects-to: postgresql-db
         app.openshift.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
