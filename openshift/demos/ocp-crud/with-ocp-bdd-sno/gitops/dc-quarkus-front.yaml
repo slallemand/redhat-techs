@@ -14,6 +14,7 @@ metadata:
     app.kubernetes.io/version: 1.0-SNAPSHOT
     app.openshift.io/runtime: quarkus
     department: fruity-dept
+    name: quarkus-front
 spec:
   strategy:
     type: Rolling
