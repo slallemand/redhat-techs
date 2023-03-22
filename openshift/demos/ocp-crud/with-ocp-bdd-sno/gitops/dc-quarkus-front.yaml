@@ -89,6 +89,11 @@ spec:
                 secretKeyRef:
                   name: fruits-db-ocp
                   key: DB_USER
+            - name: DB_IP
+              valueFrom:
+                secretKeyRef:
+                  name: fruits-db-ocp
+                  key: DB_IP
             - name: JAVA_APP_JAR
               value: /deployments/target/atomic-fruit-service-1.0-SNAPSHOT-runner.jar
             - name: JAVA_LIB_DIR
