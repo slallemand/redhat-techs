@@ -2,11 +2,11 @@
 
 ## Steps
 
-1. Install OADP operator from OperatorHub
+### 1. Install OADP operator from OperatorHub
 
-2. Create S3 Bucket from your provider
+### 2. Create S3 Bucket from your provider
 
-3. Create OADP secret to connect to your bucket
+### 3. Create OADP secret to connect to your bucket
 ```
 kind: Secret
 apiVersion: v1
@@ -21,7 +21,7 @@ data:
 type: Opaque
 ```
 
-4. Create a DataProtectionApplication CRD
+### 4. Create a DataProtectionApplication CRD
 ```
 apiVersion: oadp.openshift.io/v1alpha1
 kind: DataProtectionApplication
@@ -55,15 +55,17 @@ spec:
         - csi
       featureFlags:
         - EnableCSI
+```
 
-5. Create application in oadp-demo namespace
+### 5. Create application in oadp-demo namespace
 ```
 From git https://github.com/davmartini/redhat-techs.git
 path "openshift/demos/ocp-oadp/app"
+```
 
-5. Generate data in application database
+### 6. Generate data in application database
 
-6. Create an application backup
+### 7. Create an application backup
 ```
 apiVersion: velero.io/v1
 kind: Backup
@@ -78,9 +80,9 @@ spec:
     - oadp-demo
 ```
 
-7. Delete oadp-demo namespace
+### 8. Delete oadp-demo namespace
 
-8. Create an application restore
+### 9. Create an application restore
 ```
 apiVersion: velero.io/v1
 kind: Restore
