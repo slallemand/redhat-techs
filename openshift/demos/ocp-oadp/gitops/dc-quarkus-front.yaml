@@ -26,7 +26,7 @@ spec:
       maxSurge: 25%
     resources: {}
     activeDeadlineSeconds: 21600
-  replicas: 10
+  replicas: 4
   revisionHistoryLimit: 10
   test: false
   selector:
