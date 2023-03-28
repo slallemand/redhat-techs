@@ -91,9 +91,9 @@ INFO Consuming Agent Config from target directory
 
   * Create one machine with **rendezvousIP**. This machine will be responsible to insall other machines
   * Other machines can stay on DHCP mode
-  * Modifiy boot order with
-        1. Disk
-        2. CDROM
+  * Modifiy boot order with  
+        1. Disk  
+        2. CDROM  
 
 **rendezvous host**
 ![rendezvous_host](images/rendezvous_host.png)
