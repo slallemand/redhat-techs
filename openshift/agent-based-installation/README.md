@@ -72,5 +72,34 @@ apiVersion: v1alpha1
 kind: AgentConfig
 metadata:
   name: ocp04
-rendezvousIP: 192.168.111.80 
+rendezvousIP: 10.6.115.200
 ```
+
+### 4. Generate ISO image from installer
+```
+openshift-install --dir agent-based/ agent create image
+WARNING Capabilities: %!!(MISSING)s(*types.Capabilities=<nil>) is ignored 
+INFO The rendezvous host IP (node0 IP) is 10.6.115.200 
+INFO Extracting base ISO from release payload     
+INFO Verifying cached file                        
+INFO Using cached Base ISO /root/.cache/agent/image_cache/coreos-x86_64.iso 
+INFO Consuming Install Config from target directory 
+INFO Consuming Agent Config from target directory 
+```
+
+### 5. Boot machine using generated ISO image
+
+  * Create one machine with **rendezvousIP**. This machine will be responsible to insall other machines
+  * Other machines can stay on DHCP mode
+
+**rendezvous host**
+![rendezvous_host](images/rendezvous_host.png)
+
+**other host waiting rendezvous host**
+![other_hosts](images/other_hosts.png)
+
+**All hosts OK after few time**
+![allhosts_ok](images/allhosts_ok.png)
+
+**OCP install in progress**
+![install_in_progress](images/install_started.png)
