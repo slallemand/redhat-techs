@@ -106,3 +106,9 @@ INFO Consuming Agent Config from target directory
 
 **OCP install in progress**
 ![install_in_progress](images/install_started.png)
+
+
+### 6. Check boot process
+```
+openshift-install --dir agent-based/ agent wait-for bootstrap-complete --log-level=info 
+```
