@@ -20,4 +20,4 @@
 
     - name: print
       debug:
-        msg: "{{ vm_creation.response.entities.status }}"
+        msg: "{{ vm_creation }}"
