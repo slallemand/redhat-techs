@@ -65,4 +65,4 @@
 
     - name: Print VM list
       debug:
-        msg: "{{ result | json_query('results[*].response.entities[*]') }}"
+        msg: "{{ result | json_query('results[*].response.entities[*].status[*]') }}"
