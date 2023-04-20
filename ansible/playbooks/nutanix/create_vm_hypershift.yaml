@@ -12,7 +12,7 @@
         uuid: "{{ 1000 | random }}"
       run_once: yes
 
-      name: Create Nutanix VM for ACM Demo
+    - name: Create Nutanix VM for ACM Demo
       nutanix.ncp.ntnx_vms:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
