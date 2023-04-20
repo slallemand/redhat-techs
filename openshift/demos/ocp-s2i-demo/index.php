@@ -94,7 +94,7 @@
           <div style="text-align:center">
             <img src="images/tdsynnex.png" width="887" height="131"/>
           </div>
-          <div style="background-color:red;color:white;text-align:center">
+          <div style="background-color:blue;color:white;text-align:center">
             <p>Colombes</p>
           </div>
           <hr/>
