@@ -60,4 +60,4 @@
 
     - name: Print VM list
       debug:
-        msg: "{{ result }}"
+        msg: "{{ result[*].invocation }}"
