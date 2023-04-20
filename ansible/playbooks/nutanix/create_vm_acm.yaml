@@ -45,3 +45,16 @@
         cores_per_vcpu: "{{ nb_core }}"
         memory_gb: "{{ nb_mem }}"
       loop: "{{ range(0, vm_number|int)|list}}"
+
+    - when: command="list"
+      name: List Nutanix VM for ACM Demo
+      nutanix.ncp.ntnx_vms_info:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        validate_certs: False
+        filter:
+          vm_name: "{{ prefix_name }}-demoacm-{{ uuid }}{{ item }}"
+        kind: vm
+      loop: "{{ range(0, vm_number|int)|list}}"
+      register: result
