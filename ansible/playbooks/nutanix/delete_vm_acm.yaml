@@ -22,3 +22,4 @@
     - name: print
       debug:
         msg: "{{ result }}"
+
