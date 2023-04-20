@@ -65,4 +65,4 @@
 
     - name: Print VM list
       debug:
-        msg: "{{ result | json_query('[*].invocation')  }}"
+        msg: "{{ result.changed }}"
