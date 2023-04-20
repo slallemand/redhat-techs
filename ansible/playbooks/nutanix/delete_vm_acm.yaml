@@ -14,19 +14,10 @@
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
         filter:
-            vm_name: "dev-demo-4121"
+            vm_name: "-demoacm"
         kind: vm
       register: vm_creation
 
     - name: print
       debug:
         msg: "{{ vm_creation.response.entities.status }}"
-
-    - name: Delete VM
-      ntnx_vms:
-        state: absent
-        nutanix_host: "{{ nutanix_host }}"
-        nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ nutanix_password }}"
-        validate_certs: False
-        vm_uuid: "{{ vm_creation.response.entities.metadata.uuid }}"
