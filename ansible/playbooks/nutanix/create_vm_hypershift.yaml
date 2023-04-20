@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  collections:
+    - nutanix.ncp
+
+  tasks:
+
+    - name: Set uniq uuid
+      set_fact:
+        uuid: "{{ 1000 | random }}"
+      run_once: yes
+
+      name: Create Nutanix VM for ACM Demo
+      nutanix.ncp.ntnx_vms:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        state: present
+        name: "{{ cluster_name }}-demo-{{ uuid }}{{ item }}"
+        timezone: "UTC"
+        validate_certs: False
+        cluster:
+          name: "ntnx-cluster-hpe-cic"
+        networks:
+          - is_connected: True
+            subnet:
+              name: "workload"
+        disks:
+          - type: "DISK"
+            size_gb: 120
+            clone_image:
+              name:  "hpe-cic-nutanix-discovery-image"
+            bus: "SCSI"
+        vcpus: "{{ nb_cpu }}"
+        cores_per_vcpu: "{{ nb_core }}"
+        memory_gb: "{{ nb_mem }}"
+      loop: "{{ range(0, vm_number|int)|list}}"
