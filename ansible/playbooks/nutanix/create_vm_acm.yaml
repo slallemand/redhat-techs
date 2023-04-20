@@ -27,6 +27,12 @@
           - is_connected: True
             subnet:
               name: "workload"
+        boot_config:
+          boot_type: "LEGACY"
+          boot_order:
+            - "DISK"
+            - "CDROM"
+            - "NETWORK"
         disks:
           - type: "CDROM"
             clone_image:
