@@ -14,7 +14,7 @@
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
         filter:
-            vm_name: "-demoacm"
+            vm_name: "*-demoacm*"
         kind: vm
       register: vm_creation
 
