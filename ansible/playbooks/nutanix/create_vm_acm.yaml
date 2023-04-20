@@ -61,7 +61,7 @@
 
     - name: Print VM list
       debug:
-        msg: "{{ result }}"
+        msg: "{{ result.results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip }}"
 
     - name: Print VM list
       debug:
