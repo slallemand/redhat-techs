@@ -12,8 +12,7 @@
         uuid: "{{ 1000 | random }}"
       run_once: yes
     
-    - when: command="create"
-      name: Create Nutanix VM for ACM Demo
+    - name: Create Nutanix VM for ACM Demo
       nutanix.ncp.ntnx_vms:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
@@ -47,8 +46,7 @@
         memory_gb: "{{ nb_mem }}"
       loop: "{{ range(0, vm_number|int)|list}}"
 
-    - when: command="list"
-      name: List Nutanix VM for ACM Demo
+    - name: List Nutanix VM for ACM Demo
       nutanix.ncp.ntnx_vms_info:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
