@@ -57,3 +57,7 @@
         kind: vm
       loop: "{{ range(0, vm_number|int)|list}}"
       register: result
+
+    - name: Print VM list
+      debug:
+        msg: "{{ result }}"
