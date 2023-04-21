@@ -66,4 +66,4 @@
     - name: Print VM IP
       debug: 
         msg: "IP Server : {{ item }}"
-      with_items: ip_vm
+      with_items: "{{ ip_vm }}"
