@@ -65,4 +65,4 @@
     
     - name: Print VM IP
       debug: 
-        msg: "IP Server : {{ ip_vm }}"
+        msg: "IP Server : {{ ip_vm | list }}"
