@@ -59,6 +59,11 @@
       register: result
 
 
+    - name: Print VM IP
+      debug: 
+        msg: "{{ lookup('ansible.utils.to_paths', result) }}"
+
+
     - set_fact :
         ip_vm : "{{ result | json_query('results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip') }}"
 
