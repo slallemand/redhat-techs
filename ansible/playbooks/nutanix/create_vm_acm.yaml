@@ -58,11 +58,8 @@
       loop: "{{ range(0, vm_number|int)|list}}"
       register: result
 
-    - debug:
-        msg: "{{ result.results[].response }}"
-
     - set_fact :
-        ip_vm : "{{ result | json_query('results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip') }}"
+        ip_vm : "{{ result | json_query('results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip' | [0]") | replace('\"','') }}"
 
     
     - name: Print VM IP
