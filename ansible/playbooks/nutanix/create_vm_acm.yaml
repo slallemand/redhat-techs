@@ -61,7 +61,7 @@
 
     - name: Print VM IP
       debug: 
-        msg: "{{ result }}"
+        msg: "{{ result.results }}"
 
 
     - set_fact :
