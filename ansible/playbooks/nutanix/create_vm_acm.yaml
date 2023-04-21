@@ -66,3 +66,10 @@
     - name: Print VM IP
       debug: 
         msg: "IP Server : {{ ip_vm | list }}"
+
+    - set_fact :
+        ip_vmbis : "{{ result | json_query('*.ip') }}"
+
+    - name: Print VM IP
+      debug: 
+        msg: "IP Server : {{ ip_vmbis }}"
