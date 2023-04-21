@@ -59,7 +59,7 @@
       register: result
 
     - set_fact :
-        ip_vm : "{{ result | json_query('results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip' | [0]") | replace('\"','') }}"
+        ip_vm : "{{ result | json_query('results[*].response.entities[*].status.resources.nic_list[*].ip_endpoint_list[*].ip' | [0]") }}"
 
     
     - name: Print VM IP
