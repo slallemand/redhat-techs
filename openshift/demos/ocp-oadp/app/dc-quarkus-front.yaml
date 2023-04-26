@@ -10,7 +10,7 @@ metadata:
   name: quarkus-front
   labels:
     app.kubernetes.io/name: quarkus-front
-    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
+    app.kubernetes.io/part-of: oadp-demo
     app.kubernetes.io/version: 1.0-SNAPSHOT
     app.openshift.io/runtime: quarkus
     department: fruity-dept
@@ -31,7 +31,7 @@ spec:
   test: false
   selector:
     app.kubernetes.io/name: quarkus-front
-    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
+    app.kubernetes.io/part-of: oadp-demo
     app.kubernetes.io/version: 1.0-SNAPSHOT
   template:
     metadata:
@@ -39,7 +39,7 @@ spec:
       creationTimestamp: null
       labels:
         app.kubernetes.io/name: quarkus-front
-        app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
+        app.kubernetes.io/part-of: oadp-demo
         app.kubernetes.io/version: 1.0-SNAPSHOT
         app.openshift.io/runtime: quarkus
         department: fruity-dept
