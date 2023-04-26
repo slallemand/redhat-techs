@@ -3,7 +3,7 @@ apiVersion: apps.openshift.io/v1
 metadata:
   annotations:
     template.alpha.openshift.io/wait-for-ready: 'true'
-  name: postgresql-db
+  name: postgresql-db-oadp
   labels:
     template: postgresql-persistent-template
     app.kubernetes.io/part-of: oadp-demo
@@ -30,7 +30,7 @@ spec:
   revisionHistoryLimit: 10
   test: false
   selector:
-    name: postgresql-db
+    name: postgresql-db-oadp
   template:
     metadata:
       creationTimestamp: null
@@ -38,9 +38,9 @@ spec:
         name: postgresql-db
     spec:
       volumes:
-        - name: postgresql-db-data
+        - name: postgresql-db-data-oadp
           persistentVolumeClaim:
-            claimName: postgresql-db
+            claimName: postgresql-db-oadp
       containers:
         - resources:
             limits:
