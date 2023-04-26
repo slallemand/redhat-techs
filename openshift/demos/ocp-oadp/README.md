@@ -54,13 +54,6 @@ spec:
         - aws
       featureFlags:
         - EnableCSI
-  snapshotLocations: 
-    - name: default
-      velero:
-        provider: aws
-        config:
-          region: us-east-1
-          profile: "default"
 ```
 
 ### 5. Create application in oadp-demo namespace
