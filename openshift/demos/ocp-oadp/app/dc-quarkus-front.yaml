@@ -2,19 +2,19 @@ kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
   annotations:
-    app.openshift.io/connects-to: postgresql-db
+    app.openshift.io/connects-to: postgresql-db-oadp
     app.openshift.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
     app.quarkus.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
     app.quarkus/id: '42'
     foo: bar
   name: quarkus-front
   labels:
-    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/name: quarkus-front-oadp
     app.kubernetes.io/part-of: oadp-demo
     app.kubernetes.io/version: 1.0-SNAPSHOT
     app.openshift.io/runtime: quarkus
     department: fruity-dept
-    name: quarkus-front
+    name: quarkus-front-oadp
 spec:
   strategy:
     type: Rolling
@@ -30,7 +30,7 @@ spec:
   revisionHistoryLimit: 10
   test: false
   selector:
-    app.kubernetes.io/name: quarkus-front
+    app.kubernetes.io/name: quarkus-front-oadp
     app.kubernetes.io/part-of: oadp-demo
     app.kubernetes.io/version: 1.0-SNAPSHOT
   template:
@@ -38,7 +38,7 @@ spec:
       namespace: demo
       creationTimestamp: null
       labels:
-        app.kubernetes.io/name: quarkus-front
+        app.kubernetes.io/name: quarkus-front-oadp
         app.kubernetes.io/part-of: oadp-demo
         app.kubernetes.io/version: 1.0-SNAPSHOT
         app.openshift.io/runtime: quarkus
