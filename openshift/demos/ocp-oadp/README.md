@@ -42,7 +42,7 @@ spec:
         default: true
         objectStorage:
           bucket: openshift-backup
-          prefix: ocp02
+          prefix: ocp01
         provider: aws
   configuration:
     restic:
@@ -50,11 +50,16 @@ spec:
     velero:
       defaultPlugins:
         - openshift
-        - aws
-        - kubevirt
         - csi
       featureFlags:
         - EnableCSI
+  snapshotLocations: 
+    - name: default
+      velero:
+        provider: aws
+        config:
+          region: us-east-1
+          profile: "default"
 ```
 
 ### 5. Create application in oadp-demo namespace
