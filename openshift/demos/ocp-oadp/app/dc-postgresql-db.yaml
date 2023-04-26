@@ -6,7 +6,7 @@ metadata:
   name: postgresql-db
   labels:
     template: postgresql-persistent-template
-    app.kubernetes.io/part-of: quarkus-app-with-bdd-on-ocp
+    app.kubernetes.io/part-of: oadp-demo
     app.openshift.io/runtime: postgresql
 spec:
   strategy:
