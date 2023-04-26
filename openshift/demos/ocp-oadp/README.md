@@ -51,6 +51,7 @@ spec:
       defaultPlugins:
         - openshift
         - csi
+        - aws
       featureFlags:
         - EnableCSI
   snapshotLocations: 
