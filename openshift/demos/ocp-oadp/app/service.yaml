@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: postgresql-db
+  name: postgresql-db-oadp
   annotations:
     template.openshift.io/expose-uri: 'postgres://{.spec.clusterIP}:{.spec.ports[?(.name=="postgresql")].port}'
 spec:
@@ -23,12 +23,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: quarkus-front
+  name: quarkus-front-oadp
 spec:
   ipFamilies:
     - IPv4
   ports:
-    - name: quarkus-front
+    - name: quarkus-front-oadp
       protocol: TCP
       port: 443
       targetPort: 8080
@@ -37,4 +37,4 @@ spec:
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
   selector:
-    name: quarkus-front
+    name: quarkus-front-oadp
