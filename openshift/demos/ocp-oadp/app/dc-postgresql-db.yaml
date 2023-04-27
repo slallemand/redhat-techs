@@ -70,7 +70,7 @@ spec:
             - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: fruits-db-ocp
+                  name: fruits-db-ocp-oadp
                   key: DB_USER
             - name: POSTGRESQL_PASSWORD
               valueFrom:
