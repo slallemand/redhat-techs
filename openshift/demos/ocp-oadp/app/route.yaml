@@ -11,7 +11,7 @@ metadata:
 spec:
   path: /
   port:
-    targetPort:
+    targetPort: quarkus-front-oadp
   to:
     kind: Service
     name: quarkus-front-oadp
