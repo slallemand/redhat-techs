@@ -18,7 +18,7 @@ spec:
   ipFamilyPolicy: SingleStack
   sessionAffinity: None
   selector:
-    name: postgresql-db
+    name: postgresql-db-oadp
 ---
 kind: Service
 apiVersion: v1
