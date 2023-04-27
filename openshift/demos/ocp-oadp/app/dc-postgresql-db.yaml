@@ -35,7 +35,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        name: postgresql-db
+        name: postgresql-db-oadp
     spec:
       volumes:
         - name: postgresql-db-data-oadp
@@ -90,7 +90,7 @@ spec:
               protocol: TCP
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - name: postgresql-db-data
+            - name: postgresql-db-data-oadp
               mountPath: /var/lib/pgsql/data
           terminationMessagePolicy: File
       restartPolicy: Always
