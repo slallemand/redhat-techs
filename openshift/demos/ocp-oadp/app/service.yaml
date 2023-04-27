@@ -28,7 +28,7 @@ spec:
   ipFamilies:
     - IPv4
   ports:
-    - name: quarkus-front-oadp
+    - name: quarkus-front
       protocol: TCP
       port: 443
       targetPort: 8080
