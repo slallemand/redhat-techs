@@ -15,7 +15,6 @@ metadata:
     app.openshift.io/runtime: quarkus
   name: quarkus-front-oadp
 spec:
-  host: ""
   path: /
   port:
     targetPort: 8080
