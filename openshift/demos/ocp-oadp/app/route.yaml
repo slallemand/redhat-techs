@@ -2,12 +2,6 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  annotations:
-    app.openshift.io/connects-to: postgresql-db-oadp
-    app.quarkus/id: "42"
-    foo: bar
-    app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
-    app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
     app.kubernetes.io/name: quarkus-front-oadp
     app.kubernetes.io/version: 1.0-SNAPSHOT
@@ -17,7 +11,7 @@ metadata:
 spec:
   path: /
   port:
-    targetPort: 8080
+    targetPort:
   to:
     kind: Service
     name: quarkus-front-oadp
