@@ -9,11 +9,11 @@ metadata:
     app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
     app.quarkus.io/vcs-url: https://github.com/davmartini/redhat-techs.git
   labels:
-    app.kubernetes.io/name: quarkus-front-service
+    app.kubernetes.io/name: quarkus-front-oadp
     app.kubernetes.io/version: 1.0-SNAPSHOT
     department: fruity-dept
     app.openshift.io/runtime: quarkus
-  name: quarkus-front-service
+  name: quarkus-front-oadp
 spec:
   host: ""
   path: /
@@ -21,4 +21,4 @@ spec:
     targetPort: 8080
   to:
     kind: Service
-    name: quarkus-front
+    name: quarkus-front-oadp
