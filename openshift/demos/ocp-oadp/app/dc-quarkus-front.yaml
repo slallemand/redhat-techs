@@ -43,9 +43,9 @@ spec:
         app.kubernetes.io/version: 1.0-SNAPSHOT
         app.openshift.io/runtime: quarkus
         department: fruity-dept
-        name: quarkus-front
+        name: quarkus-front-oadp
       annotations:
-        app.openshift.io/connects-to: postgresql-db
+        app.openshift.io/connects-to: postgresql-db-oadp
         app.openshift.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
         app.quarkus.io/vcs-url: 'https://github.com/davmartini/redhat-techs.git'
         app.quarkus/id: '42'
@@ -63,7 +63,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
           terminationMessagePath: /dev/termination-log
-          name: quarkus-front
+          name: quarkus-front-oadp
           command:
             - java
           livenessProbe:
