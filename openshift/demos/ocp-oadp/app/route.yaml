@@ -3,7 +3,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/connects-to: postgresql-db
+    app.openshift.io/connects-to: postgresql-db-oadp
     app.quarkus/id: "42"
     foo: bar
     app.openshift.io/vcs-url: https://github.com/davmartini/redhat-techs.git
