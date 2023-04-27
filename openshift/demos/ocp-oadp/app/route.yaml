@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/version: 1.0-SNAPSHOT
     department: fruity-dept
     app.openshift.io/runtime: quarkus
-  name: quarkus-front-oadp
+  name: oadp
 spec:
   path: /
   port:
