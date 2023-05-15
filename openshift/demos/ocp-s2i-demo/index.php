@@ -92,7 +92,7 @@
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/tdsynnex.png" width="887" height="131"/>
+            <img src="images/scc.png" width="887" height="131"/>
           </div>
           <div style="background-color:blue;color:white;text-align:center">
             <p>Paris</p>
