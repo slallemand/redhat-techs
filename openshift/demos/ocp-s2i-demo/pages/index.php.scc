@@ -87,12 +87,12 @@
     
           <!-- Main jumbotron for a primary marketing message or call to action -->
           <div class="jumbotron" style="text-align:center">
-            <h2>OpenShift 360°</h2>
+            <h2>SCC + Red Hat + Nutanix = Stronger together</h2>
             <p>OpenShift est plus qu'une plateforme de containers, c'est une plateforme cloud-native complète permettant le développement applicatif jusqu'à la mise en production d'environnements critiques</p>
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/scc.png" width="500" height="281"/>
+            <img src="images/scc.png" width="887" height="131"/>
           </div>
           <div style="background-color:blue;color:white;text-align:center">
             <p>Paris</p>
