@@ -4,6 +4,11 @@
   gather_facts: no
   collections:
     - nutanix.ncp
+  vars:
+    nutanix_host: "{{ nutanix_host }}"
+    nutanix_username: "{{ nutanix_username }}"
+    nutanix_password: "{{ nutanix_password }}"
+    validate_certs: False
 
   tasks:
 
