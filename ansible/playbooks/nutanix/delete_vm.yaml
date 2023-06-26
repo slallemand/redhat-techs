@@ -19,4 +19,4 @@
 
     - name: Print vms
       ansible.builtin.debug:
-        msg: "{{ vms.response | json_query('entities[*].status.name') | regex_search('dev') }}"
+        msg: "{{ vms.response | json_query('entities[*].status.name') | regex_search('dev+') }}"
