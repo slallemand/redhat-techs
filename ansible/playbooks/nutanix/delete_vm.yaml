@@ -23,4 +23,5 @@
 
     - name: Print vms
       ansible.builtin.debug:
-        msg: "{{ vms_list | regex_search('dev-demo-*') }}"
+        msg: "{{ item }}"
+      with_items: "{{ vms_list }}"
