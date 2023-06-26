@@ -17,6 +17,10 @@
         sort_attribute: "vm_name"
       register: vms
 
+    - name: Set list vms
+      ansible.builtin.set_fact:
+        vms_list: "{{ vms.response | json_query('entities[*].status.name') }}"
+
     - name: Print vms
       ansible.builtin.debug:
-        msg: "{{ vms.response | json_query('entities[*].status.name') | regex_search('dev+') }}"
+        msg: "{{ vms_list }}"
