@@ -19,4 +19,4 @@
 
     - name: Print vms
       ansible.builtin.debug:
-        msg: "{{ vms.response.entities.status.name }}"
+        msg: "{{ vms.response.entities }}"
