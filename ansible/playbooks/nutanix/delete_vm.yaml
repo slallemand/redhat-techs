@@ -25,3 +25,4 @@
       ansible.builtin.debug:
         msg: "{{ item }}"
       with_items: "{{ vms_list }}"
+      when: '"dev" in item'
