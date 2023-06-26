@@ -13,6 +13,8 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
+        sort_order: "ASCENDING"
+        sort_attribute: "vm_name"
       register: vms
 
     - name: Print vms
