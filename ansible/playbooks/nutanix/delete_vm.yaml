@@ -13,8 +13,6 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
-        filter:
-          vm_name: "dev-demo-3440"
       register: vms
 
     - name: Set list vms by name
