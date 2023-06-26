@@ -26,7 +26,7 @@
         state: absent
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ _nutanix_password_ }}"
+        nutanix_password: "{{ nutanix_password }}"
         validate_certs: false
         name: "{{ item }}"       
       with_items: "{{ vms_list }}"
