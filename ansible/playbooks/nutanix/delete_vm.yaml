@@ -7,26 +7,10 @@
 
   tasks:
 
-    - name: List VMS using length, offset, sort order and vm_name sort attribute
-      ntnx_vms_info:
-        nutanix_host: "{{ nutanix_host }}"
-        nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ nutanix_password }}"
-        validate_certs: False
-        filter:
-            vm_name: "dev-demo-4121"
-        kind: vm
-      register: vm_creation
+    - name: List VMs on Nutanix
+      nutanix.ncp.ntnx_vms_info:
+      register: vms
 
-    - name: print
-      debug:
-        msg: "{{ vm_creation.response.entities.status }}"
-
-    - name: Delete VM
-      ntnx_vms:
-        state: absent
-        nutanix_host: "{{ nutanix_host }}"
-        nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ nutanix_password }}"
-        validate_certs: False
-        vm_uuid: "{{ vm_creation.response.entities.metadata.uuid }}"
+    - name: Print vms
+      ansible.builtin.debug:
+        msg: "{{ vms }}"
