@@ -21,8 +21,13 @@
       ansible.builtin.set_fact:
         vms_list: "{{ vms.response | json_query('entities[*].status.name') }}"
 
-    - name: Print vms
-      ansible.builtin.debug:
-        msg: "{{ item }}"
+    - name: Delete Nutanix VMs
+      nutanix.ncp.ntnx_vms:
+        state: absent
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ _nutanix_password_ }}"
+        validate_certs: false
+        name: "{{ item }}"       
       with_items: "{{ vms_list }}"
       when: '"dev" in item'
