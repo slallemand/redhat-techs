@@ -23,4 +23,4 @@
 
     - name: Print VMs
       ansible.builtin.debug:
-        var: vms
+        var: vms.vm_uuid
