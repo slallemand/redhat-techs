@@ -17,17 +17,10 @@
         sort_attribute: "vm_name"
       register: vms
 
-    - name: Set list vms
+    - name: Set list vms by name
       ansible.builtin.set_fact:
         vms_list: "{{ vms.response | json_query('entities[*].status.name') }}"
 
-    - name: Delete Nutanix VMs
-      nutanix.ncp.ntnx_vms:
-        state: absent
-        nutanix_host: "{{ nutanix_host }}"
-        nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ nutanix_password }}"
-        validate_certs: false
-        name: "{{ item }}"       
-      with_items: "{{ vms_list }}"
-      when: '"dev" in item'
+    - name: Print VMs
+      ansible.builtin.debug:
+        var: vms_list
