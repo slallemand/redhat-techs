@@ -19,7 +19,7 @@
 
     - name: Set list vms by name
       ansible.builtin.set_fact:
-        vms_list: "{{ vms.response | json_query('entities[*].spec') }}"
+        vms_list: "{{ vms.response | json_query('entities[*].status') }}"
 
     - name: Print VMs
       ansible.builtin.debug:
