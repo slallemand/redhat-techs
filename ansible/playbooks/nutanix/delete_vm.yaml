@@ -16,7 +16,7 @@
         sort_order: "ASCENDING"
         sort_attribute: "vm_name"
         filter:
-          vm_name: "==dev*"
+          vm_name: "dev*"
       register: vms
 
     - name: Print vms
