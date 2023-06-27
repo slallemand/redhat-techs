@@ -18,15 +18,18 @@
       nutanix.ncp.ntnx_vms_info:
         filter:
          vm_name: ".*{{ env_delete }}-.*"
-      register: vms
+      register: vms_env
       when: env_delete == 'dev' or env_delete == 'qualif' or env_delete == 'prod'
 
     - name: List all VMs on Nutanix
       nutanix.ncp.ntnx_vms_info:
         filter:
          vm_name: ".*-demoaap-.*"
-      register: vms   
+      register: vms_all   
       when: env_delete == 'all'
+
+    - set_fact:
+        vms: "{{ vms_all if vms_all.stdout is defined else vms_env }}"
 
     - name: Set list vms by name
       ansible.builtin.set_fact:
