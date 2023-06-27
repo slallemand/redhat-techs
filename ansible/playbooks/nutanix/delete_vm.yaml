@@ -1,15 +1,15 @@
 ---
-- hosts: localhost
+- name: delete Nutanix VMs
+  hosts: localhost
   connection: local
   gather_facts: no
   collections:
     - nutanix.ncp
-  module_defaults:
-    group/nutanix.ncp.ntnx:
-      nutanix_host: "{{ nutanix_host }}"
-      nutanix_username: "{{ nutanix_username }}"
-      nutanix_password: "{{ nutanix_password }}"
-      validate_certs: false
+  vars:
+    nutanix_host: "{{ nutanix_host }}"
+    nutanix_username: "{{ nutanix_username }}"
+    nutanix_password: "{{ nutanix_password }}"
+    validate_certs: false
 
   tasks:
 
