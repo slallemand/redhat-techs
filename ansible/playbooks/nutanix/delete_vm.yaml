@@ -31,4 +31,4 @@
         vm_uuid: "{{ item }}"
       loop: "{{ uuid_vms_list }}"
       register: vms_delete
-      when: vuuid_vms_list | length > 0
+      when: uuid_vms_list | length > 0
