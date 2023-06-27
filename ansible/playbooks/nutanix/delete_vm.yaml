@@ -15,10 +15,15 @@
         validate_certs: False
       register: vms
 
-    - name: Set list vms by name
-      ansible.builtin.set_fact:
-        vms_list: "{{ vms.response | json_query('entities[*].status.ressources.bios_uuid') }}"
-
     - name: Print VMs
       ansible.builtin.debug:
-        var: vms_list
+        var: vms
+
+
+#    - name: Set list vms by name
+#      ansible.builtin.set_fact:
+#        vms_list: "{{ vms.response | json_query('entities[*].status.ressources.bios_uuid') }}"
+
+#    - name: Print VMs
+#      ansible.builtin.debug:
+#        var: vms_list
