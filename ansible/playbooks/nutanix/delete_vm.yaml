@@ -13,6 +13,8 @@
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: False
+        filter:
+         vm_name: "s3-59157b-zruxptxihk-envoy-0"
       register: vms
 
     - name: Set list vms by name
