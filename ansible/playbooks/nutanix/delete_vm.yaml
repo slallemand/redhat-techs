@@ -19,12 +19,16 @@
 
     - name: Set list vms by name
       ansible.builtin.set_fact:
-        vms_list: "{{ vms.response | json_query('entities[*].metadata.uuid') }}"
+        uuid_vms_list: "{{ vms.response | json_query('entities[*].metadata.uuid') }}"
 
     - name: Print VMs
       ansible.builtin.debug:
-        var: vms_list
+        var: uuid_vms_list
 
-#    - name: Set list vms by name
-#      ansible.builtin.set_fact:
-#        vms_list: "{{ vms.response | json_query('entities[*].status.ressources.bios_uuid') }}"
+    - name: Delete Nutanix VMs
+      nutanix.ncp.ntnx_vms:
+        state: absent
+        vm_uuid: "{{ item }}"
+      loop: "{{ uuid_vms_list }}"
+      register: vms_delete
+      when: vuuid_vms_list | length > 0
