@@ -23,7 +23,7 @@
 
     - name: Print VMs
       ansible.builtin.debug:
-        var: vms
+        var: vms_list
 
 #    - name: Set list vms by name
 #      ansible.builtin.set_fact:
