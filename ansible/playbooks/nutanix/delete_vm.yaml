@@ -4,15 +4,17 @@
   gather_facts: no
   collections:
     - nutanix.ncp
+  module_defaults:
+    group/nutanix.ncp.ntnx:
+      nutanix_host: "{{ nutanix_host }}"
+      nutanix_username: "{{ nutanix_username }}"
+      nutanix_password: "{{ nutanix_password }}"
+      validate_certs: false
 
   tasks:
 
     - name: List VMs on Nutanix
       nutanix.ncp.ntnx_vms_info:
-        nutanix_host: "{{ nutanix_host }}"
-        nutanix_username: "{{ nutanix_username }}"
-        nutanix_password: "{{ nutanix_password }}"
-        validate_certs: False
         filter:
          vm_name: ".*dev-.*"
       register: vms
