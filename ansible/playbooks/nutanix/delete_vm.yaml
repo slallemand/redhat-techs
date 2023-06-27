@@ -13,10 +13,11 @@
 
   tasks:
 
+    - when: env_delete == 'dev' or env_delete == 'qualif' or env_delete == 'prod'
     - name: List VMs on Nutanix
       nutanix.ncp.ntnx_vms_info:
         filter:
-         vm_name: ".*dev-.*"
+         vm_name: ".*{{ env_delete }}-.*"
       register: vms
 
     - name: Set list vms by name
