@@ -39,10 +39,10 @@
       ansible.builtin.debug:
         var: uuid_vms_list
 
-#    - name: Delete Nutanix VMs
-#      nutanix.ncp.ntnx_vms:
-#        state: absent
-#        vm_uuid: "{{ item }}"
-#      loop: "{{ uuid_vms_list }}"
-#      register: vms_delete
-#      when: uuid_vms_list | length > 0
+    - name: Delete Nutanix VMs
+      nutanix.ncp.ntnx_vms:
+        state: absent
+        vm_uuid: "{{ item }}"
+      loop: "{{ uuid_vms_list }}"
+      register: vms_delete
+      when: uuid_vms_list | length > 0
