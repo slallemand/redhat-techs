@@ -21,12 +21,12 @@
          vm_name: ".*{{ env_delete }}-.*"
       register: vms
 
-#    - when: env_delete == 'all'
-#      name: List all VMs on Nutanix
-#      nutanix.ncp.ntnx_vms_info:
-#        filter:
-#         vm_name: ".*-demoaap-.*"
-#      register: vms   
+    - when: env_delete == 'all'
+      name: List all VMs on Nutanix
+      nutanix.ncp.ntnx_vms_info:
+        filter:
+         vm_name: ".*-demoaap-.*"
+      register: vms   
 
     - name: Set list vms by name
       ansible.builtin.set_fact:
