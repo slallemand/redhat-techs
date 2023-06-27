@@ -30,7 +30,7 @@
 
     - name: Set list vms by name
       ansible.builtin.set_fact:
-        vms: "{{ vms_all if vms_all.stdout is defined else vms_env }}"
+        vms: "{{ vms_env if env_delete != 'all' else vms_all is env_delete == 'all' }}"
 #        uuid_vms_list: "{{ vms.response | json_query('entities[*].metadata.uuid') }}"
 
     - name: Print VMs
