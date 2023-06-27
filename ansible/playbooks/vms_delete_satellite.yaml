@@ -19,7 +19,7 @@
       register: server_list_qualif
       when: env_delete == "qualif"
 
-    - name: "Show all hosts with hostgroup demo_dev"
+    - name: "Show all hosts with hostgroup demo_prod"
       redhat.satellite.host_info:
         search: "hostgroup_name = demo_prod"
       register: server_list_prod
