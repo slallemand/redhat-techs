@@ -28,13 +28,13 @@
 #         vm_name: ".*-demoaap-.*"
 #      register: vms   
 
-#    - name: Set list vms by name
-#      ansible.builtin.set_fact:
-#        uuid_vms_list: "{{ vms.response | json_query('entities[*].metadata.uuid') }}"
+    - name: Set list vms by name
+      ansible.builtin.set_fact:
+        uuid_vms_list: "{{ vms.response | json_query('entities[*].metadata.uuid') }}"
 
     - name: Print VMs
       ansible.builtin.debug:
-        var: vms
+        var: uuid_vms_list
 
 #    - name: Delete Nutanix VMs
 #      nutanix.ncp.ntnx_vms:
