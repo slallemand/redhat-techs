@@ -127,5 +127,10 @@
     - name: Deploy Gafana package
       ansible.builtin.yum:
         name:
-          - gafana
+          - grafana
 
+    - name: Enable and start grafana service
+      ansible.builtin.service:
+        name: grafana-server
+        state: started
+        enabled: true
