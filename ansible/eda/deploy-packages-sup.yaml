@@ -76,9 +76,24 @@
         group: prometheus
         mode: '0775'
       loop:
-        - prometheus.yml
         - consoles
         - console_libraries
+
+    - name: Copy prometheus config file
+      ansible.builtin.copy:
+        src: "templates/prometheus.yml"
+        dest: /etc/prometheus/prometheus.yml
+        owner: prometheus
+        group: prometheus
+        mode: '0775'
+
+    - name: Copy prometheus service file
+      ansible.builtin.copy:
+        src: template/prometheus.service
+        dest: /etc/systemd/system/
+        owner: prometheus
+        group: prometheus
+        mode: '0644'
 
     - name: Delete temporary prometheus files
       ansible.builtin.file:
