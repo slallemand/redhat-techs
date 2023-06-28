@@ -33,7 +33,7 @@
               name: "workload"
         disks:
           - type: "DISK"
-            size_gb: 10
+            size_gb: 40
             clone_image:
               name:  "rhel-baseos-9.1-x86_64-kvm.qcow2"
             bus: "SCSI"
