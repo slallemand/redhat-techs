@@ -7,7 +7,35 @@
 
   tasks:
 
-    - name: Download Prometheus files
+    - name: Create prometheus group
+      ansible.builtin.group:
+        name: prometheus
+        state: present
+    
+    - name: Add prometheus user to prometheus group
+      ansible.builtin.user:
+        name: prometheus
+        groups: prometheus
+        shell: /bin/bash
+        state: present
+
+    - name: Create prometheus data directory
+      ansible.builtin.file:
+        path: /opt/prometheus
+        state: directory
+        owner: prometheus
+        group: prometheus
+        mode: '0775'
+
+    - name: Create prometheus conf directory
+      ansible.builtin.file:
+        path: /etc/prometheus
+        state: directory
+        owner: root
+        group: prometheus
+        mode: '0775'
+
+    - name: Download Prometheus binarie
       ansible.builtin.get_url:
         url: "{{ prometheus_url }}"
         dest: /tmp/
@@ -15,3 +43,10 @@
         owner: root
         group: root
 
+    - name: Download Grafan binarie
+      ansible.builtin.get_url:
+        url: "{{ grafana_url }}"
+        dest: /tmp/
+        mode: '0440'
+        owner: root
+        group: root
