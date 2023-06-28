@@ -67,6 +67,19 @@
         - prometheus
         - promtool
 
+    - name: Copy prometheus configuration file to /etc/prometheus
+      ansible.builtin.copy:
+        src: /tmp/prometheus/{{ item }}
+        dest: /etc/prometheus/
+        remote_src: true
+        owner: prometheus
+        group: prometheus
+        mode: '0775'
+      loop:
+        - prometheus.yml
+        - consoles
+        - console_libraries
+
     - name: Delete temporary prometheus files
       ansible.builtin.file:
         path: "{{ item }}"
