@@ -43,7 +43,7 @@
         owner: prometheus
         group: prometheus
 
-    - name: Extract Prometheus binarie to conf directory
+    - name: Extract Prometheus binarie to tmp directory
       ansible.builtin.unarchive:
         src: /tmp/prometheus.tar.gz
         dest: /tmp/
@@ -55,7 +55,7 @@
     - name: Rename Prometheus directory
       ansible.builtin.shell: mv /tmp/prometheus-* /tmp/prometheus
 
-    - name: copy prometheus binaries to /usr/local/bin
+    - name: Copy prometheus binaries to /usr/local/bin
       ansible.builtin.copy:
         src: /tmp/prometheus/{{ item }}
         dest: /usr/local/bin/
@@ -66,3 +66,8 @@
       loop:
         - prometheus
         - promtool
+
+    - name: Delete temporary prometheus files
+      ansible.builtin.file:
+        path: /tmp/prometheus*
+        state: absent
