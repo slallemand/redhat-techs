@@ -1,5 +1,5 @@
 ---
-- name: delete Nutanix VMs
+- name: delete Nutanix VMs for EDA environment
   hosts: localhost
   connection: local
   gather_facts: no
@@ -20,11 +20,11 @@
          vm_name: "aap-demoeda-sup"
       register: vms_sup     
 
-    - name: Set vms uuid
+    - name: Set vms sup uuid
       ansible.builtin.set_fact:
         uuid_vms_sup: "{{ vms_sup.response | json_query('entities[*].metadata.uuid') }}"
 
-    - name: Print VMs
+    - name: Print VMs sup
       ansible.builtin.debug:
         var: uuid_vms_sup
 
@@ -35,3 +35,25 @@
       loop: "{{ uuid_vms_sup }}"
       register: vms_delete_sup
       when: uuid_vms_sup | length > 0
+
+    - name: Get aap-demoeda-target VM facts
+      nutanix.ncp.ntnx_vms_info:
+        filter:
+         vm_name: "aap-demoeda-target.*"
+      register: vms_target
+
+    - name: Set vms target uuid
+      ansible.builtin.set_fact:
+        uuid_vms_target: "{{ vms_target.response | json_query('entities[*].metadata.uuid') }}"
+
+    - name: Print VMs target
+      ansible.builtin.debug:
+        var: uuid_vms_target
+
+    - name: Delete EDA target VMs
+      nutanix.ncp.ntnx_vms:
+        state: absent
+        vm_uuid: "{{ item }}"
+      loop: "{{ uuid_vms_target }}"
+      register: vms_delete_target
+      when: uuid_vms_target | length > 0        
