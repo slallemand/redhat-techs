@@ -38,10 +38,19 @@
     - name: Download Prometheus binarie
       ansible.builtin.get_url:
         url: "{{ prometheus_url }}"
-        dest: /tmp/
+        dest: /tmp/prometheus.tar.gz   
         mode: '0440'
         owner: root
         group: root
+
+    - name: Extract Prometheus binarie to conf directory
+      ansible.builtin.unarchive:
+        src: /tmp/prometheus.tar.gz
+        dest: /etc/prometheus
+        remote_src: true
+        owner: root
+        group: root
+        mode: '0775'
 
     - name: Download Grafan binarie
       ansible.builtin.get_url:
