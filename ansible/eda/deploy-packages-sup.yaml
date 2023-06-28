@@ -89,11 +89,17 @@
 
     - name: Copy prometheus service file
       ansible.builtin.copy:
-        src: template/prometheus.service
+        src: templates/prometheus.service
         dest: /etc/systemd/system/
         owner: prometheus
         group: prometheus
         mode: '0644'
+
+    - name: Enable and start prometheus service
+      ansible.builtin.service:
+        name: prometheus
+        state: started
+        enabled: true
 
     - name: Delete temporary prometheus files
       ansible.builtin.file:
