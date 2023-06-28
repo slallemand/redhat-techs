@@ -1,8 +1,8 @@
 {
   "__inputs": [
     {
-      "name": "DS__VICTORIAMETRICS",
-      "label": " VictoriaMetrics",
+      "name": "Prometheus-Data",
+      "label": " NodeExporterMetrics",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
