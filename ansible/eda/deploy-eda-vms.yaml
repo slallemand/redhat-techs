@@ -1,0 +1,85 @@
+
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  collections:
+    - nutanix.ncp
+
+  tasks:
+
+    - name: Generate cloud-init files for sup server
+      template:
+        src: templates/cloud_init_sup.yml.j2
+        dest: "cloud_init.yml"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Create Nutanix VM for SUP server
+      nutanix.ncp.ntnx_vms:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        state: present
+        name: "aap-demoeda-sup"
+        timezone: "UTC"
+        validate_certs: False
+        cluster:
+          name: "ntnx-cluster-hpe-cic"
+        networks:
+          - is_connected: True
+            subnet:
+              name: "workload"
+        disks:
+          - type: "DISK"
+            size_gb: 40
+            clone_image:
+              name:  "rhel-baseos-9.1-x86_64-kvm.qcow2"
+            bus: "SCSI"
+        vcpus: 2
+        cores_per_vcpu: 1
+        memory_gb: 4
+        guest_customization:
+          type: "cloud_init"
+          script_path: "./cloud_init.yml"
+          is_overridable: True
+
+    - name: Generate cloud-init files for target servers
+      template:
+        src: templates/cloud_init_target.yml.j2
+        dest: "cloud_init_{{ item }}.yml"
+        owner: root
+        group: root
+        mode: '0644'
+      loop: "{{ range(0, target_vm_number|int)|list}}"
+
+    - name: Create Nutanix VM for Target servers
+      nutanix.ncp.ntnx_vms:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        state: present
+        name: "aap-demoeda-target-{{ item }}"
+        timezone: "UTC"
+        validate_certs: False
+        cluster:
+          name: "ntnx-cluster-hpe-cic"
+        networks:
+          - is_connected: True
+            subnet:
+              name: "workload"
+        disks:
+          - type: "DISK"
+            size_gb: 40
+            clone_image:
+              name:  "rhel-baseos-9.1-x86_64-kvm.qcow2"
+            bus: "SCSI"
+        vcpus: 2
+        cores_per_vcpu: 1
+        memory_gb: 2
+        guest_customization:
+          type: "cloud_init"
+          script_path: "./cloud_init_{{ item }}.yml"
+          is_overridable: True
+      loop: "{{ range(0, target_vm_number|int)|list}}"
