@@ -108,3 +108,20 @@
       loop:
         - /tmp/prometheus
         - /tmp/prometheus.tar.gz
+
+    - name: Import Grafana GPG Key
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://rpm.grafana.com/gpg.key
+          
+    - name: Create Grafana YUM repo
+      ansible.builtin.yum_repository:
+        name: grafana
+        description: Grafana repo
+        baseurl: https://rpm.grafana.com
+        gpgkey: https://rpm.grafana.com/gpg.key
+        exclude:
+          - '*beta*'
+        gpgcheck: true
+
+
