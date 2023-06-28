@@ -69,5 +69,8 @@
 
     - name: Delete temporary prometheus files
       ansible.builtin.file:
-        path: /tmp/prometheus*
+        path: "{{ item }}"
         state: absent
+      loop:
+        - /tmp/prometheus
+        - /tmp/prometheus.tar.gz
