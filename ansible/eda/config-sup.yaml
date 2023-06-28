@@ -4,11 +4,14 @@
 
   tasks:
   
-    - name: Test hosts list
-      debug:
-        msg: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+    - name: Set Targets IP lists
+      ansible.builtin.set_fact:
+        - target_ip_list: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
 
-        
+    - name: Print ip list
+      ansible.builtin.debug:
+        var: target_ip_list
+
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
   collections:
