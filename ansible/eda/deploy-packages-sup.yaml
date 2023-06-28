@@ -46,7 +46,8 @@
     - name: Extract Prometheus binarie to conf directory
       ansible.builtin.unarchive:
         src: /tmp/prometheus.tar.gz
-        dest: /etc/prometheus
+        dest: /etc/prometheus/
+        remote_src: true
         owner: root
         group: root
         mode: '0775'
