@@ -1,4 +1,14 @@
 ---
+- hosts: aap-demoeda-target*
+  gather_facts: yes
+
+  tasks:
+  
+    - name: Test hosts list
+      debug:
+        msg: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+
+---
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
   collections:
