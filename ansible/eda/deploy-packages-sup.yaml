@@ -51,3 +51,11 @@
         owner: root
         group: root
         mode: '0775'
+
+    - name: Move file from prometheus directory
+      ansible.builtin.shell: mv /etc/prometheus/prometheus-*/* /etc/prometheus/
+
+    - name: Delete old prometheus directory
+      ansible.builtin.file:
+        path: /etc/prometheus/prometheus-*
+        state: absent
