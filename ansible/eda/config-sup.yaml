@@ -38,4 +38,5 @@
         grafana_password: "{{ grafana_password }}"
         state: present
         commit_message: Updated by ansible
+        overwrite: true
         path: https://raw.githubusercontent.com/davmartini/redhat-techs/main/ansible/eda/templates/node-exporter-for-prometheus-dashboard.json
