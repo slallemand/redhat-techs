@@ -9,14 +9,6 @@
 
   tasks:
 
-    - name: Change grafan admin password
-      community.grafana.grafana_user:
-        url: http://localhost:3000
-        login: admin
-        password: "{{ grafana_password }}"
-        name: dmartini
-        email: dmartini@redhat.com
-
     - name: Create promethues data source
       community.grafana.grafana_datasource:
         name: Prometheus-Data
