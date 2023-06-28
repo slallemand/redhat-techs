@@ -113,7 +113,7 @@
       ansible.builtin.rpm_key:
         state: present
         key: https://rpm.grafana.com/gpg.key
-        
+
     - name: Create Grafana YUM repo
       ansible.builtin.yum_repository:
         name: grafana
@@ -124,7 +124,7 @@
           - '*beta*'
         gpgcheck: true
 
-    - name: Deploy Gafana package
+    - name: Install Grafana package
       ansible.builtin.yum:
         name:
           - grafana

@@ -14,32 +14,24 @@
 
   tasks:
 
-    - name: List env VMs on Nutanix
+    - name: Get aap-demoeda-sup VM facts
       nutanix.ncp.ntnx_vms_info:
         filter:
-         vm_name: ".*{{ env_delete }}-.*"
-      register: vms_env
-      when: env_delete == 'dev' or env_delete == 'qualif' or env_delete == 'prod'
+         vm_name: "aap-demoeda-sup"
+      register: vms_sup     
 
-    - name: List all VMs on Nutanix
-      nutanix.ncp.ntnx_vms_info:
-        filter:
-         vm_name: ".*-demoaap-.*"
-      register: vms_all   
-      when: env_delete == 'all'     
-
-    - name: Set list vms by name
+    - name: Set vms uuid
       ansible.builtin.set_fact:
-        uuid_vms_list: "{{ vms_all.response | json_query('entities[*].metadata.uuid') if env_delete == 'all' else vms_env.response | json_query('entities[*].metadata.uuid') }}"
+        uuid_vms_sup: "{{ vms_sup.response | json_query('entities[*].metadata.uuid') }}"
 
     - name: Print VMs
       ansible.builtin.debug:
-        var: uuid_vms_list
+        var: uuid_vms_sup
 
-    - name: Delete Nutanix VMs
+    - name: Delete aap-demoeda-sup VMs
       nutanix.ncp.ntnx_vms:
         state: absent
         vm_uuid: "{{ item }}"
-      loop: "{{ uuid_vms_list }}"
-      register: vms_delete
-      when: uuid_vms_list | length > 0
+      loop: "{{ uuid_vms_sup }}"
+      register: vms_delete_sup
+      when: uuid_vms_sup | length > 0
