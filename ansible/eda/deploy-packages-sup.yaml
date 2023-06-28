@@ -11,7 +11,7 @@
       ansible.builtin.group:
         name: prometheus
         state: present
-    
+ 
     - name: Add prometheus user to prometheus group
       ansible.builtin.user:
         name: prometheus
@@ -31,7 +31,7 @@
       ansible.builtin.file:
         path: /etc/prometheus
         state: directory
-        owner: root
+        owner: prometheus
         group: prometheus
         mode: '0775'
 
@@ -40,22 +40,29 @@
         url: "{{ prometheus_url }}"
         dest: /tmp/prometheus.tar.gz   
         mode: '0440'
-        owner: root
-        group: root
+        owner: prometheus
+        group: prometheus
 
     - name: Extract Prometheus binarie to conf directory
       ansible.builtin.unarchive:
         src: /tmp/prometheus.tar.gz
-        dest: /etc/prometheus/
+        dest: /tmp/
         remote_src: true
-        owner: root
-        group: root
+        owner: prometheus
+        group: prometheus
         mode: '0775'
 
-    - name: Move file from prometheus directory
-      ansible.builtin.shell: mv /etc/prometheus/prometheus-*/* /etc/prometheus/
+    - name: Rename Prometheus directory
+      ansible.builtin.shell: mv /tmp/prometheus-* /tmp/prometheus
 
-    - name: Delete old prometheus directory
-      ansible.builtin.file:
-        path: /etc/prometheus/prometheus-*
-        state: absent
+    - name: copy prometheus binaries to /usr/local/bin
+      ansible.builtin.copy:
+        src: /tmp/prometheus/{{ item }}
+        dest: /usr/local/bin/
+        remote_src: true
+        owner: prometheus
+        group: prometheus
+        mode: '0775'
+      loop:
+        - prometheus
+        - promtool
