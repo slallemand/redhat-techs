@@ -25,4 +25,4 @@
         grafana_password: "{{ grafana_password }}"
         state: present
         commit_message: Updated by ansible
-        path: templates/node_exporter_dashboard.json
+        path: https://github.com/davmartini/redhat-techs/blob/main/ansible/eda/templates/node_exporter_dashboard.json
