@@ -12,6 +12,11 @@
       ansible.builtin.debug:
         var: target_ip_list
 
+    - name: Template Prometheus file
+      ansible.builtin.template:
+        src: templates/prometheus.yml.j2
+        dest: /tmp/prometheus.yml
+
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
   collections:
@@ -40,8 +45,3 @@
         commit_message: Updated by ansible
         overwrite: true
         path: https://raw.githubusercontent.com/davmartini/redhat-techs/main/ansible/eda/templates/node-exporter-for-prometheus-dashboard.json
-
-    - name: Template Prometheus file
-      ansible.builtin.template:
-        src: templates/prometheus.yml.j2
-        dest: /tmp/prometheus.yml
