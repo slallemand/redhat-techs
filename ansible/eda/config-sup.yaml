@@ -6,7 +6,7 @@
   
     - name: Set Targets IP lists
       ansible.builtin.set_fact:
-        target_ip_list: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address']  }}"
+        target_ip_list: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | map('extract', hostvars, 'result')|list  }}"
 
     - name: Print ip list
       ansible.builtin.debug:
@@ -16,7 +16,6 @@
       ansible.builtin.template:
         src: templates/prometheus.yml.j2
         dest: /tmp/prometheus.yml
-      with_items: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address']  }}"
 
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
