@@ -26,4 +26,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
+    {% for item in target_ip_list %}
+      - {{ item }}
+    {% endfor %}
       - targets: ["localhost:9090"]

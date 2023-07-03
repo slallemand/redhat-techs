@@ -40,3 +40,8 @@
         commit_message: Updated by ansible
         overwrite: true
         path: https://raw.githubusercontent.com/davmartini/redhat-techs/main/ansible/eda/templates/node-exporter-for-prometheus-dashboard.json
+
+    - name: Template Prometheus file
+      ansible.builtin.template:
+        src: templates/prometheus.j2
+        dest: /tmp/prometheus.yml
