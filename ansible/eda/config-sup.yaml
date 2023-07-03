@@ -16,6 +16,7 @@
       ansible.builtin.template:
         src: templates/prometheus.yml.j2
         dest: /tmp/prometheus.yml
+      loop: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address']  }}"
 
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false

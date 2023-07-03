@@ -26,7 +26,4 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    {% for item in hostvars[inventory_hostname]['ansible_default_ipv4']['address'] %}
       - {{ item }}
-    {% endfor %}
-      - targets: ["localhost:9090"]
