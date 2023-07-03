@@ -43,5 +43,5 @@
 
     - name: Template Prometheus file
       ansible.builtin.template:
-        src: templates/prometheus.j2
+        src: templates/prometheus.yml.j2
         dest: /tmp/prometheus.yml
