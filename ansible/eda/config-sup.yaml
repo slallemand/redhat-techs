@@ -18,7 +18,7 @@
     - community.grafana
     - prometheus.prometheus
   vars:
-    - grafana_password: 'redhat'
+    - grafana_password: 'admin'
 
   tasks:
 
