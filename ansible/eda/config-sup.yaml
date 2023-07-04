@@ -22,7 +22,7 @@
 
     - name: Set Targets IP lists from first play
       ansible.builtin.set_fact:
-        target_ip_list_global: hostvars['aap-demoeda-target-0.rhntnx.hpecic.net']['target_ip_list']
+        target_ip_list_global: "{{ hostvars['aap-demoeda-target-0.rhntnx.hpecic.net']['target_ip_list'] }}"
 
     - debug: 
         var: target_ip_list_global
