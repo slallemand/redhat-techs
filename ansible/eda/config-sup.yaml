@@ -23,6 +23,12 @@
 
   tasks:
 
+    - name: Set Targets IP lists 2
+      ansible.builtin.set_fact:
+        target_ip_list_2: "{{ hosts['aap-demoeda-target*'] |
+                            map('extract', hostvars, 'ansible_all_ipv4_addresses')|
+                            map('first')|list }}"  
+
     - name: Create promethues data source
       community.grafana.grafana_datasource:
         name: Prometheus-Data
@@ -45,6 +51,10 @@
     - name: Print ip list
       ansible.builtin.debug:
         var: hostvars['aap-demoeda-target*']['target_ip_list']
+
+    - name: Print ip list
+      ansible.builtin.debug:
+        var: target_ip_list_2
 
     - name: Configure prometheus from template
       ansible.builtin.template:
