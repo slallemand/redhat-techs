@@ -23,11 +23,9 @@
 
   tasks:
 
-    - name: Set Targets IP lists 2
-      ansible.builtin.set_fact:
-        target_ip_list_2: "{{ inventory_hostname_short['aap-demoeda-target*'] |
-                            map('extract', hostvars, 'ansible_all_ipv4_addresses')|
-                            map('first')|list }}"  
+    - name: Print ip list
+      ansible.builtin.debug:
+        var: {{ target_ip_list }}
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
@@ -48,13 +46,6 @@
         overwrite: true
         path: https://raw.githubusercontent.com/davmartini/redhat-techs/main/ansible/eda/templates/node-exporter-for-prometheus-dashboard.json
 
-    - name: Print ip list
-      ansible.builtin.debug:
-        var: hostvars['aap-demoeda-target*']['target_ip_list']
-
-    - name: Print ip list
-      ansible.builtin.debug:
-        var: target_ip_list_2
 
     - name: Configure prometheus from template
       ansible.builtin.template:
