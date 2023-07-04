@@ -11,9 +11,7 @@
                             map('first')|list }}"
       #  target_ip_list: "{{ ansible_play_hosts | map('extract', hostvars, 'ansible_default_ipv4') | list }}"
 
-    - name: Print ip list
-      ansible.builtin.debug:
-        var: target_ip_list
+
 
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
@@ -43,6 +41,10 @@
         commit_message: Updated by ansible
         overwrite: true
         path: https://raw.githubusercontent.com/davmartini/redhat-techs/main/ansible/eda/templates/node-exporter-for-prometheus-dashboard.json
+
+    - name: Print ip list
+      ansible.builtin.debug:
+        var: hostvars['aap-demoeda-target*']['target_ip_list']
 
     - name: Configure prometheus from template
       ansible.builtin.template:
