@@ -10,10 +10,6 @@
                             map('extract', hostvars, 'ansible_all_ipv4_addresses')|
                             map('first')|list }}"
 
-    - name: Print IP lists
-      ansible.builtin.debug:
-        var: target_ip_list
-
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
   collections:
@@ -24,8 +20,12 @@
 
   tasks:
 
+    - name: Set Targets IP lists from first play
+      ansible.builtin.set_fact:
+        target_ip_list_global: hostvars['aap-demoeda-target-0.rhntnx.hpecic.net']['target_ip_list']
+
     - debug: 
-        var: hostvars['aap-demoeda-target-0.rhntnx.hpecic.net']['target_ip_list']
+        var: target_ip_list_global
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
