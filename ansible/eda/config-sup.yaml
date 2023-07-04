@@ -27,7 +27,7 @@
 
     - name: Print ip list
       ansible.builtin.debug:
-        var: "{{ target_ip_list }}"
+        var: target_ip_list
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
