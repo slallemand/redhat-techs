@@ -13,7 +13,7 @@
 
     - name: Print ip list
       ansible.builtin.debug:
-        var: "{{ target_ip_list }}"
+        var: target_ip_list
 
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
