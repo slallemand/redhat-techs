@@ -27,7 +27,7 @@
 
     - name: Print ip list
       ansible.builtin.debug:
-        var: target_ip_list
+        var: "{{ hostvars['aap-demoeda-target-2.rhntnx.hpecic.net']['target_ip_list'] }}"
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
