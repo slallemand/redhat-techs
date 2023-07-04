@@ -25,7 +25,7 @@
 
     - name: Set Targets IP lists 2
       ansible.builtin.set_fact:
-        target_ip_list_2: "{{ hosts['aap-demoeda-target*'] |
+        target_ip_list_2: "{{ hostvars['aap-demoeda-target*'] |
                             map('extract', hostvars, 'ansible_all_ipv4_addresses')|
                             map('first')|list }}"  
 
