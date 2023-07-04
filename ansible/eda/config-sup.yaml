@@ -23,7 +23,7 @@
 
     - name: Print ip list
       ansible.builtin.debug:
-        msg: "{{ hostvars[aap-demoeda-target-0.rhntnx.hpecic.net]['ansible_default_ipv4']['address'] }}"
+        msg: "{{ ansible_facts['aap-demoeda-target-0.rhntnx.hpecic.net']['ansible_default_ipv4']['address'] }}"
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
