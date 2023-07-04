@@ -7,7 +7,7 @@
     - name: Set Targets IP lists
       ansible.builtin.set_fact:
       #  target_ip_list: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] | json_query  }}"
-        target_ip_list: "{{ host['aap-demoeda-target*'] | map('extract', hostvars, 'ansible_default_ipv4', 'address') | list }}"
+        target_ip_list: "{{ hosts['aap-demoeda-target*'] | map('extract', hostvars, 'ansible_default_ipv4', 'address') | list }}"
 
     - name: Print ip list
       ansible.builtin.debug:
