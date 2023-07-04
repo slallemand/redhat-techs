@@ -14,8 +14,7 @@
       #  target_ip_list: "{{ ansible_play_hosts|
       #                      map('extract', hostvars, 'ansible_all_ipv4_addresses')|
       #                      map('first')|list }}"
-        target_ip_list: "{{ ansible_play_hosts|
-                            map('extract', hostvars }}"
+        target_ip_list: "{{ hostvars['all'].ansible_host}}"
 
     - name: Print IP lists
       ansible.builtin.debug:
