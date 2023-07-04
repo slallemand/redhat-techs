@@ -50,7 +50,12 @@
     - name: Configure prometheus from template
       ansible.builtin.template:
         src: templates/prometheus.yml.j2
-        dest: /tmp/test
+        dest: /etc/prometheus/prometheus.yml
         owner: prometheus
         group: prometheus
+
+    - name: Reload prometheus service
+      ansible.builtin.service:
+        name: prometheus
+        state: restarted
 
