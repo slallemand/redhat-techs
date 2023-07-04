@@ -1,6 +1,6 @@
 ---
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
-  gather_facts: false
+  gather_facts: true
   collections:
     - community.grafana
     - prometheus.prometheus
@@ -14,7 +14,7 @@
       #  target_ip_list: "{{ ansible_play_hosts|
       #                      map('extract', hostvars, 'ansible_all_ipv4_addresses')|
       #                      map('first')|list }}"
-        target_ip_list: "{{ hostvars['all'].ansible_host}}"
+        target_ip_list: "{{ hostvars['aap-demoeda-sup.rhntnx.hpecic.net'].ansible_host}}"
 
     - name: Print IP lists
       ansible.builtin.debug:
