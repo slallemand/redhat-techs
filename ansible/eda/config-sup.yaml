@@ -1,16 +1,4 @@
 ---
-- hosts: aap-demoeda-target*
-  gather_facts: yes
-
-  tasks:
-  
-    - name: Set Targets IP lists
-      ansible.builtin.set_fact:
-        target_ip_list: "{{ ansible_play_hosts|
-                            map('extract', hostvars, 'ansible_all_ipv4_addresses')|
-                            map('first')|list }}"
-      #  target_ip_list: "{{ ansible_play_hosts | map('extract', hostvars, 'ansible_default_ipv4') | list }}"
-
 - hosts: aap-demoeda-sup.rhntnx.hpecic.net
   gather_facts: false
   collections:
@@ -21,10 +9,11 @@
 
   tasks:
 
-    - name: Print ip list
-      ansible.builtin.debug:
-        msg: "{{ hostvars[item]['ansible_default_ipv4']['address'] }}"
-      loop: "{{ hosts['aap-demoeda-target*'] }}"
+    - name: Set Targets IP lists
+      ansible.builtin.set_fact:
+        target_ip_list: "{{ ansible_play_hosts|
+                            map('extract', hostvars, 'ansible_all_ipv4_addresses')|
+                            map('first')|list }}"
 
     - name: Create promethues data source
       community.grafana.grafana_datasource:
