@@ -6,7 +6,9 @@
   
     - name: Set Targets IP lists
       ansible.builtin.set_fact:
-        target_ip_list: "{{ hostvars['ansible_default_ipv4']['address']  }}"
+        target_ip_list: "{{ ansible_play_hosts|
+                            map('extract', hostvars, 'ansible_all_ipv4_addresses')|
+                            map('first')|list }}"
       #  target_ip_list: "{{ ansible_play_hosts | map('extract', hostvars, 'ansible_default_ipv4') | list }}"
 
     - name: Print ip list
