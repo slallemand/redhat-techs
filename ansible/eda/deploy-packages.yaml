@@ -145,7 +145,7 @@
     - role: dynatrace.oneagent_deploy.oneagent
   vars:
     prometheus_url: 'https://github.com/prometheus/node_exporter/releases/download/v1.6.0/node_exporter-1.6.0.linux-amd64.tar.gz'
-    dynatrace_environment_url: "{{ dynatrace_environment_url }}"
+    dynatrace_environment_url: "https://{{ dynatrace_environment_url }}.live.dynatrace.com"
     dynatrace_paas_token: "{{ dynatrace_paas_token }}"
     dynatrace_oneagent_version: "latest"
     dynatrace_oneagent_installer_arch: x86
