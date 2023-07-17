@@ -141,6 +141,8 @@
   gather_facts: true
   collections:
     - dynatrace.oneagent_deploy
+  roles:
+    - role: dynatrace.oneagent
   vars:
     prometheus_url: 'https://github.com/prometheus/node_exporter/releases/download/v1.6.0/node_exporter-1.6.0.linux-amd64.tar.gz'
     dynatrace_environment_url: "{{ dynatrace_environment_url }}"
@@ -157,7 +159,7 @@
       ansible.builtin.user:
         name: prometheus
         groups: prometheus
-        shell: /bin/bash
+        shell: /bin/bash&@
         state: present
 
     - name: Download Prometheus node_exporter binarie
