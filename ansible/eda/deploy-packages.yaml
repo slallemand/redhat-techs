@@ -139,6 +139,8 @@
 - name: Deploy packages on TARGETS servers
   hosts: aap-demoeda-target*
   gather_facts: true
+  collections:
+    - dynatrace.oneagent_deploy
   roles:
     - role: dynatrace.oneagent
   vars:
