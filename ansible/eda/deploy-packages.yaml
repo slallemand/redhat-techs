@@ -149,6 +149,8 @@
     dynatrace_paas_token: "dt0c01.BTQWGQ5DDV2QBOMD64G6TKHF.73UXYHGKHVRI6WCM6FWJPBSVKYT6N3MU4MUNCIR27UKCKJX4QPXQNSH3KFPWV554"
     dynatrace_oneagent_version: "latest"
     dynatrace_oneagent_installer_arch: x86
+    oneagent_environment_url: 'https://mej76870.live.dynatrace.com'
+    oneagent_paas_token: 'dt0c01.BTQWGQ5DDV2QBOMD64G6TKHF.73UXYHGKHVRI6WCM6FWJPBSVKYT6N3MU4MUNCIR27UKCKJX4QPXQNSH3KFPWV554'
 
   tasks:
 
