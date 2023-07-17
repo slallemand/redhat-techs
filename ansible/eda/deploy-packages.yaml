@@ -148,6 +148,7 @@
     dynatrace_environment_url: "{{ dynatrace_environment_url }}"
     dynatrace_paas_token: "{{ dynatrace_paas_token }}"
     dynatrace_oneagent_version: "latest"
+    dynatrace_oneagent_installer_arch: x86
 
   tasks:
 
