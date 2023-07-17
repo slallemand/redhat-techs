@@ -150,6 +150,10 @@
 
   tasks:
 
+    - name: print vars
+      ansible.builtin.debug:
+        msg: 'dynatrace_environment_url: {{ dynatrace_environment_url }} & {{ dynatrace_paas_token }}'
+
     - name: Create prometheus group
       ansible.builtin.group:
         name: prometheus
