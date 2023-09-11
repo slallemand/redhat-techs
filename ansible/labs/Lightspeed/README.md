@@ -1,0 +1,1 @@
+# Lab for Ansible LightSpeed
