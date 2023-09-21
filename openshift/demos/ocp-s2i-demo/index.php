@@ -92,10 +92,10 @@
             <h3><?php echo "Container ID : ".gethostname(); ?></h3>
           </div>
           <div style="text-align:center">
-            <img src="images/scc.png" width="500" height="281"/>
+            <img src="images/scc.png" width="1145" height="157"/>
           </div>
-          <div style="background-color:red;color:white;text-align:center">
-            <p>Lille</p>
+          <div style="background-color:blue;color:white;text-align:center">
+            <p>Paris</p>
           </div>
           <hr/>
           <div class="footer">
