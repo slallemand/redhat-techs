@@ -1,0 +1,43 @@
+---
+- name: create VM on OpenShift Virt
+  connection: local
+
+  tasks:
+
+  - name: Create VM on KubeVirt
+    kubevirt.core.kubevirt_vm:
+      state: present
+      name: testvm
+      namespace: vms
+      labels:
+        app: in-place-upgrade
+      instancetype:
+        name: u1.medium
+      preference:
+        name: rhel7
+      spec:
+        domain:
+          devices:
+            interfaces:
+            - name: default
+              masquerade: {}
+        networks:
+        - name: default
+          pod: {}
+        accessCredentials:
+        - sshPublicKey:
+            source:
+              secret:
+                secretName: my-pub-key
+            propagationMethod:
+              configDrive: {}
+        volumes:
+        - containerDisk:
+            image: quay.io/containerdisks/fedora:latest
+          name: containerdisk
+        - cloudInitConfigDrive:
+            userData: |-
+              #cloud-config
+              # The default username is: cloud-user
+          name: cloudinit
+      wait: yes
