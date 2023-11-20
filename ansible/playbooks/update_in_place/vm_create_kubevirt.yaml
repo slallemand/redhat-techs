@@ -48,16 +48,21 @@
       spec:
         domain:
           devices: {}
+        accessCredentials:
+        - sshPublicKey:
+            source:
+              secret:
+                secretName: my-pub-key
+            propagationMethod:
+              configDrive: {}
         volumes:
-        - dataVolume:
-            name: testdv
-          name: datavolume
-        - cloudInitNoCloud:
+        - containerDisk:
+            image: quay.io/containerdisks/fedora:latest
+          name: containerdisk
+        - cloudInitConfigDrive:
             userData: |-
               #cloud-config
               # The default username is: cloud-user
-              ssh_authorized_keys:
-                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3OL8vJoTsbn/LBUZWgV8YYmxUZSMAWZ6UKMHC2iF9VCYmuI0opJKNBpEDFlomrENOm7HkEIafdPpFfEiDMszDhskvNWAVPiJJChjMBxFgvNWLAEHJQKvGaylVDF4yOex9ehMKOnhBVnO7FFrn33AmgiikEQRcqkz9Q1NQ7ccDZzF5eml0brxmO+2IziUrPdeVwkR7Wzw19zyxLf3f7dfGkfnfoeku1D8BWQaclN0T8AAC4IAVQ1YXp5kf4rpPdf3eCMUKItJCwW4nAKLmJDoJTMXx6LsOGsBZHwPxV0LbR9titUhGpRCBor2nYs1EnN4qCd7f+3yU0lZ+dV5HdMWXesD2czEY8CTncEhD+6c4x3RnyLNC+zqHuM4U1szsQPkOxI5zqItxVgy0HmLThpaA0knohTVYAnq+Qhw+iA6yokRv/pBRTr9fPeUv03LBB5tYEhBDCkGICY4ZRuT+NlsBHMxAjeQIIYeOh0DwldEl2QXVJc3eNt5nkQw49BoCGIU= dmartini@Davids-MacBook-Pro
           name: cloudinit
       wait: yes
 
