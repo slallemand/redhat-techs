@@ -23,6 +23,7 @@
 
   - name: Get a list of all pods from any namespace
     kubernetes.core.k8s_info:
+      host: "{{ lookup('env', 'OCP_URL') }}"
       api_key: "{{ openshift_auth_results.k8s_auth.api_key }}"
       kind: Pod
     register: pod_list
