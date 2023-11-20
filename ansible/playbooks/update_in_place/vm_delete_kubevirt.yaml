@@ -17,7 +17,7 @@
       validate_certs: false
     register: openshift_auth_results
  
-  - name: Create a VirtualMachine with a DataVolume template
+  - name: Delete a VirtualMachine on OCP
     kubevirt.core.kubevirt_vm:
       host: "{{ lookup('env', 'OCP_URL') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
