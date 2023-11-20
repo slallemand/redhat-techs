@@ -20,18 +20,12 @@
   - name: print openshift_auth_results var
     ansible.builtin.debug:
       var: openshift_auth_results
-
-  - name: Get a list of all pods from any namespace
-    kubernetes.core.k8s_info:
-      host: "{{ lookup('env', 'OCP_URL') }}"
-      validate_certs: false
-      api_key: "{{ openshift_auth_results.k8s_auth.api_key }}"
-      kind: Pod
-    register: pod_list
-  
+ 
   - name: Delete a VirtualMachine
     kubevirt.core.kubevirt_vm:
+      host: "{{ lookup('env', 'OCP_URL') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      validate_certs: false
       name: testvm
       namespace: vms
       state: absent
