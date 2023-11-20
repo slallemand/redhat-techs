@@ -13,44 +13,11 @@
       validate_certs: false
     register: openshift_auth_results
 
-  - name: Create VM on KubeVirt
+  - name: Delete a VirtualMachine
     kubevirt.core.kubevirt_vm:
-      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
-      state: present
       name: testvm
       namespace: vms
-      labels:
-        app: in-place-upgrade
-      instancetype:
-        name: u1.medium
-      preference:
-        name: rhel7
-      spec:
-        domain:
-          devices:
-            interfaces:
-            - name: default
-              masquerade: {}
-        networks:
-        - name: default
-          pod: {}
-        accessCredentials:
-        - sshPublicKey:
-            source:
-              secret:
-                secretName: my-pub-key
-            propagationMethod:
-              configDrive: {}
-        volumes:
-        - containerDisk:
-            image: quay.io/containerdisks/fedora:latest
-          name: containerdisk
-        - cloudInitConfigDrive:
-            userData: |-
-              #cloud-config
-              # The default username is: cloud-user
-          name: cloudinit
-      wait: yes
+      state: absent
 
   - name: Log out to OpenShift
     when: openshift_auth_results.openshift_auth.api_key is defined
