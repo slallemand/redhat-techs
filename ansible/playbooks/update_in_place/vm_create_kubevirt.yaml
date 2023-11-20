@@ -15,9 +15,9 @@
   
   - name: Log in to OpenShift
     redhat.openshift.openshift_auth:
-      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
-      api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
-      state: present
+      host: "{{ lookup('env', 'OCP_URL') }}"
+      username: "{{ lookup('env', 'OCP_USERNAME') }}"
+      password: "{{ lookup('env', 'OCP_PASSWORD') }}"
       validate_certs: false
     register: openshift_auth_results
 
