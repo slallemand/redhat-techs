@@ -1,8 +1,19 @@
 ---
 - name: create VM on OpenShift Virt
+  hosts: localhost
   connection: local
 
   tasks:
+
+  - name: Log in to OpenShift
+    redhat.openshift.openshift_auth:
+      username: "{{ openshift_admin_user }}"
+      password: "{{ openshift_admin_password }}"
+    register: openshift_auth_results
+
+  - name: Print openshift_auth_resuslts
+    ansible.builtin.debug:
+      msg: "{{ openshift_auth_results }}" 
 
   - name: Create VM on KubeVirt
     kubevirt.core.kubevirt_vm:
