@@ -5,6 +5,11 @@
 
   tasks:
 
+  - name: Show env variables
+    ansible.builtin.debug:
+      var: env
+      verbosity: 2
+  
   - name: Log in to OpenShift
     redhat.openshift.openshift_auth:
       username: "{{ openshift_admin_user }}"
