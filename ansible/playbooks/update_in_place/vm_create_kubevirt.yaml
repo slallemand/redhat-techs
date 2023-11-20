@@ -19,6 +19,7 @@
 
   - name: Delete a VirtualMachine
     kubevirt.core.kubevirt_vm:
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
       name: testvm
       namespace: vms
       state: absent
