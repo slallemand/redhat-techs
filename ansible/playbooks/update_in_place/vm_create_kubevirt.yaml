@@ -5,10 +5,13 @@
 
   tasks:
 
-  - name: Show env variables
+  - name: Shell command
+    ansible.builtin.shell: env
+    register: env
+
+  - name: print env
     ansible.builtin.debug:
-      var: env
-      verbosity: 2
+      var: env.stdout
   
   - name: Log in to OpenShift
     redhat.openshift.openshift_auth:
