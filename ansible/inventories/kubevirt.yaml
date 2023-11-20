@@ -1,5 +1,5 @@
 plugin: kubevirt.core.kubevirt
 connections:
 - host: "https://api.ocp.drkspace.fr:6443"
-  api_key: "sha256~0mlLEVULGAfE6ficXVvuMCo9N-hlWSrEh2L8kxyZEEQ"  
+  api_key: "test"  
   validate_certs: false
