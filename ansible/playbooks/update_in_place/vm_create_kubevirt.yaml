@@ -28,7 +28,7 @@
       labels:
         app: rhel-in-place-upgrade
       instancetype:
-        name: u1.micro
+        name: u1.small
       preference:
         name: rhel.8
       data_volume_templates:
