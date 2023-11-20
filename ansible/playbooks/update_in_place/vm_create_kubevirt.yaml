@@ -2,6 +2,10 @@
 - name: create VM on OpenShift Virt
   hosts: localhost
   connection: local
+  gather_facts: no
+  collections:
+    - redhat.openshift
+    - kubevirt.core
 
   tasks:
   
