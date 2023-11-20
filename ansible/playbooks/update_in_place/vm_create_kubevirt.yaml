@@ -15,8 +15,8 @@
   
   - name: Log in to OpenShift
     redhat.openshift.openshift_auth:
-      host: "{{ K8S_AUTH_HOST }}"
-      api_key: "{{ K8S_AUTH_API_KEY }}"
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
     register: openshift_auth_results
 
   - name: Print openshift_auth_resuslts
