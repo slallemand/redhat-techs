@@ -51,8 +51,8 @@
           name: cloudinit
       wait: yes
 
-- name: Log out to OpenShift
-  when: openshift_auth_results.openshift_auth.api_key is defined
-  redhat.openshift.openshift_auth:
-    state: absent
-    api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+  - name: Log out to OpenShift
+    when: openshift_auth_results.openshift_auth.api_key is defined
+    redhat.openshift.openshift_auth:
+      state: absent
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
