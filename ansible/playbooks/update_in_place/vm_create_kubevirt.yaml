@@ -35,10 +35,9 @@
         - metadata:
             name: testvm-with-dv
           spec:
-            sourceref:
-              kind: DataSource
-              name: rhel8
-              namespace: openshift-virtualization-os-images
+            source:
+              registry:
+                url: docker://registry.redhat.io/rhel8/rhel-guest-image:latest
             storage:
               accessModes:
               - ReadWriteOnce
