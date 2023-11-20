@@ -1,6 +1,5 @@
 plugin: kubevirt.core.kubevirt
 connections:
 - host: "https://api.ocp.drkspace.fr:6443"
-  username: "{{ lookup('env', 'OCP_USERNAME') }}"
-  password: "{{ lookup('env', 'OCP_PASSWORD') }}"
+  api_key: "sha256~0mlLEVULGAfE6ficXVvuMCo9N-hlWSrEh2L8kxyZEEQ  
   validate_certs: false
