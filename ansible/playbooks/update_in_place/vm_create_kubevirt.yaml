@@ -17,14 +17,48 @@
       validate_certs: false
     register: openshift_auth_results
  
-  - name: Delete a VirtualMachine
+  - name: Create a VirtualMachine with a DataVolume template
     kubevirt.core.kubevirt_vm:
       host: "{{ lookup('env', 'OCP_URL') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
       validate_certs: false
-      name: testvm
+      state: present
+      name: testvm-with-dv
       namespace: vms
-      state: absent
+      labels:
+        app: rhel-in-place-upgrade
+      instancetype:
+        name: u1.medium
+      preference:
+        name: rhel8
+      data_volume_templates:
+        - metadata:
+            name: testdv
+          spec:
+            source:
+              registry:
+                url: docker://quay.io/containerdisks/fedora:latest
+            storage:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 5Gi
+      spec:
+        domain:
+          devices: {}
+        volumes:
+        - dataVolume:
+            name: testdv
+          name: datavolume
+        - cloudInitNoCloud:
+            userData: |-
+              #cloud-config
+              # The default username is: fedora
+              ssh_authorized_keys:
+                - ssh-ed25519 AAAA...
+          name: cloudinit
+      wait: yes
 
   - name: Log out to OpenShift
     when: openshift_auth_results.openshift_auth.api_key is defined
