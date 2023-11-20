@@ -31,7 +31,7 @@
         name: u1.small
       preference:
         name: rhel.8
-      data_volume_templates:
+      data_volume:
       - metadata:
           name: rhel8
         spec:
