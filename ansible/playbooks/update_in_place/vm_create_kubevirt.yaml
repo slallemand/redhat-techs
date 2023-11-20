@@ -31,6 +31,20 @@
         name: u1.small
       preference:
         name: rhel.8
+      data_volume_templates:
+      - metadata:
+          name: rhel8
+        spec:
+          sourceRef:
+            kind: DataSource
+            name: rhel8
+            namespace: openshift-virtualization-os-images
+          storage:
+            accessModes:
+            - ReadWriteOnce
+            resources:
+              requests:
+                storage: 5Gi
       spec:
         domain:
           devices: {}
