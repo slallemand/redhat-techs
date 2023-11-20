@@ -35,10 +35,10 @@
         - metadata:
             name: testvm-with-dv
           spec:
-            source:
-              pvc:
-                name: rhel8
-                namespace: openshift-virtualization-os-images
+            sourceref:
+              kind: DataSource
+              name: rhel8
+              namespace: openshift-virtualization-os-images
             storage:
               accessModes:
               - ReadWriteOnce
