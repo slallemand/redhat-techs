@@ -1,0 +1,6 @@
+plugin: kubevirt.core.kubevirt
+connections:
+- host: "{{ lookup('env', 'OCP_URL') }}"
+  username: "{{ lookup('env', 'OCP_USERNAME') }}"
+  password: "{{ lookup('env', 'OCP_PASSWORD') }}"
+  validate_certs: false
