@@ -1,4 +1,3 @@
----
 plugin: kubevirt.core.kubevirt
 connections:
 - host: "{{ lookup('env', 'OCP_URL') }}"
