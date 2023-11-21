@@ -47,9 +47,9 @@
             propagationMethod:
               configDrive: {}
         volumes:
-        - containerDisk:
-            image: quay.io/containerdisks/fedora:latest
-          name: containerdisk
+        - dataVolume:
+            name: testvm-with-dv-pvc
+          name: datavolume
         - cloudInitConfigDrive:
             userData: |-
               #cloud-config
