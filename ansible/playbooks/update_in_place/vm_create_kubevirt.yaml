@@ -36,11 +36,8 @@
                 - ReadWriteOnce
               resources:
                 requests:
-                  storage: 30Gi
-              volumeMode: Block
+                  storage: 10Gi
       spec:
-        domain:
-          devices: {}
         accessCredentials:
         - sshPublicKey:
             source:

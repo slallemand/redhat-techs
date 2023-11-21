@@ -16,4 +16,4 @@
       validate_certs: false
       state: absent
       name: testvm-with-dv
-      namespace: vms
+      namespace: vms-demo
