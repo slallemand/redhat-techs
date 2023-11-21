@@ -11,15 +11,14 @@
   
   - name: Log in to OpenShift
     redhat.openshift.openshift_auth:
-      host: "{{ lookup('env', 'OCP_URL') }}"
-      username: "{{ lookup('env', 'OCP_USERNAME') }}"
-      password: "{{ lookup('env', 'OCP_PASSWORD') }}"
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
       validate_certs: false
     register: openshift_auth_results
  
   - name: Delete a VirtualMachine on OCP
     kubevirt.core.kubevirt_vm:
-      host: "{{ lookup('env', 'OCP_URL') }}"
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
       validate_certs: false
       state: absent
@@ -29,7 +28,7 @@
   - name: Log out to OpenShift
     when: openshift_auth_results.openshift_auth.api_key is defined
     redhat.openshift.openshift_auth:
-      host: "{{ lookup('env', 'OCP_URL') }}"
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
       validate_certs: false
       state: absent
