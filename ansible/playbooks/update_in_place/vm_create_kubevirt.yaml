@@ -12,7 +12,7 @@
   - name: Set vars
     set_fact:
       uuid: "{{ 1000 | random }}"
-      os_template: "rhel.8"
+      os_template: "{{ 'rhel.7' if os == 'rhel7' else 'rhel.8' if os == 'rhel8' else 'rhel.9' if os == 'rhel9' }}"
     run_once: yes
 
   - name: Create a VirtualMachine with a DataVolume template
