@@ -16,7 +16,7 @@
       validate_certs: false
       state: present
       name: testvm-with-dv2
-      namespace: vms
+      namespace: vms-demo
       labels:
         app: rhel-in-place-upgrade
       instancetype:
@@ -36,7 +36,7 @@
               - ReadWriteOnce
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 30Gi
       spec:
         domain:
           devices: {}
