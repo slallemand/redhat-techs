@@ -1,0 +1,19 @@
+---
+- name: create VM on OpenShift Virt
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  collections:
+    - redhat.openshift
+    - kubevirt.core
+
+  tasks:
+
+    - name: Describe VM
+      kubevirt.core.kubevirt_vm_info:
+      namespace: vms-demo
+      register: result
+    
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+          var: result
