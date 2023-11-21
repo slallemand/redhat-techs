@@ -27,8 +27,8 @@
         - metadata:
             name: testvm-with-dv-pvc2
           spec:
-            source_ref:
-              kind: datasource
+            sourceRef:
+              kind: DataSource
               name: rhel8
               namespace: openshift-virtualization-os-images
             storage:
