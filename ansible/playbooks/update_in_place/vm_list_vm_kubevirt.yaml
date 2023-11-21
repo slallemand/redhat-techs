@@ -17,6 +17,10 @@
         namespace: vms-demo
       register: result
     
+    - name: Set list vms by name
+      ansible.builtin.set_fact:
+        vms_list: "{{ result | json_query('resources[*].metadata.name') }}"
+
     - name: Print listed VMs
       ansible.builtin.debug:
-          var: result.resources[*].metadata.name
+          var: vms_list
