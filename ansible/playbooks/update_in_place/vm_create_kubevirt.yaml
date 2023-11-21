@@ -23,20 +23,19 @@
         name: u1.small
       preference:
         name: rhel.8
-      data_volume:
-      - metadata:
-          name: rhel8
-        spec:
-          source:
-            pvc:
-              name: rhel8-2cde3f47f8c7
-              namespace: openshift-virtualization-os-images
-          storage:
-            accessModes:
-            - ReadWriteOnce
-            resources:
-              requests:
-                storage: 5Gi
+      data_volume_templates:
+        - metadata:
+            name: testvm-with-dv-pvc
+          spec:
+            source:
+              registry:
+                url: docker://quay.io/containerdisks/fedora:latest
+            storage:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
       spec:
         domain:
           devices: {}
