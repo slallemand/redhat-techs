@@ -6,9 +6,11 @@
     - redhat.redhat.rhel_system_roles
   vars:
     rhc_auth:
-      rhc_state: present
+      rhc_state: "{{ RHSM_STATE }}"
       login:
         username: "{{ lookup('env', 'RHSM_USER') }}"
         password: "{{ lookup('env', 'RHSM_PASSWORD') }}"
+    rhc_insights:
+      state: absent
   roles:
     - redhat.rhel_system_roles.rhc
