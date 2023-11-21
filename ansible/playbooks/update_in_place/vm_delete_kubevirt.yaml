@@ -15,5 +15,4 @@
       api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
       validate_certs: false
       state: absent
-      name: testvm-with-dv
       namespace: vms-demo
