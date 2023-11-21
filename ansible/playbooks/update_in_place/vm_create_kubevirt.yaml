@@ -15,7 +15,7 @@
       api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
       validate_certs: false
       state: present
-      name: testvm-with-dv
+      name: testvm-with-dv2
       namespace: vms
       labels:
         app: rhel-in-place-upgrade
@@ -25,11 +25,12 @@
         name: rhel.8
       data_volume_templates:
         - metadata:
-            name: testvm-with-dv-pvc
+            name: testvm-with-dv-pvc2
           spec:
-            source:
-              registry:
-                url: docker://quay.io/containerdisks/fedora:latest
+            source_ref:
+              kind: datasource
+              name: rhel8
+              namespace: openshift-virtualization-os-images
             storage:
               accessModes:
               - ReadWriteOnce
@@ -48,7 +49,7 @@
               configDrive: {}
         volumes:
         - dataVolume:
-            name: testvm-with-dv-pvc
+            name: testvm-with-dv-pvc2
           name: datavolume
         - cloudInitConfigDrive:
             userData: |-
