@@ -13,6 +13,11 @@
         password: "{{ user_password | password_hash('sha512') }}"
         state: present
 
+    - name: Remove RIPU files
+      ansible.builtin.file:
+        path: /var/log/ripu/ripu.*
+        state: absent
+
   vars:
     cockpit_packages: 
       - cockpit
