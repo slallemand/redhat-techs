@@ -4,7 +4,7 @@
   gather_facts: true
   collections:
     - infra.leapp
-    - redhat.redhat.rhel_system_roles
+    - redhat.rhel_system_roles
   vars:
     leapp_upgrade_type: cdn
     cockpit_packages: 
@@ -19,7 +19,7 @@
     cockpit_started: true
     cockpit_port: 9090
   roles:
-    - role: redhat.redhat.rhel_system_roles.cockpit
+    - role: redhat.rhel_system_roles.cockpit
       when: (ansible_distribution == "RedHat") and (ansible_distribution_major_version < "9") 
     - role: infra.leapp.analysis
       when: (ansible_distribution == "RedHat") and (ansible_distribution_major_version < "9") 
