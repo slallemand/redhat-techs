@@ -9,7 +9,7 @@
 
   tasks:
 
-    - name: Describe VM
+    - name: List VMs on OpenShift Virtualization
       kubevirt.core.kubevirt_vm_info:
         host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
         api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
@@ -17,6 +17,6 @@
         namespace: vms-demo
       register: result
     
-    - name: Print return information from the previous task
+    - name: Print listed VMs
       ansible.builtin.debug:
-          var: result
+          var: result.resources
