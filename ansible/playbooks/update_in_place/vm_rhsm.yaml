@@ -8,7 +8,7 @@
     rhc_auth:
       rhc_state: present
       login:
-        username: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
-        password: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+        username: "{{ lookup('env', 'RHSM_USER') }}"
+        password: "{{ lookup('env', 'RHSM_PASSWORD') }}"
   roles:
     - redhat.rhel_system_roles.rhc
