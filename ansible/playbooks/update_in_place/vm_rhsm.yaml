@@ -11,6 +11,6 @@
         username: "{{ lookup('env', 'RHSM_USER') }}"
         password: "{{ lookup('env', 'RHSM_PASSWORD') }}"
     rhc_insights:
-      state: present
+      state: "{{ INSIGHTS_STATE }}"
   roles:
     - redhat.rhel_system_roles.rhc
