@@ -1,5 +1,5 @@
 plugin: kubevirt.core.kubevirt
 connections:
+- validate_certs: false
 - namespaces:
   - vms-demo
-- validate_certs: false
