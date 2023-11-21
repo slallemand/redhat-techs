@@ -33,10 +33,11 @@
               namespace: openshift-virtualization-os-images
             storage:
               accessModes:
-              - ReadWriteOnce
+                - ReadWriteOnce
               resources:
                 requests:
                   storage: 30Gi
+              volumeMode: Block
       spec:
         domain:
           devices: {}
