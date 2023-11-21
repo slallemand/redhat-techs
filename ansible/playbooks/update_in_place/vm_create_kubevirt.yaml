@@ -34,10 +34,10 @@
         - metadata:
             name: "{{ topic }}-{{ uuid }}{{ item }}"
           spec:
-            sourceRef:
-              kind: DataSource
-              name: "{{ os }}"
-              namespace: openshift-virtualization-os-images
+            source:
+              pvc:
+                name: rhel7-template
+                namespace: openshift-virtualization-os-images
             storage:
               accessModes:
                 - ReadWriteOnce
