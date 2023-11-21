@@ -31,7 +31,7 @@
         name: "{{ os_template }}"
       data_volume_templates:
         - metadata:
-            name: testvm-with-dv-pvc2
+            name: "{{ topic }}-{{ uuid }}{{ item }}-dv"
           spec:
             sourceRef:
               kind: DataSource
@@ -56,7 +56,7 @@
               configDrive: {}
         volumes:
         - dataVolume:
-            name: testvm-with-dv-pvc2
+            name: "{{ topic }}-{{ uuid }}{{ item }}-dv"
           name: datavolume
         - cloudInitConfigDrive:
             userData: |-
