@@ -19,4 +19,4 @@
     
     - name: Print listed VMs
       ansible.builtin.debug:
-          var: result.resources.annotaions.name
+          var: result.resources.metadata.name
