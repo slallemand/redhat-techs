@@ -1,0 +1,12 @@
+---
+- name: Leapp framework
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  collections:
+    - infra.leapp
+  vars:
+    leapp_upgrade_type: cdn
+  roles:
+    - infra.leapp.analysis
+
