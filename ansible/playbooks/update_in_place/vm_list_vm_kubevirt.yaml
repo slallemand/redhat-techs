@@ -13,6 +13,7 @@
       kubevirt.core.kubevirt_vm_info:
         host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
         api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+        validate_certs: false
       register: result
     
     - name: Print return information from the previous task
