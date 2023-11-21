@@ -9,27 +9,33 @@
 
   tasks:
   
+  - name: Set vars
+    set_fact:
+      uuid: "{{ 1000 | random }}"
+      os_template: "rhel.8"
+    run_once: yes
+
   - name: Create a VirtualMachine with a DataVolume template
     kubevirt.core.kubevirt_vm:
       host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
       api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
       validate_certs: false
       state: present
-      name: testvm-with-dv2
+      name: "{{ topic }}-{{ uuid }}{{ item }}"
       namespace: vms-demo
       labels:
-        app: rhel-in-place-upgrade
+        app: "{{ topic }}"
       instancetype:
-        name: u1.small
+        name: "{{ flavor }}"
       preference:
-        name: rhel.8
+        name: "{{ os_template }}"
       data_volume_templates:
         - metadata:
             name: testvm-with-dv-pvc2
           spec:
             sourceRef:
               kind: DataSource
-              name: rhel8
+              name: "{{ os }}"
               namespace: openshift-virtualization-os-images
             storage:
               accessModes:
@@ -58,3 +64,4 @@
               # The default username is: cloud-user
           name: cloudinit
       wait: yes
+    loop: "{{ range(0, vm_number|int)|list}}"
