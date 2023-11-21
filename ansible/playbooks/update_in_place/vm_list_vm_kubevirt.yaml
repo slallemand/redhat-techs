@@ -11,7 +11,8 @@
 
     - name: Describe VM
       kubevirt.core.kubevirt_vm_info:
-      namespace: vms-demo
+        host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+        api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
       register: result
     
     - name: Print return information from the previous task
