@@ -1,3 +1,4 @@
+plugin: kubevirt.core.kubevirt
 connections:
 - host: https://192.168.64.4:8443
   api_key: test
