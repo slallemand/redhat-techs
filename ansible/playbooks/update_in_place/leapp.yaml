@@ -1,7 +1,6 @@
 ---
 - name: Leapp framework
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: true
   collections:
     - infra.leapp
