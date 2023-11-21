@@ -10,7 +10,7 @@
     - name: Create password for a user
       ansible.builtin.user:
         name: "cloud-user"
-        password: "{{ user_password }}"
+        password: "{{ user_password | password_hash('sha512') }}"
         state: present
 
   vars:
