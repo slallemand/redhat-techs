@@ -1,0 +1,14 @@
+---
+- name: Subscribe RHEL system
+  hosts: all
+  gather_facts: yes
+  collections:
+    - redhat.redhat.rhel_system_roles
+  vars:
+    rhc_auth:
+      rhc_state: present
+      login:
+        username: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+        password: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+  roles:
+    - redhat.rhel_system_roles.rhc
