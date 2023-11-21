@@ -8,4 +8,5 @@
     leapp_upgrade_type: cdn
   roles:
     - infra.leapp.analysis
+  when: (ansible_distribution == "RedHat") and (ansible_distribution_major_version < "9") 
 
