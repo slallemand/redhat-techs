@@ -38,6 +38,8 @@
                 requests:
                   storage: 10Gi
       spec:
+        domain:
+          devices: {}
         accessCredentials:
         - sshPublicKey:
             source:
