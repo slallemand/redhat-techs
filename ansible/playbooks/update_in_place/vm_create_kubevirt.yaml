@@ -36,7 +36,8 @@
                 - ReadWriteOnce
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 30Gi
+              storageClassName: lvms-vg1
       spec:
         domain:
           devices: {}
