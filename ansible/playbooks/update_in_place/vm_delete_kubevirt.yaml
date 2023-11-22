@@ -49,3 +49,4 @@
       state: absent
       host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
       api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      validate_certs: false

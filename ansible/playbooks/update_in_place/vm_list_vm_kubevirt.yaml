@@ -9,10 +9,18 @@
 
   tasks:
 
+    - name: Log in (obtain access token)
+      redhat.openshift.openshift_auth:
+        host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+        username: "{{ lookup('env', 'K8S_AUTH_USERNAME') }}"
+        password: "{{ lookup('env', 'K8S_AUTH_PASSWORD') }}"
+        validate_certs: false
+      register: openshift_auth_results
+
     - name: List VMs on OpenShift Virtualization
       kubevirt.core.kubevirt_vm_info:
         host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
-        api_key: "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+        api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
         validate_certs: false
         namespace: vms-demo
       register: result
@@ -24,3 +32,11 @@
     - name: Print listed VMs
       ansible.builtin.debug:
           var: vms_list
+
+    - name: If login succeeded, try to log out (revoke access token)
+      when: openshift_auth_results.openshift_auth.api_key is defined
+      redhat.openshift.openshift_auth:
+        state: absent
+        host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+        api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+        validate_certs: false
