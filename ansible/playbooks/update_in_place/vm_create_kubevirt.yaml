@@ -129,6 +129,24 @@
       wait: yes
     loop: "{{ range(0, vm_number|int)|list}}"
 
+  - name: Generate VM files
+    template:
+      src: templates/vm_template.yml.j2
+      dest: vm_template-{{ item }}.yml
+      owner: root
+      group: root
+      mode: '0644'
+    vars:
+      uuid: "{{ 9999 | random }}" 
+    loop: "{{ range(0, vm_number|int)|list}}"
+
+  - name: Create a Deployment by reading the definition from a local file
+    redhat.openshift.k8s:
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      state: present
+      src: vm_template-{{ item }}.yml
+    loop: "{{ range(0, vm_number|int)|list}}"
 
   - name: If login succeeded, try to log out (revoke access token)
     when: openshift_auth_results.openshift_auth.api_key is defined
