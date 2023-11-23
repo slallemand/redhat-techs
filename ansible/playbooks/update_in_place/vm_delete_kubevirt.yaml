@@ -42,3 +42,31 @@
       name: "{{ item }}"
       namespace: vms-demo
     loop: "{{ vms_list }}"
+
+  - name: Delete Route for Cockpit VMs
+    redhat.openshift.k8s:
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      validate_certs: false
+      state: absent
+      api_version: v1
+      kind: Route
+      namespace: vms-demo
+
+  - name: Delete Service for Cockpit VMs
+    redhat.openshift.k8s:
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      validate_certs: false
+      state: absent
+      api_version: v1
+      kind: Service
+      namespace: vms-demo 
+
+  - name: If login succeeded, try to log out (revoke access token)
+    when: openshift_auth_results.openshift_auth.api_key is defined
+    redhat.openshift.openshift_auth:
+      state: absent
+      host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+      api_key: "{{ openshift_auth_results.openshift_auth.api_key }}"
+      validate_certs: false
