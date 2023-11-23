@@ -1,5 +1,8 @@
 plugin: kubevirt.core.kubevirt
 connections:
 - validate_certs: false
+  host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+  username: "{{ lookup('env', 'K8S_AUTH_USERNAME') }}"
+  password: "{{ lookup('env', 'K8S_AUTH_PASSWORD') }}"
   namespaces:
   - vms-demo
