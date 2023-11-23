@@ -51,7 +51,9 @@
       state: absent
       api_version: v1
       kind: Route
+      name: "{{ item }}"
       namespace: vms-demo
+    loop: "{{ vms_list }}"
 
   - name: Delete Service for Cockpit VMs
     redhat.openshift.k8s:
@@ -61,7 +63,9 @@
       state: absent
       api_version: v1
       kind: Service
-      namespace: vms-demo 
+      name: "{{ item }}"
+      namespace: vms-demo
+    loop: "{{ vms_list }}"
 
   - name: If login succeeded, try to log out (revoke access token)
     when: openshift_auth_results.openshift_auth.api_key is defined
