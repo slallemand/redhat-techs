@@ -4,7 +4,8 @@ metadata:
 components:
   - name: tooling-container
     container:
-      image: image-registry.openshift-image-registry.svc:5000/rh-ee-slallema-dev/udi-custom
+      #image: image-registry.openshift-image-registry.svc:5000/rh-ee-slallema-dev/udi-custom
+      image: quay.io/david_martini/devspaces:aap
       memoryRequest: 256M
       memoryLimit: 6Gi
       cpuRequest: 250m
