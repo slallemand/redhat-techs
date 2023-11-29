@@ -1,17 +1,54 @@
 schemaVersion: 2.2.0
 metadata:
-  name: redhat-techs
+  name: ansible-demo
 components:
   - name: tooling-container
     container:
-      #image: image-registry.openshift-image-registry.svc:5000/rh-ee-slallema-dev/udi-custom
-      image: quay.io/david_martini/devspaces:aap
+      # image: quay.io/devspaces/ansible-creator-ee@sha256:cffd700f8199306cec8d2d0eae202280d3fbf5e3f68c860b492de2eb511c25c0
+      image: quay.io/vsvydenk/ansible-creator-ee:test-pr-navigator-no-ee
       memoryRequest: 256M
       memoryLimit: 6Gi
       cpuRequest: 250m
       cpuLimit: 2000m
       args: ['tail', '-f', '/dev/null']
-      env:
-        - name: KUBEDOCK_ENABLED
-          value: "true"
-
+commands:
+  - id: oc-install
+    exec:
+      commandLine: '/usr/local/bin/ansible-playbook ${PROJECT_SOURCE}/playbooks/install_oc.yml'
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: build
+        isDefault: true
+      component: tooling-container
+  - id: molecule-test
+    exec:
+      label: "Molecule: Run Scenario for Backup Role"
+      commandLine: 'source $HOME/.bashrc && molecule test'
+      workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo/collections/example/collection/roles/backup_file
+      group:
+        kind: run
+        isDefault: true
+      component: tooling-container
+  - id: molecule-verify
+    exec:
+      label: "Molecule: Validate Backup File Role"
+      commandLine: 'source $HOME/.bashrc && molecule verify'
+      workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo/collections/example/collection/roles/backup_file
+      group:
+        kind: run
+        isDefault: true
+      component: tooling-container
+  - id: ansible-navigator
+    exec:
+      label: "Ansible-Navigator: Start ansible-navigator"
+      commandLine: |
+        if [ ! -d "$HOME/.cache/ansible-navigator" ]; then
+          mkdir -p "$HOME/.cache/ansible-navigator"
+        fi
+        cp /usr/local/lib/python3.11/site-packages/ansible_navigator/data/catalog_collections.py $HOME/.cache/ansible-navigator 
+        ansible-navigator --ee false
+      workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo
+      component: tooling-container
+events:
+  postStart:
+    - "oc-install"
